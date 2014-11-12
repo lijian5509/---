@@ -1,19 +1,20 @@
 //
-//  TakeOutMoneyViewController.m
+//  MessageCheckViewController.m
 //  快递兔-终
 //
 //  Created by kuaiditu on 14-11-12.
 //  Copyright (c) 2014年 kuaiditu. All rights reserved.
 //
 
-#import "TakeOutMoneyViewController.h"
-#import "CheckPhoneViewController.h"
+#import "MessageCheckViewController.h"
+#import "BankDetailViewController.h"
+#import "DetailTableViewController.h"
 
-@interface TakeOutMoneyViewController ()
+@interface MessageCheckViewController ()
 
 @end
 
-@implementation TakeOutMoneyViewController
+@implementation MessageCheckViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,27 +27,21 @@
 
 - (void)viewDidLoad
 {
-    self.textField.delegate=self;
     [super viewDidLoad];
+    self.textField.delegate=self;
+    self.smallTitleView.backgroundColor=[UIColor whiteColor];
+    self.smallTitleView.layer.cornerRadius=10;
     [self showUI];
 }
 #pragma mark - 摆UI界面
 - (void)showUI{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
-    self.title=@"提现";
-    //返回键、
+    self.title=@"设置";
     BACKKEYITEM;
 }
 -(void)getBack{
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark 收键盘
-SHOUJIANPAN;
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.textField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,9 +51,9 @@ SHOUJIANPAN;
 }
 
 - (IBAction)btnClicked:(UIButton *)sender {
-    CheckPhoneViewController *check=[[CheckPhoneViewController alloc]init];
+    DetailTableViewController *bank=[[DetailTableViewController alloc]init];
     self.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:check animated:YES];
+    [self.navigationController pushViewController:bank animated:YES];
     
 }
 @end

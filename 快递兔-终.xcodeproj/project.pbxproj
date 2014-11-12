@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C869AE421A132AD8009DF67E /* CheckPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C869AE401A132AD8009DF67E /* CheckPhoneViewController.m */; };
+		C869AE431A132AD8009DF67E /* CheckPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C869AE411A132AD8009DF67E /* CheckPhoneViewController.xib */; };
+		C869AE471A13358A009DF67E /* MessageCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C869AE451A13358A009DF67E /* MessageCheckViewController.m */; };
+		C869AE481A13358A009DF67E /* MessageCheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C869AE461A13358A009DF67E /* MessageCheckViewController.xib */; };
+		C869AE4E1A133AA1009DF67E /* BankDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C869AE4C1A133AA1009DF67E /* BankDetailViewController.m */; };
+		C869AE4F1A133AA1009DF67E /* BankDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C869AE4D1A133AA1009DF67E /* BankDetailViewController.xib */; };
+		C869AE531A134549009DF67E /* DetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C869AE521A134549009DF67E /* DetailTableViewController.m */; };
+		C869AE571A134925009DF67E /* DetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C869AE551A134925009DF67E /* DetailTableViewCell.m */; };
+		C869AE581A134925009DF67E /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C869AE561A134925009DF67E /* DetailTableViewCell.xib */; };
+		C869AE5C1A134A72009DF67E /* detailView.plist in Resources */ = {isa = PBXBuildFile; fileRef = C869AE5B1A134A72009DF67E /* detailView.plist */; };
+		C869AE5E1A1350BE009DF67E /* validNum.plist in Resources */ = {isa = PBXBuildFile; fileRef = C869AE5D1A1350BE009DF67E /* validNum.plist */; };
 		C88FDB941A12E9170060E2AE /* 首页图片_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C88FDB931A12E9170060E2AE /* 首页图片_02@2x.png */; };
 		C8AD8B311A12EEFF00BBEEE5 /* NoMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8AD8B2F1A12EEFF00BBEEE5 /* NoMoneyViewController.m */; };
 		C8AD8B321A12EEFF00BBEEE5 /* NoMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8AD8B301A12EEFF00BBEEE5 /* NoMoneyViewController.xib */; };
@@ -161,6 +172,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C869AE3F1A132AD8009DF67E /* CheckPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckPhoneViewController.h; sourceTree = "<group>"; };
+		C869AE401A132AD8009DF67E /* CheckPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckPhoneViewController.m; sourceTree = "<group>"; };
+		C869AE411A132AD8009DF67E /* CheckPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckPhoneViewController.xib; sourceTree = "<group>"; };
+		C869AE441A13358A009DF67E /* MessageCheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCheckViewController.h; sourceTree = "<group>"; };
+		C869AE451A13358A009DF67E /* MessageCheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCheckViewController.m; sourceTree = "<group>"; };
+		C869AE461A13358A009DF67E /* MessageCheckViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCheckViewController.xib; sourceTree = "<group>"; };
+		C869AE4B1A133AA1009DF67E /* BankDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankDetailViewController.h; sourceTree = "<group>"; };
+		C869AE4C1A133AA1009DF67E /* BankDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankDetailViewController.m; sourceTree = "<group>"; };
+		C869AE4D1A133AA1009DF67E /* BankDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BankDetailViewController.xib; sourceTree = "<group>"; };
+		C869AE511A134549009DF67E /* DetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTableViewController.h; sourceTree = "<group>"; };
+		C869AE521A134549009DF67E /* DetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTableViewController.m; sourceTree = "<group>"; };
+		C869AE541A134925009DF67E /* DetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTableViewCell.h; sourceTree = "<group>"; };
+		C869AE551A134925009DF67E /* DetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTableViewCell.m; sourceTree = "<group>"; };
+		C869AE561A134925009DF67E /* DetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
+		C869AE5B1A134A72009DF67E /* detailView.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = detailView.plist; sourceTree = "<group>"; };
+		C869AE5D1A1350BE009DF67E /* validNum.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = validNum.plist; sourceTree = "<group>"; };
 		C88FDB931A12E9170060E2AE /* 首页图片_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页图片_02@2x.png"; sourceTree = "<group>"; };
 		C8AD8B2E1A12EEFF00BBEEE5 /* NoMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoMoneyViewController.h; sourceTree = "<group>"; };
 		C8AD8B2F1A12EEFF00BBEEE5 /* NoMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoMoneyViewController.m; sourceTree = "<group>"; };
@@ -389,6 +416,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C869AE3B1A132A18009DF67E /* 验证手机 */ = {
+			isa = PBXGroup;
+			children = (
+				C869AE3F1A132AD8009DF67E /* CheckPhoneViewController.h */,
+				C869AE401A132AD8009DF67E /* CheckPhoneViewController.m */,
+				C869AE411A132AD8009DF67E /* CheckPhoneViewController.xib */,
+			);
+			name = "验证手机";
+			sourceTree = "<group>";
+		};
+		C869AE491A133918009DF67E /* 消息验证码 */ = {
+			isa = PBXGroup;
+			children = (
+				C869AE441A13358A009DF67E /* MessageCheckViewController.h */,
+				C869AE451A13358A009DF67E /* MessageCheckViewController.m */,
+				C869AE461A13358A009DF67E /* MessageCheckViewController.xib */,
+			);
+			name = "消息验证码";
+			sourceTree = "<group>";
+		};
+		C869AE4A1A133964009DF67E /* 银行卡详情 */ = {
+			isa = PBXGroup;
+			children = (
+				C869AE4B1A133AA1009DF67E /* BankDetailViewController.h */,
+				C869AE4C1A133AA1009DF67E /* BankDetailViewController.m */,
+				C869AE4D1A133AA1009DF67E /* BankDetailViewController.xib */,
+			);
+			name = "银行卡详情";
+			sourceTree = "<group>";
+		};
+		C869AE501A1341B1009DF67E /* 详情 */ = {
+			isa = PBXGroup;
+			children = (
+				C869AE511A134549009DF67E /* DetailTableViewController.h */,
+				C869AE521A134549009DF67E /* DetailTableViewController.m */,
+				C869AE541A134925009DF67E /* DetailTableViewCell.h */,
+				C869AE551A134925009DF67E /* DetailTableViewCell.m */,
+				C869AE561A134925009DF67E /* DetailTableViewCell.xib */,
+			);
+			name = "详情";
+			sourceTree = "<group>";
+		};
 		C8AD8B331A12F90A00BBEEE5 /* 绑定银行卡 */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +695,8 @@
 		C8B4307D1A10E1A20080C884 /* 数据库 */ = {
 			isa = PBXGroup;
 			children = (
+				C869AE5B1A134A72009DF67E /* detailView.plist */,
+				C869AE5D1A1350BE009DF67E /* validNum.plist */,
 			);
 			path = "数据库";
 			sourceTree = "<group>";
@@ -754,6 +825,10 @@
 				C8AD8B301A12EEFF00BBEEE5 /* NoMoneyViewController.xib */,
 				C8AD8B331A12F90A00BBEEE5 /* 绑定银行卡 */,
 				C8AD8B391A13031700BBEEE5 /* 提现 */,
+				C869AE3B1A132A18009DF67E /* 验证手机 */,
+				C869AE491A133918009DF67E /* 消息验证码 */,
+				C869AE4A1A133964009DF67E /* 银行卡详情 */,
+				C869AE501A1341B1009DF67E /* 详情 */,
 			);
 			name = "我的余额";
 			sourceTree = "<group>";
@@ -1041,6 +1116,7 @@
 				C8D479761A120D3800F58B70 /* 我的订单_06.png in Resources */,
 				C8D479BB1A12136600F58B70 /* 导航－40-2-灰.png in Resources */,
 				C8B4300B1A10E1520080C884 /* InfoPlist.strings in Resources */,
+				C869AE581A134925009DF67E /* DetailTableViewCell.xib in Resources */,
 				C8B430DA1A10E1A20080C884 /* zbar-help.html in Resources */,
 				C8D479791A120D3800F58B70 /* 我的订单_18.png in Resources */,
 				C8AD8B3E1A1304AA00BBEEE5 /* TakeOutMoneyViewController.xib in Resources */,
@@ -1068,6 +1144,7 @@
 				C8D47A421A12250500F58B70 /* tabBar-3@2x.png in Resources */,
 				C8D4797B1A120D3800F58B70 /* 我的订单_25.png in Resources */,
 				C8B430DB1A10E1A20080C884 /* zbar-helpicons.png in Resources */,
+				C869AE4F1A133AA1009DF67E /* BankDetailViewController.xib in Resources */,
 				C8D479541A120D3800F58B70 /* 个人中心_09.png in Resources */,
 				C8D479C71A12136600F58B70 /* 导航－40-4-灰@2x.png in Resources */,
 				C8D479531A120D3800F58B70 /* 个人中心_06.png in Resources */,
@@ -1081,6 +1158,7 @@
 				C8D47A4B1A12250500F58B70 /* tabBar3@2x.png in Resources */,
 				C8D479BE1A12136600F58B70 /* 导航－40-4-橙.png in Resources */,
 				C8D4796D1A120D3800F58B70 /* 首页图片_02.png in Resources */,
+				C869AE431A132AD8009DF67E /* CheckPhoneViewController.xib in Resources */,
 				C8D479BF1A12136600F58B70 /* 导航－40-4-灰.png in Resources */,
 				C8D47A4A1A12250500F58B70 /* tabBar3.png in Resources */,
 				C8D4794B1A120D3800F58B70 /* 订单详情_11.png in Resources */,
@@ -1090,6 +1168,7 @@
 				C8D479751A120D3800F58B70 /* 我的订单_03.png in Resources */,
 				C8D479581A120D3800F58B70 /* 历史信息_03.png in Resources */,
 				C8D479B81A12136600F58B70 /* 导航－40-1-橙.png in Resources */,
+				C869AE5C1A134A72009DF67E /* detailView.plist in Resources */,
 				C8D4797D1A120D3800F58B70 /* 我的余额_03.png in Resources */,
 				C8D47A461A12250500F58B70 /* tabBar1.png in Resources */,
 				C8D479BA1A12136600F58B70 /* 导航－40-2-橙.png in Resources */,
@@ -1099,11 +1178,13 @@
 				C8D4795B1A120D3800F58B70 /* 推荐好友_03.png in Resources */,
 				C8D479BD1A12136600F58B70 /* 导航－40-3-灰.png in Resources */,
 				C8D479511A120D3800F58B70 /* 个人中心-设置_15.png in Resources */,
+				C869AE5E1A1350BE009DF67E /* validNum.plist in Resources */,
 				C8B430D01A10E1A20080C884 /* MJRefresh.bundle in Resources */,
 				C8B431301A10E7BB0080C884 /* HeadView.xib in Resources */,
 				C8D479C21A12136600F58B70 /* 导航－40-2-橙@2x.png in Resources */,
 				C8D47A441A12250500F58B70 /* tabBar-4@2x.png in Resources */,
 				C8D479591A120D3800F58B70 /* 历史信息_07.png in Resources */,
+				C869AE481A13358A009DF67E /* MessageCheckViewController.xib in Resources */,
 				C8D479C41A12136600F58B70 /* 导航－40-3-橙@2x.png in Resources */,
 				C8D47A3F1A12250500F58B70 /* tabBar-2.png in Resources */,
 				C8D47A431A12250500F58B70 /* tabBar-4.png in Resources */,
@@ -1132,20 +1213,25 @@
 				C8B430D41A10E1A20080C884 /* MJRefreshHeaderView.m in Sources */,
 				C8B430D51A10E1A20080C884 /* UIScrollView+Extension.m in Sources */,
 				C8D478F31A11AFD700F58B70 /* DuanXinViewController.m in Sources */,
+				C869AE571A134925009DF67E /* DetailTableViewCell.m in Sources */,
 				C8B430111A10E1520080C884 /* AppDelegate.m in Sources */,
 				C8B430C71A10E1A20080C884 /* AFHTTPRequestOperationManager.m in Sources */,
 				C8D479071A11E06C00F58B70 /* SheZhiViewController.m in Sources */,
 				C8B430C91A10E1A20080C884 /* AFNetworkReachabilityManager.m in Sources */,
+				C869AE471A13358A009DF67E /* MessageCheckViewController.m in Sources */,
 				C8B431281A10E2BF0080C884 /* KuaiDiViewController.m in Sources */,
 				C8B430CD1A10E1A20080C884 /* AFURLResponseSerialization.m in Sources */,
 				C8B430CB1A10E1A20080C884 /* AFURLConnectionOperation.m in Sources */,
 				C8AD8B311A12EEFF00BBEEE5 /* NoMoneyViewController.m in Sources */,
+				C869AE531A134549009DF67E /* DetailTableViewController.m in Sources */,
 				C8B431251A10E29B0080C884 /* ShouYeViewController.m in Sources */,
 				C8B430CA1A10E1A20080C884 /* AFSecurityPolicy.m in Sources */,
 				C8B430D71A10E1A20080C884 /* UIView+Extension.m in Sources */,
 				C8B431341A10E9DC0080C884 /* HeadView.m in Sources */,
+				C869AE4E1A133AA1009DF67E /* BankDetailViewController.m in Sources */,
 				C8B430D61A10E1A20080C884 /* UIScrollView+MJRefresh.m in Sources */,
 				C8B430DD1A10E1A20080C884 /* MyControl.m in Sources */,
+				C869AE421A132AD8009DF67E /* CheckPhoneViewController.m in Sources */,
 				C8B430C81A10E1A20080C884 /* AFHTTPSessionManager.m in Sources */,
 				C8B430CC1A10E1A20080C884 /* AFURLRequestSerialization.m in Sources */,
 				C8D478E81A11A03500F58B70 /* GeRenTableViewCell.m in Sources */,

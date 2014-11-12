@@ -50,20 +50,19 @@
 //    tab.tabBar.hidden=NO;
 }
 
+
 #pragma mark - 摆UI界面
 - (void)showUI{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
     self.title=@"设置";
-    UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(0, 0,50, 40) target:self sel:@selector(getBack) tag:101 image:nil title:@"﹤返回"];
-    UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:btn];
-    self.navigationItem.leftBarButtonItem=item;
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 60)];
     UIButton *btn1=[MyControl creatButtonWithFrame:CGRectMake(20, 20, 280, 40) target:self sel:@selector(btnClicked:) tag:102 image:nil title:@"退出登录"];
     btn1.backgroundColor=[UIColor whiteColor];
     [btn1 setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     [view addSubview:btn1];
     self.tableView.tableFooterView=view;
+    BACKKEYITEM;
     
 }
 -(void)btnClicked:(UIButton *)btn{

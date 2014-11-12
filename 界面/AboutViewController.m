@@ -33,14 +33,12 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
     self.title=@"设置";
-    UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(0, 0,50, 40) target:self sel:@selector(getBack) tag:101 image:nil title:@"﹤返回"];
-    UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:btn];
-    self.navigationItem.leftBarButtonItem=item;
-    
     //缺少
     UIView *view=[[UIView alloc]initWithFrame:self.view.bounds];
     view.backgroundColor=[UIColor redColor];
     [self.view addSubview:view];
+    //设置返回键
+    BACKKEYITEM;
 }
 -(void)getBack{
     

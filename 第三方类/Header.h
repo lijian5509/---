@@ -24,6 +24,8 @@
 return YES;\
 \
 }\
+//返回键
+
 
 
 
@@ -35,6 +37,14 @@ return YES;\
 #import "AFNetworking.h"
 
 
-
+#define BACKKEYITEM UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(0, 0,60, 40) target:self sel:@selector(getBack) tag:101 image:nil title:@"﹤返回"];\
+\
+btn.titleLabel.font=[UIFont boldSystemFontOfSize:17];\
+\
+[btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];\
+\
+UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:btn];\
+\
+self.navigationItem.leftBarButtonItem=item;\
 
 #endif

@@ -80,6 +80,7 @@
     }
     self.viewControllers=array;
 }
+
 /*
 #pragma mark - 增加子视图控制器
 -(void)creatTabItems{

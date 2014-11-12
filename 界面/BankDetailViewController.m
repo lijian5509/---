@@ -1,19 +1,19 @@
 //
-//  TakeOutMoneyViewController.m
+//  BankDetailViewController.m
 //  快递兔-终
 //
 //  Created by kuaiditu on 14-11-12.
 //  Copyright (c) 2014年 kuaiditu. All rights reserved.
 //
 
-#import "TakeOutMoneyViewController.h"
-#import "CheckPhoneViewController.h"
+#import "BankDetailViewController.h"
+#import "DetailTableViewCell.h"
 
-@interface TakeOutMoneyViewController ()
+@interface BankDetailViewController ()
 
 @end
 
-@implementation TakeOutMoneyViewController
+@implementation BankDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,39 +26,36 @@
 
 - (void)viewDidLoad
 {
-    self.textField.delegate=self;
     [super viewDidLoad];
     [self showUI];
 }
 #pragma mark - 摆UI界面
 - (void)showUI{
+    self.textField1.delegate=self;
+    self.textField2.delegate=self;
+    self.textField3.delegate=self;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
-    self.title=@"提现";
+    self.title=@"银行卡详情";
     //返回键、
     BACKKEYITEM;
+    UIButton *bianJiBtn=[MyControl creatButtonWithFrame:CGRectMake(0, 0, 50, 40) target:self sel:@selector(editorBtn) tag:201 image:nil title:@"编辑"];
+    bianJiBtn.titleLabel.font=[UIFont boldSystemFontOfSize:17];
+    [bianJiBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:bianJiBtn];
+    self.navigationItem.rightBarButtonItem=rightItem;
+    
 }
 -(void)getBack{
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-#pragma mark 收键盘
-SHOUJIANPAN;
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self.textField resignFirstResponder];
+-(void)editorBtn{
+    
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)btnClicked:(UIButton *)sender {
-    CheckPhoneViewController *check=[[CheckPhoneViewController alloc]init];
-    self.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:check animated:YES];
-    
-}
 @end

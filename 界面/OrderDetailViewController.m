@@ -1,20 +1,20 @@
 //
-//  KuaiDiViewController.m
+//  OrderDetailViewController.m
 //  快递兔-终
 //
-//  Created by kuaiditu on 14-11-10.
+//  Created by kuaiditu on 14-11-13.
 //  Copyright (c) 2014年 kuaiditu. All rights reserved.
 //
 
-#import "KuaiDiViewController.h"
-#import "KuaiDiViewCell.h"
+#import "OrderDetailViewController.h"
+#import "OrderDetailViewCell.h"
 
 
-@interface KuaiDiViewController ()
+@interface OrderDetailViewController ()
 
 @end
 
-@implementation KuaiDiViewController
+@implementation OrderDetailViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,17 +27,54 @@
 
 - (void)viewDidLoad
 {
-    self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor=[UIColor lightGrayColor];
-    
     [super viewDidLoad];
+    self.tableView.backgroundColor=[UIColor lightGrayColor];
+    self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self showUI];
+    
+    //设置脚视图
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
+    view.backgroundColor=[UIColor lightGrayColor];
+    view.userInteractionEnabled=YES;
+    UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(20, 20, 280, 40) target:self sel:@selector(btnClicked:) tag:101 image:nil title:@"确认取件"];
+    btn.backgroundColor=[UIColor orangeColor];
+    btn.titleLabel.textColor=[UIColor whiteColor];
+    btn.titleLabel.font=[UIFont boldSystemFontOfSize:20];
+    [view addSubview:btn];
+    UIButton *cancelBtn=[MyControl creatButtonWithFrame:CGRectMake(20, 60, 280, 40) target:self sel:@selector(btnClicked:) tag:102 image:nil title:@"打印订单"];
+    cancelBtn.backgroundColor=[UIColor blueColor];
+    cancelBtn.titleLabel.textColor=[UIColor whiteColor];
+    cancelBtn.titleLabel.font=[UIFont boldSystemFontOfSize:20];
+    [view addSubview:cancelBtn];
+    self.tableView.tableFooterView=view;
+}
+-(void)btnClicked:(UIButton *)btn{
+    switch (btn.tag) {
+        case 101:
+        {
+            
+        }
+            break;
+        case 102:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 #pragma mark - 摆UI界面
 - (void)showUI{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
     self.title=@"快速订单";
+    BACKKEYITEM;
+}
+-(void)getBack{
+    self.hidesBottomBarWhenPushed=NO;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -53,29 +90,48 @@
 {
 //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 10;
+    return 1;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 70;
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
+    view.backgroundColor=[UIColor lightGrayColor];
+    return view;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellId=@"kuaidi";
-    KuaiDiViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellId];
-    if (!cell) {
-        cell=[[[NSBundle mainBundle]loadNibNamed:@"KuaiDiViewCell" owner:self options:nil]lastObject];
-        cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-        cell.selectedBackgroundView.backgroundColor=[UIColor orangeColor];
+    static NSString *cellId=@"order";
+    OrderDetailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    
+    if (cell==nil) {
+        if (indexPath.section==2) {
+            cell=[[OrderDetailViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+            UILabel *lable=[MyControl creatLabelWithFrame:CGRectMake(5, 5, 315, 30) text:@"备注:"];
+            lable.font=[UIFont boldSystemFontOfSize:17];
+            lable.textColor=[UIColor grayColor];
+            [cell.contentView addSubview:lable];
+            
+        }else{
+            cell=[[[NSBundle mainBundle]loadNibNamed:@"OrderDetailViewCell" owner:self options:nil]lastObject];
+        }
     }
     return cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==2) {
+        return 40;
+    }else{
+        //修改
+        return 70;
+    }
 }
 
 /*

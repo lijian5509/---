@@ -42,6 +42,7 @@
     self.title=@"提交银行卡";
     //返回键、
     BACKKEYITEM;
+    BACKVIEW;
 }
 
 -(void)getBack{

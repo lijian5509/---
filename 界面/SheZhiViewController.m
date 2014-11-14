@@ -35,7 +35,7 @@
     [super viewDidLoad];
     [self showUI];
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor=[UIColor lightGrayColor];
+    TABLEVIEWBACKVIEW;
     self.tableView.scrollEnabled=NO;
 }
 #pragma mark - 隐藏tabbar
@@ -59,7 +59,7 @@
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 60)];
     UIButton *btn1=[MyControl creatButtonWithFrame:CGRectMake(20, 20, 280, 40) target:self sel:@selector(btnClicked:) tag:102 image:nil title:@"退出登录"];
     btn1.backgroundColor=[UIColor whiteColor];
-    [btn1 setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [btn1 setTitleColor:GRAYCOLOR forState:UIControlStateNormal];
     [view addSubview:btn1];
     self.tableView.tableFooterView=view;
     BACKKEYITEM;
@@ -122,7 +122,7 @@
 #pragma mark - 设置分区头视图
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
-    view.backgroundColor=[UIColor lightGrayColor];
+    view.backgroundColor=GRAYCOLOR;
     return view;
 
 }

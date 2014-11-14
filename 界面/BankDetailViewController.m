@@ -39,6 +39,7 @@
     self.title=@"银行卡详情";
     //返回键、
     BACKKEYITEM;
+    BACKVIEW;
     UIButton *bianJiBtn=[MyControl creatButtonWithFrame:CGRectMake(0, 0, 50, 40) target:self sel:@selector(editorBtn) tag:201 image:nil title:@"编辑"];
     bianJiBtn.titleLabel.font=[UIFont boldSystemFontOfSize:17];
     [bianJiBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

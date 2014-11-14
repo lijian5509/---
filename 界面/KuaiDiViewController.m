@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor=[UIColor lightGrayColor];
+    TABLEVIEWBACKVIEW;
     
     [super viewDidLoad];
     [self showUI];

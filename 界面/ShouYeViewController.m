@@ -27,11 +27,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    BACKVIEW;
     [self showUI];
 }
 #pragma mark - 摆UI界面
 - (void)showUI{
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"首页图片_02"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"登录_01"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
     UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(0, 0, 320, 40) target:self sel:@selector(btnClicked:) tag:101 image:@"首页图片_03" title:nil];
     [self.view addSubview:btn];
     UIButton *Dbtn=[MyControl creatButtonWithFrame:CGRectMake(20, 80, 280, 90) target:self sel:@selector(btnClicked:) tag:102 image:@"首页图片_06" title:nil];

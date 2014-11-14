@@ -28,13 +28,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView.backgroundColor=[UIColor lightGrayColor];
+    self.tableView.backgroundColor=GRAYCOLOR;
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self showUI];
     
     //设置脚视图
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
-    view.backgroundColor=[UIColor lightGrayColor];
+    view.backgroundColor=GRAYCOLOR;
     view.userInteractionEnabled=YES;
     UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(20, 20, 280, 40) target:self sel:@selector(btnClicked:) tag:101 image:nil title:@"确认取件"];
     btn.backgroundColor=[UIColor orangeColor];
@@ -69,7 +69,7 @@
 - (void)showUI{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
-    self.title=@"快速订单";
+    self.title=@"订单详情";
     BACKKEYITEM;
 }
 -(void)getBack{
@@ -102,7 +102,7 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
-    view.backgroundColor=[UIColor lightGrayColor];
+    view.backgroundColor=GRAYCOLOR;
     return view;
 }
 
@@ -116,7 +116,7 @@
             cell=[[OrderDetailViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
             UILabel *lable=[MyControl creatLabelWithFrame:CGRectMake(5, 5, 315, 30) text:@"备注:"];
             lable.font=[UIFont boldSystemFontOfSize:17];
-            lable.textColor=[UIColor grayColor];
+            lable.textColor=GRAYCOLOR;
             [cell.contentView addSubview:lable];
             
         }else{

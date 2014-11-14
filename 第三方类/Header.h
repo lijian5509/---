@@ -26,6 +26,13 @@ return YES;\
 }\
 //返回键
 
+//设置背景图片
+#define TABLEVIEWBACKVIEW self.tableView.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"灰色背景 "]]
+
+#define BACKVIEW self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"灰色背景"]]
+
+//设定常用颜色
+#define GRAYCOLOR [UIColor colorWithPatternImage:[UIImage imageNamed:@"灰色背景"]]
 
 
 
@@ -39,7 +46,7 @@ return YES;\
 
 //CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 //CGColorRef borderColorRef = CGColorCreate(colorSpace,(CGFloat[]){ 1, 0, 0, 1 });
-#define BACKKEYITEM UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(0, 0,60, 40) target:self sel:@selector(getBack) tag:101 image:nil title:@"﹤返回"];\
+#define BACKKEYITEM UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(0, 0,60, 40) target:self sel:@selector(getBack) tag:101 image:nil title:@"<返回"];\
 \
 btn.titleLabel.font=[UIFont boldSystemFontOfSize:17];\
 \

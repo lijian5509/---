@@ -29,7 +29,13 @@
     [super viewDidLoad];
    
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    TABLEVIEWBACKVIEW;
+    BACKKEYITEM;
+    self.title=@"历史信息";
     
+}
+-(void)getBack{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,11 +64,11 @@
         return nil;
     }
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
-    view.backgroundColor=[UIColor whiteColor];
+    view.backgroundColor=GRAYCOLOR;
     return view;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 110;
+    return 125;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

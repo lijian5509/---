@@ -31,6 +31,7 @@
     self.textField2.delegate=self;
     self.smallTitleView.backgroundColor=[UIColor whiteColor];
     self.smallTitleView.layer.cornerRadius=10;
+    [self.textBtn setBackgroundImage:[UIImage imageNamed:@"注册_10"] forState:UIControlStateNormal];
     [self showUI];
 }
 #pragma mark - 摆UI界面
@@ -40,6 +41,7 @@
     self.title=@"验证手机";
     //返回键、
     BACKKEYITEM;
+    BACKVIEW;
 }
 -(void)getBack{
     [self.navigationController popViewControllerAnimated:YES];

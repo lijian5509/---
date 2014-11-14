@@ -11,5 +11,6 @@
 @interface GeRenTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *rightView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lineLabel;
 
 @end

@@ -12,10 +12,10 @@
 
 - (void)awakeFromNib
 {
-    self.contentView.layer.borderWidth=1;
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGColorRef borderColorRef = CGColorCreate(colorSpace,(CGFloat[]){ 1, 1, 0, 1 });
-    self.contentView.layer.borderColor=borderColorRef;
+ //   self.contentView.layer.borderWidth=1;
+//    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+//    CGColorRef borderColorRef = CGColorCreate(colorSpace,(CGFloat[]){ 1, 1, 0, 1 });
+//    self.contentView.layer.borderColor=borderColorRef;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

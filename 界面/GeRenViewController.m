@@ -40,7 +40,7 @@
     [self showUI];
     [self creatHeadView];
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor=[UIColor lightGrayColor];
+    TABLEVIEWBACKVIEW;
     self.tableView.scrollEnabled=NO;
 }
 #pragma mark - 创建一个头视图
@@ -89,6 +89,9 @@
     if (indexPath.row==1) {
         cell.titleLabel.textColor=[UIColor orangeColor];
     }
+    if (indexPath.row==3) {
+        cell.lineLabel.hidden=YES;
+    }
     cell.rightView.image=[UIImage imageNamed:_cellImagesArray[indexPath.row]];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     return cell;
@@ -96,7 +99,7 @@
 //设置分区头视图
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
-    view.backgroundColor=[UIColor lightGrayColor];
+    view.backgroundColor=GRAYCOLOR;
     return view;
 }
 

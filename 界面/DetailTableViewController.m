@@ -39,6 +39,7 @@
     [super viewDidLoad];
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.tableView.scrollEnabled=NO;
+    TABLEVIEWBACKVIEW;
     [self showUI];
     [self requestDatawith:nil];
 }

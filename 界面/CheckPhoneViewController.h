@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField1;
 @property (weak, nonatomic) IBOutlet UITextField *textField2;
 @property (weak, nonatomic) IBOutlet UIImageView *smallTitleView;
+@property (weak, nonatomic) IBOutlet UIButton *textBtn;
 
 - (IBAction)btnClicked:(UIButton *)sender;
 @end

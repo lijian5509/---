@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sendLabel;
-@property (weak, nonatomic) IBOutlet UILabel *lineLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *lineView;
+
 
 @end

@@ -76,16 +76,15 @@ static NSInteger cellNumber=1;
     //设置头视图
     _editView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 120)];
     _editView.userInteractionEnabled=YES;
-    _textView=[[UITextView alloc]initWithFrame:CGRectMake(10, 10, 300, 100)];
+    _textView=[[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
     _textView.delegate=self;
     _textView.text=@"请输入短信内容!";
-    _textView.layer.borderWidth=1;
     _textView.keyboardType=UIKeyboardTypeDefault;
-    _textView.font=[UIFont systemFontOfSize:20];
+    _textView.font=[UIFont systemFontOfSize:18];
     [_editView addSubview:_textView];
     self.tableView.tableHeaderView=_editView;
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor=[UIColor whiteColor];
+    TABLEVIEWBACKVIEW;
     //设置脚视图
 //    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
 //    view.userInteractionEnabled=YES;
@@ -109,15 +108,11 @@ static NSInteger cellNumber=1;
     [_footView.addPerson addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
     self.tableView.tableFooterView=_footView;
     _footView.oneBtn.layer.cornerRadius=10;
-    _footView.oneBtn.layer.borderWidth=1;
     _footView.oneBtn.backgroundColor=[UIColor whiteColor];
     _footView.twoBtn.layer.cornerRadius=10;
-    _footView.twoBtn.layer.borderWidth=1;
     _footView.twoBtn.backgroundColor=[UIColor whiteColor];
     _footView.threebtn.layer.cornerRadius=10;
-    _footView.threebtn.layer.borderWidth=1;
     _footView.threebtn.backgroundColor=[UIColor whiteColor];
-    _footView.imageView.layer.borderWidth=1;
     
 }
 //切换到历史记录的界面
@@ -174,6 +169,9 @@ static NSInteger cellNumber=1;
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return cellNumber;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

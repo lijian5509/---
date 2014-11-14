@@ -34,6 +34,7 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
     self.title=@"设置";
+    BACKVIEW;
     BACKKEYITEM;
 }
 -(void)getBack{

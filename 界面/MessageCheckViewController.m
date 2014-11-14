@@ -31,6 +31,7 @@
     self.textField.delegate=self;
     self.smallTitleView.backgroundColor=[UIColor whiteColor];
     self.smallTitleView.layer.cornerRadius=10;
+    [self.testBtn setBackgroundImage:[UIImage imageNamed:@"注册_10"] forState:UIControlStateNormal];
     [self showUI];
 }
 #pragma mark - 摆UI界面
@@ -39,6 +40,7 @@
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
     self.title=@"设置";
     BACKKEYITEM;
+    BACKVIEW;
 }
 -(void)getBack{
     [self.navigationController popViewControllerAnimated:YES];

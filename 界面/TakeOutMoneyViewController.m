@@ -37,6 +37,7 @@
     self.title=@"提现";
     //返回键、
     BACKKEYITEM;
+    BACKVIEW;
 }
 -(void)getBack{
     [self.navigationController popViewControllerAnimated:YES];

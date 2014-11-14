@@ -50,6 +50,42 @@
 		C8B34D741A15CE0E00BE1735 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B34D731A15CE0E00BE1735 /* HistoryViewController.m */; };
 		C8B34D781A15D49600BE1735 /* HistoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B34D761A15D49600BE1735 /* HistoryViewCell.m */; };
 		C8B34D791A15D49600BE1735 /* HistoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D771A15D49600BE1735 /* HistoryViewCell.xib */; };
+		C8B34D9A1A15F1B900BE1735 /* 111_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D7B1A15F1B900BE1735 /* 111_01.jpg */; };
+		C8B34D9B1A15F1B900BE1735 /* 111_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D7C1A15F1B900BE1735 /* 111_02.jpg */; };
+		C8B34D9C1A15F1B900BE1735 /* 111_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D7D1A15F1B900BE1735 /* 111_03.jpg */; };
+		C8B34D9D1A15F1B900BE1735 /* 111_04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D7E1A15F1B900BE1735 /* 111_04.jpg */; };
+		C8B34D9E1A15F1B900BE1735 /* 111_05.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D7F1A15F1B900BE1735 /* 111_05.jpg */; };
+		C8B34D9F1A15F1B900BE1735 /* 111_06.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D801A15F1B900BE1735 /* 111_06.jpg */; };
+		C8B34DA01A15F1B900BE1735 /* sad.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D811A15F1B900BE1735 /* sad.png */; };
+		C8B34DA11A15F1B900BE1735 /* 忘记密码_12.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D821A15F1B900BE1735 /* 忘记密码_12.png */; };
+		C8B34DA21A15F1B900BE1735 /* 注册_06.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D831A15F1B900BE1735 /* 注册_06.png */; };
+		C8B34DA31A15F1B900BE1735 /* 注册_10.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D841A15F1B900BE1735 /* 注册_10.png */; };
+		C8B34DA41A15F1B900BE1735 /* 注册登录_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D851A15F1B900BE1735 /* 注册登录_03.png */; };
+		C8B34DA51A15F1B900BE1735 /* 注册登录_04.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D861A15F1B900BE1735 /* 注册登录_04.png */; };
+		C8B34DA61A15F1B900BE1735 /* 注册登录_08.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D871A15F1B900BE1735 /* 注册登录_08.png */; };
+		C8B34DA71A15F1B900BE1735 /* 注册登录_11.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D881A15F1B900BE1735 /* 注册登录_11.png */; };
+		C8B34DA81A15F1B900BE1735 /* 灰色背景 .png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D891A15F1B900BE1735 /* 灰色背景 .png */; };
+		C8B34DA91A15F1B900BE1735 /* 灰色背景 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D8A1A15F1B900BE1735 /* 灰色背景 2.png */; };
+		C8B34DAA1A15F1B900BE1735 /* 灰色背景 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D8B1A15F1B900BE1735 /* 灰色背景 2@2x.png */; };
+		C8B34DAB1A15F1B900BE1735 /* 灰色背景 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D8C1A15F1B900BE1735 /* 灰色背景 3.png */; };
+		C8B34DAC1A15F1B900BE1735 /* 灰色背景 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D8D1A15F1B900BE1735 /* 灰色背景 3@2x.png */; };
+		C8B34DAD1A15F1B900BE1735 /* 灰色背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D8E1A15F1B900BE1735 /* 灰色背景@2x.png */; };
+		C8B34DB11A15F1B900BE1735 /* 虚线_02.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D921A15F1B900BE1735 /* 虚线_02.png */; };
+		C8B34DB21A15F1B900BE1735 /* 验证快递员信息_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D931A15F1B900BE1735 /* 验证快递员信息_03.png */; };
+		C8B34DB31A15F1B900BE1735 /* 验证快递员信息_06.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D941A15F1B900BE1735 /* 验证快递员信息_06.png */; };
+		C8B34DB41A15F1B900BE1735 /* 验证快递员信息_08.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D951A15F1B900BE1735 /* 验证快递员信息_08.png */; };
+		C8B34DB51A15F1B900BE1735 /* 验证快递员信息_0饿饿3.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D961A15F1B900BE1735 /* 验证快递员信息_0饿饿3.png */; };
+		C8B34DB61A15F1B900BE1735 /* 验证快递员信息_12.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D971A15F1B900BE1735 /* 验证快递员信息_12.png */; };
+		C8B34DB71A15F1B900BE1735 /* 验证快递员信息_14.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D981A15F1B900BE1735 /* 验证快递员信息_14.png */; };
+		C8B34DB81A15F1B900BE1735 /* 验证快递员信息_16.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D991A15F1B900BE1735 /* 验证快递员信息_16.png */; };
+		C8B34DBD1A15F32800BE1735 /* 登录_05-左.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34DBA1A15F32800BE1735 /* 登录_05-左.png */; };
+		C8B34DBE1A15F32800BE1735 /* 登录_06-右.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34DBB1A15F32800BE1735 /* 登录_06-右.png */; };
+		C8B34DC21A15F33400BE1735 /* 登录_01.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34DBF1A15F33400BE1735 /* 登录_01.png */; };
+		C8B34DC31A15F33400BE1735 /* 登录_05-右.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34DC01A15F33400BE1735 /* 登录_05-右.png */; };
+		C8B34DC41A15F33400BE1735 /* 登录_06-左.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34DC11A15F33400BE1735 /* 登录_06-左.png */; };
+		C8B34DC61A15F49E00BE1735 /* 登录_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34DC51A15F49E00BE1735 /* 登录_01@2x.png */; };
+		C8B34DC81A15F6C600BE1735 /* 订单详情_11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34DC71A15F6C600BE1735 /* 订单详情_11@2x.png */; };
+		C8B34DCA1A15F76A00BE1735 /* 返回_03.png in Resources */ = {isa = PBXBuildFile; fileRef = C8B34DC91A15F76A00BE1735 /* 返回_03.png */; };
 		C8B42FFF1A10E1520080C884 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B42FFE1A10E1520080C884 /* Foundation.framework */; };
 		C8B430011A10E1520080C884 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B430001A10E1520080C884 /* CoreGraphics.framework */; };
 		C8B430031A10E1520080C884 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B430021A10E1520080C884 /* UIKit.framework */; };
@@ -277,6 +313,42 @@
 		C8B34D751A15D49600BE1735 /* HistoryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewCell.h; sourceTree = "<group>"; };
 		C8B34D761A15D49600BE1735 /* HistoryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewCell.m; sourceTree = "<group>"; };
 		C8B34D771A15D49600BE1735 /* HistoryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryViewCell.xib; sourceTree = "<group>"; };
+		C8B34D7B1A15F1B900BE1735 /* 111_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 111_01.jpg; sourceTree = "<group>"; };
+		C8B34D7C1A15F1B900BE1735 /* 111_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 111_02.jpg; sourceTree = "<group>"; };
+		C8B34D7D1A15F1B900BE1735 /* 111_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 111_03.jpg; sourceTree = "<group>"; };
+		C8B34D7E1A15F1B900BE1735 /* 111_04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 111_04.jpg; sourceTree = "<group>"; };
+		C8B34D7F1A15F1B900BE1735 /* 111_05.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 111_05.jpg; sourceTree = "<group>"; };
+		C8B34D801A15F1B900BE1735 /* 111_06.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 111_06.jpg; sourceTree = "<group>"; };
+		C8B34D811A15F1B900BE1735 /* sad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sad.png; sourceTree = "<group>"; };
+		C8B34D821A15F1B900BE1735 /* 忘记密码_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "忘记密码_12.png"; sourceTree = "<group>"; };
+		C8B34D831A15F1B900BE1735 /* 注册_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册_06.png"; sourceTree = "<group>"; };
+		C8B34D841A15F1B900BE1735 /* 注册_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册_10.png"; sourceTree = "<group>"; };
+		C8B34D851A15F1B900BE1735 /* 注册登录_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册登录_03.png"; sourceTree = "<group>"; };
+		C8B34D861A15F1B900BE1735 /* 注册登录_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册登录_04.png"; sourceTree = "<group>"; };
+		C8B34D871A15F1B900BE1735 /* 注册登录_08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册登录_08.png"; sourceTree = "<group>"; };
+		C8B34D881A15F1B900BE1735 /* 注册登录_11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册登录_11.png"; sourceTree = "<group>"; };
+		C8B34D891A15F1B900BE1735 /* 灰色背景 .png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灰色背景 .png"; sourceTree = "<group>"; };
+		C8B34D8A1A15F1B900BE1735 /* 灰色背景 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灰色背景 2.png"; sourceTree = "<group>"; };
+		C8B34D8B1A15F1B900BE1735 /* 灰色背景 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灰色背景 2@2x.png"; sourceTree = "<group>"; };
+		C8B34D8C1A15F1B900BE1735 /* 灰色背景 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灰色背景 3.png"; sourceTree = "<group>"; };
+		C8B34D8D1A15F1B900BE1735 /* 灰色背景 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灰色背景 3@2x.png"; sourceTree = "<group>"; };
+		C8B34D8E1A15F1B900BE1735 /* 灰色背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灰色背景@2x.png"; sourceTree = "<group>"; };
+		C8B34D921A15F1B900BE1735 /* 虚线_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "虚线_02.png"; sourceTree = "<group>"; };
+		C8B34D931A15F1B900BE1735 /* 验证快递员信息_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "验证快递员信息_03.png"; sourceTree = "<group>"; };
+		C8B34D941A15F1B900BE1735 /* 验证快递员信息_06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "验证快递员信息_06.png"; sourceTree = "<group>"; };
+		C8B34D951A15F1B900BE1735 /* 验证快递员信息_08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "验证快递员信息_08.png"; sourceTree = "<group>"; };
+		C8B34D961A15F1B900BE1735 /* 验证快递员信息_0饿饿3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "验证快递员信息_0饿饿3.png"; sourceTree = "<group>"; };
+		C8B34D971A15F1B900BE1735 /* 验证快递员信息_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "验证快递员信息_12.png"; sourceTree = "<group>"; };
+		C8B34D981A15F1B900BE1735 /* 验证快递员信息_14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "验证快递员信息_14.png"; sourceTree = "<group>"; };
+		C8B34D991A15F1B900BE1735 /* 验证快递员信息_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "验证快递员信息_16.png"; sourceTree = "<group>"; };
+		C8B34DBA1A15F32800BE1735 /* 登录_05-左.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录_05-左.png"; sourceTree = "<group>"; };
+		C8B34DBB1A15F32800BE1735 /* 登录_06-右.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录_06-右.png"; sourceTree = "<group>"; };
+		C8B34DBF1A15F33400BE1735 /* 登录_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录_01.png"; sourceTree = "<group>"; };
+		C8B34DC01A15F33400BE1735 /* 登录_05-右.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录_05-右.png"; sourceTree = "<group>"; };
+		C8B34DC11A15F33400BE1735 /* 登录_06-左.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录_06-左.png"; sourceTree = "<group>"; };
+		C8B34DC51A15F49E00BE1735 /* 登录_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录_01@2x.png"; sourceTree = "<group>"; };
+		C8B34DC71A15F6C600BE1735 /* 订单详情_11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "订单详情_11@2x.png"; sourceTree = "<group>"; };
+		C8B34DC91A15F76A00BE1735 /* 返回_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回_03.png"; sourceTree = "<group>"; };
 		C8B42FFB1A10E1520080C884 /* 快递兔-终.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "快递兔-终.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B42FFE1A10E1520080C884 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C8B430001A10E1520080C884 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -693,6 +765,48 @@
 			name = "历史记录";
 			sourceTree = "<group>";
 		};
+		C8B34D7A1A15F1B900BE1735 /* 登录注册 */ = {
+			isa = PBXGroup;
+			children = (
+				C8B34DC91A15F76A00BE1735 /* 返回_03.png */,
+				C8B34DC51A15F49E00BE1735 /* 登录_01@2x.png */,
+				C8B34DBF1A15F33400BE1735 /* 登录_01.png */,
+				C8B34DC01A15F33400BE1735 /* 登录_05-右.png */,
+				C8B34DC11A15F33400BE1735 /* 登录_06-左.png */,
+				C8B34DBA1A15F32800BE1735 /* 登录_05-左.png */,
+				C8B34DBB1A15F32800BE1735 /* 登录_06-右.png */,
+				C8B34D7B1A15F1B900BE1735 /* 111_01.jpg */,
+				C8B34D7C1A15F1B900BE1735 /* 111_02.jpg */,
+				C8B34D7D1A15F1B900BE1735 /* 111_03.jpg */,
+				C8B34D7E1A15F1B900BE1735 /* 111_04.jpg */,
+				C8B34D7F1A15F1B900BE1735 /* 111_05.jpg */,
+				C8B34D801A15F1B900BE1735 /* 111_06.jpg */,
+				C8B34D811A15F1B900BE1735 /* sad.png */,
+				C8B34D821A15F1B900BE1735 /* 忘记密码_12.png */,
+				C8B34D831A15F1B900BE1735 /* 注册_06.png */,
+				C8B34D841A15F1B900BE1735 /* 注册_10.png */,
+				C8B34D851A15F1B900BE1735 /* 注册登录_03.png */,
+				C8B34D861A15F1B900BE1735 /* 注册登录_04.png */,
+				C8B34D871A15F1B900BE1735 /* 注册登录_08.png */,
+				C8B34D881A15F1B900BE1735 /* 注册登录_11.png */,
+				C8B34D891A15F1B900BE1735 /* 灰色背景 .png */,
+				C8B34D8A1A15F1B900BE1735 /* 灰色背景 2.png */,
+				C8B34D8B1A15F1B900BE1735 /* 灰色背景 2@2x.png */,
+				C8B34D8C1A15F1B900BE1735 /* 灰色背景 3.png */,
+				C8B34D8D1A15F1B900BE1735 /* 灰色背景 3@2x.png */,
+				C8B34D8E1A15F1B900BE1735 /* 灰色背景@2x.png */,
+				C8B34D921A15F1B900BE1735 /* 虚线_02.png */,
+				C8B34D931A15F1B900BE1735 /* 验证快递员信息_03.png */,
+				C8B34D941A15F1B900BE1735 /* 验证快递员信息_06.png */,
+				C8B34D951A15F1B900BE1735 /* 验证快递员信息_08.png */,
+				C8B34D961A15F1B900BE1735 /* 验证快递员信息_0饿饿3.png */,
+				C8B34D971A15F1B900BE1735 /* 验证快递员信息_12.png */,
+				C8B34D981A15F1B900BE1735 /* 验证快递员信息_14.png */,
+				C8B34D991A15F1B900BE1735 /* 验证快递员信息_16.png */,
+			);
+			path = "登录注册";
+			sourceTree = "<group>";
+		};
 		C8B42FF21A10E1510080C884 = {
 			isa = PBXGroup;
 			children = (
@@ -932,6 +1046,7 @@
 		C8B4307F1A10E1A20080C884 /* 素材 */ = {
 			isa = PBXGroup;
 			children = (
+				C8B34D7A1A15F1B900BE1735 /* 登录注册 */,
 				C8D479A71A12136600F58B70 /* 导航栏和tab视图 */,
 				C8D479081A120D3800F58B70 /* 订单详情 */,
 				C8D4790D1A120D3800F58B70 /* 个人中心 */,
@@ -1089,6 +1204,7 @@
 		C8D479081A120D3800F58B70 /* 订单详情 */ = {
 			isa = PBXGroup;
 			children = (
+				C8B34DC71A15F6C600BE1735 /* 订单详情_11@2x.png */,
 				C8D479091A120D3800F58B70 /* 订单详情_03.png */,
 				C8D4790A1A120D3800F58B70 /* 订单详情_07.png */,
 				C8D4790B1A120D3800F58B70 /* 订单详情_11.png */,
@@ -1315,18 +1431,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8B34D9E1A15F1B900BE1735 /* 111_05.jpg in Resources */,
+				C8B34DB51A15F1B900BE1735 /* 验证快递员信息_0饿饿3.png in Resources */,
 				C8D47A471A12250500F58B70 /* tabBar1@2x.png in Resources */,
 				C8D479C11A12136600F58B70 /* 导航－40-1-灰@2x.png in Resources */,
 				C8D4796E1A120D3800F58B70 /* 首页图片_03.png in Resources */,
+				C8B34DB81A15F1B900BE1735 /* 验证快递员信息_16.png in Resources */,
+				C8B34DB71A15F1B900BE1735 /* 验证快递员信息_14.png in Resources */,
 				C8D4794D1A120D3800F58B70 /* 个人中心-设置_03.png in Resources */,
 				C8D47A4C1A12250500F58B70 /* tabBar4.png in Resources */,
 				C8D4795E1A120D3800F58B70 /* 打开摄像头-选择手输_07.png in Resources */,
+				C8B34D9C1A15F1B900BE1735 /* 111_03.jpg in Resources */,
 				C8D47A401A12250500F58B70 /* tabBar-2@2x.png in Resources */,
+				C8B34DB11A15F1B900BE1735 /* 虚线_02.png in Resources */,
 				C8D479811A120D3800F58B70 /* 验证手机_03.png in Resources */,
 				C8D478FB1A11B0AE00F58B70 /* DuanXinViewCell.xib in Resources */,
+				C8B34DAB1A15F1B900BE1735 /* 灰色背景 3.png in Resources */,
 				C8D479C01A12136600F58B70 /* 导航－40-1-橙@2x.png in Resources */,
+				C8B34D9D1A15F1B900BE1735 /* 111_04.jpg in Resources */,
+				C8B34DA21A15F1B900BE1735 /* 注册_06.png in Resources */,
 				C8D47A411A12250500F58B70 /* tabBar-3.png in Resources */,
 				C8D4796C1A120D3800F58B70 /* 返回箭头_03.png in Resources */,
+				C8B34DB41A15F1B900BE1735 /* 验证快递员信息_08.png in Resources */,
+				C8B34D9A1A15F1B900BE1735 /* 111_01.jpg in Resources */,
 				C8D479781A120D3800F58B70 /* 我的订单_12.png in Resources */,
 				C8D47A531A122EC800F58B70 /* 首页图片_09.png in Resources */,
 				C8D479501A120D3800F58B70 /* 个人中心-设置_12.png in Resources */,
@@ -1336,6 +1463,8 @@
 				C8D479491A120D3800F58B70 /* 订单详情_03.png in Resources */,
 				C8D4795D1A120D3800F58B70 /* 打开摄像头-选择手输_03.png in Resources */,
 				C88FDB941A12E9170060E2AE /* 首页图片_02@2x.png in Resources */,
+				C8B34DA41A15F1B900BE1735 /* 注册登录_03.png in Resources */,
+				C8B34DC31A15F33400BE1735 /* 登录_05-右.png in Resources */,
 				C8D4794E1A120D3800F58B70 /* 个人中心-设置_06.png in Resources */,
 				C8D479561A120D3800F58B70 /* 个人中心_13.png in Resources */,
 				C8D4794C1A120D3800F58B70 /* 订单详情_14.png in Resources */,
@@ -1352,18 +1481,21 @@
 				C8D479801A120D3800F58B70 /* 提现_03.png in Resources */,
 				C8D479521A120D3800F58B70 /* 个人中心_03.png in Resources */,
 				C8D478E91A11A03500F58B70 /* GeRenTableViewCell.xib in Resources */,
+				C8B34DB21A15F1B900BE1735 /* 验证快递员信息_03.png in Resources */,
 				C8D4797E1A120D3800F58B70 /* 提交银行卡_03.png in Resources */,
 				C8AD8B321A12EEFF00BBEEE5 /* NoMoneyViewController.xib in Resources */,
 				C8D47A451A12250500F58B70 /* tabBar@2x.png in Resources */,
 				C8D479741A120D3800F58B70 /* 完善单号_15.png in Resources */,
 				C8D4795A1A120D3800F58B70 /* 发送短信_03.png in Resources */,
 				C8D4795F1A120D3800F58B70 /* 打开摄像头_02.png in Resources */,
+				C8B34DBE1A15F32800BE1735 /* 登录_06-右.png in Resources */,
 				C8B430DC1A10E1A20080C884 /* zbar-samples.png in Resources */,
 				C8D479711A120D3800F58B70 /* 完善单号_03.png in Resources */,
 				C8D4797A1A120D3800F58B70 /* 我的订单_22.png in Resources */,
 				C86B41B21A14766E00F88FCD /* zbar-helpicons.png in Resources */,
 				C8B34D791A15D49600BE1735 /* HistoryViewCell.xib in Resources */,
 				C8D4797F1A120D3800F58B70 /* 提交银行卡_06.png in Resources */,
+				C8B34DA91A15F1B900BE1735 /* 灰色背景 2.png in Resources */,
 				C8D479BC1A12136600F58B70 /* 导航－40-3-橙.png in Resources */,
 				C8D47A3E1A12250500F58B70 /* tabBar-1@2x.png in Resources */,
 				C8D479611A120D3800F58B70 /* 打开摄像头_04.png in Resources */,
@@ -1374,28 +1506,44 @@
 				C86B41841A143F1000F88FCD /* OrderDetailViewCell.xib in Resources */,
 				C8D479621A120D3800F58B70 /* 打开摄像头_05.png in Resources */,
 				C8D47A421A12250500F58B70 /* tabBar-3@2x.png in Resources */,
+				C8B34DA71A15F1B900BE1735 /* 注册登录_11.png in Resources */,
 				C8D4797B1A120D3800F58B70 /* 我的订单_25.png in Resources */,
+				C8B34DA81A15F1B900BE1735 /* 灰色背景 .png in Resources */,
 				C8B430DB1A10E1A20080C884 /* zbar-helpicons.png in Resources */,
+				C8B34DA11A15F1B900BE1735 /* 忘记密码_12.png in Resources */,
 				C869AE4F1A133AA1009DF67E /* BankDetailViewController.xib in Resources */,
+				C8B34DA01A15F1B900BE1735 /* sad.png in Resources */,
 				C8D479541A120D3800F58B70 /* 个人中心_09.png in Resources */,
 				C8D479C71A12136600F58B70 /* 导航－40-4-灰@2x.png in Resources */,
+				C8B34DC81A15F6C600BE1735 /* 订单详情_11@2x.png in Resources */,
 				C86B418A1A144A9300F88FCD /* KuaiDiViewCell.xib in Resources */,
 				C8D479531A120D3800F58B70 /* 个人中心_06.png in Resources */,
+				C8B34DBD1A15F32800BE1735 /* 登录_05-左.png in Resources */,
 				C8D4797C1A120D3800F58B70 /* 我的余额2_03.png in Resources */,
 				C8D479C31A12136600F58B70 /* 导航－40-2-灰@2x.png in Resources */,
 				C8D479571A120D3800F58B70 /* 个人中心_32_06.png in Resources */,
 				C8B430D91A10E1A20080C884 /* zbar-back.png in Resources */,
+				C8B34DC61A15F49E00BE1735 /* 登录_01@2x.png in Resources */,
+				C8B34DCA1A15F76A00BE1735 /* 返回_03.png in Resources */,
+				C8B34DA51A15F1B900BE1735 /* 注册登录_04.png in Resources */,
 				C8D479C61A12136600F58B70 /* 导航－40-4-橙@2x.png in Resources */,
+				C8B34DB31A15F1B900BE1735 /* 验证快递员信息_06.png in Resources */,
+				C8B34DAC1A15F1B900BE1735 /* 灰色背景 3@2x.png in Resources */,
 				C8B430161A10E1520080C884 /* Images.xcassets in Resources */,
+				C8B34DA61A15F1B900BE1735 /* 注册登录_08.png in Resources */,
 				C8D479721A120D3800F58B70 /* 完善单号_07.png in Resources */,
 				C8D47A4B1A12250500F58B70 /* tabBar3@2x.png in Resources */,
 				C8D479BE1A12136600F58B70 /* 导航－40-4-橙.png in Resources */,
 				C8D4796D1A120D3800F58B70 /* 首页图片_02.png in Resources */,
+				C8B34DAA1A15F1B900BE1735 /* 灰色背景 2@2x.png in Resources */,
 				C869AE431A132AD8009DF67E /* CheckPhoneViewController.xib in Resources */,
 				C8D479BF1A12136600F58B70 /* 导航－40-4-灰.png in Resources */,
 				C8D47A4A1A12250500F58B70 /* tabBar3.png in Resources */,
 				C8D4794B1A120D3800F58B70 /* 订单详情_11.png in Resources */,
+				C8B34D9F1A15F1B900BE1735 /* 111_06.jpg in Resources */,
 				C8D479601A120D3800F58B70 /* 打开摄像头_03.png in Resources */,
+				C8B34DA31A15F1B900BE1735 /* 注册_10.png in Resources */,
+				C8B34DB61A15F1B900BE1735 /* 验证快递员信息_12.png in Resources */,
 				C8D47A491A12250500F58B70 /* tabBar2@2x.png in Resources */,
 				C8D47A481A12250500F58B70 /* tabBar2.png in Resources */,
 				C86B41B01A14766E00F88FCD /* zbar-back.png in Resources */,
@@ -1419,11 +1567,15 @@
 				C8B431301A10E7BB0080C884 /* HeadView.xib in Resources */,
 				C8D479C21A12136600F58B70 /* 导航－40-2-橙@2x.png in Resources */,
 				C8B34D701A15A9C100BE1735 /* FootView.xib in Resources */,
+				C8B34D9B1A15F1B900BE1735 /* 111_02.jpg in Resources */,
 				C8D47A441A12250500F58B70 /* tabBar-4@2x.png in Resources */,
+				C8B34DC21A15F33400BE1735 /* 登录_01.png in Resources */,
 				C8D479591A120D3800F58B70 /* 历史信息_07.png in Resources */,
 				C869AE481A13358A009DF67E /* MessageCheckViewController.xib in Resources */,
 				C8D479C41A12136600F58B70 /* 导航－40-3-橙@2x.png in Resources */,
 				C8D47A3F1A12250500F58B70 /* tabBar-2.png in Resources */,
+				C8B34DC41A15F33400BE1735 /* 登录_06-左.png in Resources */,
+				C8B34DAD1A15F1B900BE1735 /* 灰色背景@2x.png in Resources */,
 				C8D47A431A12250500F58B70 /* tabBar-4.png in Resources */,
 				C8D4796B1A120D3800F58B70 /* 导航－背景_12.png in Resources */,
 			);

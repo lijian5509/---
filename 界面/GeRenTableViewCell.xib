@@ -35,6 +35,7 @@
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             </tableViewCellContentView>
             <connections>
+                <outlet property="lineLabel" destination="NUc-pC-y6b" id="jov-Iz-aeI"/>
                 <outlet property="rightView" destination="MAi-nO-5r3" id="O2S-X1-Uin"/>
                 <outlet property="titleLabel" destination="bBn-3v-lza" id="hTV-4i-lkf"/>
             </connections>

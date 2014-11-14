@@ -45,6 +45,11 @@
 		C8AD8B381A12FB0F00BBEEE5 /* GetBankCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8AD8B361A12FB0F00BBEEE5 /* GetBankCardViewController.xib */; };
 		C8AD8B3D1A1304AA00BBEEE5 /* TakeOutMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8AD8B3B1A1304AA00BBEEE5 /* TakeOutMoneyViewController.m */; };
 		C8AD8B3E1A1304AA00BBEEE5 /* TakeOutMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8AD8B3C1A1304AA00BBEEE5 /* TakeOutMoneyViewController.xib */; };
+		C8B34D6E1A15A99A00BE1735 /* FootView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B34D6D1A15A99A00BE1735 /* FootView.m */; };
+		C8B34D701A15A9C100BE1735 /* FootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D6F1A15A9C100BE1735 /* FootView.xib */; };
+		C8B34D741A15CE0E00BE1735 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B34D731A15CE0E00BE1735 /* HistoryViewController.m */; };
+		C8B34D781A15D49600BE1735 /* HistoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B34D761A15D49600BE1735 /* HistoryViewCell.m */; };
+		C8B34D791A15D49600BE1735 /* HistoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8B34D771A15D49600BE1735 /* HistoryViewCell.xib */; };
 		C8B42FFF1A10E1520080C884 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B42FFE1A10E1520080C884 /* Foundation.framework */; };
 		C8B430011A10E1520080C884 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B430001A10E1520080C884 /* CoreGraphics.framework */; };
 		C8B430031A10E1520080C884 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B430021A10E1520080C884 /* UIKit.framework */; };
@@ -264,6 +269,14 @@
 		C8AD8B3A1A1304AA00BBEEE5 /* TakeOutMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeOutMoneyViewController.h; sourceTree = "<group>"; };
 		C8AD8B3B1A1304AA00BBEEE5 /* TakeOutMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeOutMoneyViewController.m; sourceTree = "<group>"; };
 		C8AD8B3C1A1304AA00BBEEE5 /* TakeOutMoneyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TakeOutMoneyViewController.xib; sourceTree = "<group>"; };
+		C8B34D6C1A15A99A00BE1735 /* FootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootView.h; sourceTree = "<group>"; };
+		C8B34D6D1A15A99A00BE1735 /* FootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootView.m; sourceTree = "<group>"; };
+		C8B34D6F1A15A9C100BE1735 /* FootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FootView.xib; sourceTree = "<group>"; };
+		C8B34D721A15CE0E00BE1735 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		C8B34D731A15CE0E00BE1735 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		C8B34D751A15D49600BE1735 /* HistoryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewCell.h; sourceTree = "<group>"; };
+		C8B34D761A15D49600BE1735 /* HistoryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewCell.m; sourceTree = "<group>"; };
+		C8B34D771A15D49600BE1735 /* HistoryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryViewCell.xib; sourceTree = "<group>"; };
 		C8B42FFB1A10E1520080C884 /* 快递兔-终.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "快递兔-终.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B42FFE1A10E1520080C884 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C8B430001A10E1520080C884 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -658,6 +671,28 @@
 			name = "提现";
 			sourceTree = "<group>";
 		};
+		C8B34D6B1A15A96B00BE1735 /* 定制脚视图 */ = {
+			isa = PBXGroup;
+			children = (
+				C8B34D6C1A15A99A00BE1735 /* FootView.h */,
+				C8B34D6D1A15A99A00BE1735 /* FootView.m */,
+				C8B34D6F1A15A9C100BE1735 /* FootView.xib */,
+			);
+			name = "定制脚视图";
+			sourceTree = "<group>";
+		};
+		C8B34D711A15CDD000BE1735 /* 历史记录 */ = {
+			isa = PBXGroup;
+			children = (
+				C8B34D721A15CE0E00BE1735 /* HistoryViewController.h */,
+				C8B34D731A15CE0E00BE1735 /* HistoryViewController.m */,
+				C8B34D751A15D49600BE1735 /* HistoryViewCell.h */,
+				C8B34D761A15D49600BE1735 /* HistoryViewCell.m */,
+				C8B34D771A15D49600BE1735 /* HistoryViewCell.xib */,
+			);
+			name = "历史记录";
+			sourceTree = "<group>";
+		};
 		C8B42FF21A10E1510080C884 = {
 			isa = PBXGroup;
 			children = (
@@ -957,7 +992,9 @@
 			children = (
 				C8D478F11A11AFD700F58B70 /* DuanXinViewController.h */,
 				C8D478F21A11AFD700F58B70 /* DuanXinViewController.m */,
+				C8B34D6B1A15A96B00BE1735 /* 定制脚视图 */,
 				C8D478F01A11AF5E00F58B70 /* 定制cell */,
+				C8B34D711A15CDD000BE1735 /* 历史记录 */,
 			);
 			name = "短信通知";
 			sourceTree = "<group>";
@@ -1325,6 +1362,7 @@
 				C8D479711A120D3800F58B70 /* 完善单号_03.png in Resources */,
 				C8D4797A1A120D3800F58B70 /* 我的订单_22.png in Resources */,
 				C86B41B21A14766E00F88FCD /* zbar-helpicons.png in Resources */,
+				C8B34D791A15D49600BE1735 /* HistoryViewCell.xib in Resources */,
 				C8D4797F1A120D3800F58B70 /* 提交银行卡_06.png in Resources */,
 				C8D479BC1A12136600F58B70 /* 导航－40-3-橙.png in Resources */,
 				C8D47A3E1A12250500F58B70 /* tabBar-1@2x.png in Resources */,
@@ -1380,6 +1418,7 @@
 				C8B430D01A10E1A20080C884 /* MJRefresh.bundle in Resources */,
 				C8B431301A10E7BB0080C884 /* HeadView.xib in Resources */,
 				C8D479C21A12136600F58B70 /* 导航－40-2-橙@2x.png in Resources */,
+				C8B34D701A15A9C100BE1735 /* FootView.xib in Resources */,
 				C8D47A441A12250500F58B70 /* tabBar-4@2x.png in Resources */,
 				C8D479591A120D3800F58B70 /* 历史信息_07.png in Resources */,
 				C869AE481A13358A009DF67E /* MessageCheckViewController.xib in Resources */,
@@ -1422,6 +1461,7 @@
 				C869AE471A13358A009DF67E /* MessageCheckViewController.m in Sources */,
 				C8B431281A10E2BF0080C884 /* KuaiDiViewController.m in Sources */,
 				C8B430CD1A10E1A20080C884 /* AFURLResponseSerialization.m in Sources */,
+				C8B34D781A15D49600BE1735 /* HistoryViewCell.m in Sources */,
 				C8B430CB1A10E1A20080C884 /* AFURLConnectionOperation.m in Sources */,
 				C8AD8B311A12EEFF00BBEEE5 /* NoMoneyViewController.m in Sources */,
 				C869AE531A134549009DF67E /* DetailTableViewController.m in Sources */,
@@ -1437,8 +1477,10 @@
 				C8B430C81A10E1A20080C884 /* AFHTTPSessionManager.m in Sources */,
 				C86B417F1A143EEC00F88FCD /* OrderDetailViewController.m in Sources */,
 				C8B430CC1A10E1A20080C884 /* AFURLRequestSerialization.m in Sources */,
+				C8B34D6E1A15A99A00BE1735 /* FootView.m in Sources */,
 				C8D478E81A11A03500F58B70 /* GeRenTableViewCell.m in Sources */,
 				C8D478FA1A11B0AE00F58B70 /* DuanXinViewCell.m in Sources */,
+				C8B34D741A15CE0E00BE1735 /* HistoryViewController.m in Sources */,
 				C8B430CE1A10E1A20080C884 /* AFURLSessionManager.m in Sources */,
 				C86B41891A144A9300F88FCD /* KuaiDiViewCell.m in Sources */,
 				C8B430D11A10E1A20080C884 /* MJRefreshBaseView.m in Sources */,

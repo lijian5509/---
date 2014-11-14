@@ -7,12 +7,16 @@
 //
 
 #import "DuanXinViewController.h"
+#import "FootView.h"
+#import "HistoryViewController.h"
 
 @interface DuanXinViewController ()
 {
     NSMutableArray *_dataArray;
     UITextView *_textView;//文本框
     UIView *_editView;//文本框底层视图
+    FootView *_footView;
+    
 }
 @end
 
@@ -36,6 +40,7 @@ static NSInteger cellNumber=1;
     //给桌面增加一个手势
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap)];
     [self.tableView addGestureRecognizer:tap];
+    [self setFootView];
     
 }
 #pragma mark -实现单元格输入协议
@@ -63,6 +68,11 @@ static NSInteger cellNumber=1;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
     self.title=@"短信通知";
+    UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(0, 0, 60, 44) target:self sel:@selector(historyBtn) tag:99 image:nil title:@"历史记录"];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btn.titleLabel.font=[UIFont boldSystemFontOfSize:15];
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.rightBarButtonItem=rightItem;
     //设置头视图
     _editView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 120)];
     _editView.userInteractionEnabled=YES;
@@ -70,22 +80,52 @@ static NSInteger cellNumber=1;
     _textView.delegate=self;
     _textView.text=@"请输入短信内容!";
     _textView.layer.borderWidth=1;
+    _textView.keyboardType=UIKeyboardTypeDefault;
     _textView.font=[UIFont systemFontOfSize:20];
     [_editView addSubview:_textView];
     self.tableView.tableHeaderView=_editView;
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor=[UIColor whiteColor];
     //设置脚视图
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
-    view.userInteractionEnabled=YES;
-    UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(220, 5, 90, 40) target:self sel:@selector(btnClicked:) tag:101 image:nil title:@"➕添加联系人"];
-    [btn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    [view addSubview:btn];
-    UIButton *btn1=[MyControl creatButtonWithFrame:CGRectMake(10, 50, 300, 40) target:self sel:@selector(btnClicked:) tag:102 image:nil title:@"确定"];
-    btn1.backgroundColor=[UIColor orangeColor];
-    [view addSubview:btn1];
-    self.tableView.tableFooterView=view;
+//    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
+//    view.userInteractionEnabled=YES;
+//    UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(220, 5, 90, 40) target:self sel:@selector(btnClicked:) tag:101 image:nil title:@"➕添加联系人"];
+//    [btn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+//    [view addSubview:btn];
+//    UIButton *btn1=[MyControl creatButtonWithFrame:CGRectMake(10, 50, 300, 40) target:self sel:@selector(btnClicked:) tag:102 image:nil title:@"确定"];
+//    btn1.backgroundColor=[UIColor orangeColor];
+//    [view addSubview:btn1];
+//    self.tableView.tableFooterView=view;
+    
+//    _footView=[[FootView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
+   }
+
+-(void)setFootView{
+    _footView=[[[NSBundle mainBundle]loadNibNamed:@"FootView" owner:self options:nil]lastObject];
+    [_footView.oneBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_footView.twoBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_footView.threebtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_footView.sureBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_footView.addPerson addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    self.tableView.tableFooterView=_footView;
+    _footView.oneBtn.layer.cornerRadius=10;
+    _footView.oneBtn.layer.borderWidth=1;
+    _footView.oneBtn.backgroundColor=[UIColor whiteColor];
+    _footView.twoBtn.layer.cornerRadius=10;
+    _footView.twoBtn.layer.borderWidth=1;
+    _footView.twoBtn.backgroundColor=[UIColor whiteColor];
+    _footView.threebtn.layer.cornerRadius=10;
+    _footView.threebtn.layer.borderWidth=1;
+    _footView.threebtn.backgroundColor=[UIColor whiteColor];
+    _footView.imageView.layer.borderWidth=1;
+    
 }
+//切换到历史记录的界面
+-(void)historyBtn{
+    HistoryViewController *history=[[HistoryViewController alloc]init];
+    [self.navigationController pushViewController:history animated:YES];
+}
+
 #pragma mark - btn被点击
 -(void)btnClicked:(UIButton *)btn{
     if (btn.tag==101) {
@@ -135,7 +175,6 @@ static NSInteger cellNumber=1;
     // Return the number of rows in the section.
     return cellNumber;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (weak, nonatomic) id<AddTextDelegate>textDelegate;
 - (IBAction)btnClicked:(UIButton *)sender;
+@property (strong, nonatomic)  UIView *inputView;
 
 
 @end

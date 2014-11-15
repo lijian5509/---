@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "TabBarViewController.h"
+#import "LogInViewController.h"
 
 @implementation AppDelegate
 
@@ -18,8 +19,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    BOOL success=[[NSUserDefaults standardUserDefaults]boolForKey:@"first"];
+    if (!success) {//第一次登陆进入注册界面
+        UINavigationController *nac=[[UINavigationController alloc]initWithRootViewController:[LogInViewController new]];
+        self.window.rootViewController=nac;
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"first"];
+    }else{
+         self.window.rootViewController=[TabBarViewController shareTabBar];
+    }
     // Override point for customization after application launch.
-    self.window.rootViewController=[TabBarViewController shareTabBar];
+   
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

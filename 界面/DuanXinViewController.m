@@ -193,7 +193,7 @@ static NSInteger cellNumber=1;
 //    if (_dataArray.count!=0&&indexPath.row==cellNumber&&((DuanXinViewCell *)_dataArray.lastObject).deleteBtn.tag==indexPath.row-1 ) {
 //        [cell.textField becomeFirstResponder];
 //    }
-    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     cell.textDelegate=self;
     cell.deleteBtn.tag=indexPath.row;
     return cell;

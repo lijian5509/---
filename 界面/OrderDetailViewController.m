@@ -31,20 +31,17 @@
     self.tableView.backgroundColor=GRAYCOLOR;
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self showUI];
-    
     //设置脚视图
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
     view.backgroundColor=GRAYCOLOR;
     view.userInteractionEnabled=YES;
     UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(20, 20, 280, 40) target:self sel:@selector(btnClicked:) tag:101 image:nil title:@"确认取件"];
-    btn.backgroundColor=[UIColor orangeColor];
+    btn.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"订单详情_11"]];
     btn.titleLabel.textColor=[UIColor whiteColor];
-    btn.titleLabel.font=[UIFont boldSystemFontOfSize:20];
     [view addSubview:btn];
-    UIButton *cancelBtn=[MyControl creatButtonWithFrame:CGRectMake(20, 60, 280, 40) target:self sel:@selector(btnClicked:) tag:102 image:nil title:@"打印订单"];
-    cancelBtn.backgroundColor=[UIColor blueColor];
+    UIButton *cancelBtn=[MyControl creatButtonWithFrame:CGRectMake(20, 80, 280, 40) target:self sel:@selector(btnClicked:) tag:102 image:nil title:@"打印订单"];
+    cancelBtn.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"订单详情_14"]];
     cancelBtn.titleLabel.textColor=[UIColor whiteColor];
-    cancelBtn.titleLabel.font=[UIFont boldSystemFontOfSize:20];
     [view addSubview:cancelBtn];
     self.tableView.tableFooterView=view;
 }
@@ -88,8 +85,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 3;
 }
 
@@ -104,6 +99,7 @@
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
     view.backgroundColor=GRAYCOLOR;
     return view;
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

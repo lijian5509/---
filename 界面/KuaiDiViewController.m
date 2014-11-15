@@ -8,7 +8,7 @@
 
 #import "KuaiDiViewController.h"
 #import "KuaiDiViewCell.h"
-
+#import "OrderDetailViewController.h"
 
 @interface KuaiDiViewController ()
 
@@ -45,6 +45,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - 单元格选中后跳转
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    OrderDetailViewController *detail=[[OrderDetailViewController alloc]init];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 #pragma mark - Table view data source

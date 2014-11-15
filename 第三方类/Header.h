@@ -16,6 +16,36 @@
 
 //三极色
 #define SANJISE [UIColor colorWithRed:(arc4random()%256/255.0) green:(arc4random()%256/255.0) blue:(arc4random()%256/255.0) alpha:1]
+
+//设置二级键盘
+#define INPUTACCESSVIEW -(void)getBackKeybord{\
+UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 40)];\
+view.backgroundColor=[UIColor whiteColor];\
+UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(260, 0, 60, 40) target:self sel:@selector(done) tag:10001 image:nil title:@"Done"];\
+[view addSubview:btn];\
+\
+for (UIView *text in self.view.subviews) {\
+    if ([text isKindOfClass:[UITextField class]]) {\
+        ((UITextField *)text).delegate=self;\
+    \
+        ((UITextField *)text).inputAccessoryView=view;\
+        ((UITextField *)text).clearButtonMode=UITextFieldViewModeWhileEditing;\
+    }\
+}\
+}\
+-(void)done{\
+    for (UIView *text in self.view.subviews) {\
+        if ([text isKindOfClass:[UITextField class]]) {\
+            ((UITextField *)text).delegate=self;\
+\
+            [(UITextField *)text resignFirstResponder];\
+        }\
+    }\
+ \
+}\
+
+
+
 //收键盘
 #define SHOUJIANPAN -(BOOL)textFieldShouldReturn:(UITextField *)textField{\
 \

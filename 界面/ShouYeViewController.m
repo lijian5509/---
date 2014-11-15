@@ -8,6 +8,7 @@
 
 #import "ShouYeViewController.h"
 #import "TabBarViewController.h"
+#import "ShareViewController.h"
 
 @interface ShouYeViewController ()
 
@@ -24,11 +25,13 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self showUI];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     BACKVIEW;
-    [self showUI];
 }
 #pragma mark - 摆UI界面
 - (void)showUI{
@@ -51,7 +54,10 @@
     switch (sender.tag) {
         case 101:
         {
-            
+            self.hidesBottomBarWhenPushed=YES;
+            ShareViewController *share=[[ShareViewController alloc]init];
+            [self.navigationController pushViewController:share animated:YES];
+             self.hidesBottomBarWhenPushed=NO;
         }
             break;
         case 102:

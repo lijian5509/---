@@ -37,7 +37,7 @@
     view.userInteractionEnabled=YES;
     UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(20, 20, 280, 40) target:self sel:@selector(btnClicked:) tag:101 image:nil title:@"确认取件"];
     btn.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"订单详情_11"]];
-    btn.titleLabel.textColor=[UIColor whiteColor];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [view addSubview:btn];
     UIButton *cancelBtn=[MyControl creatButtonWithFrame:CGRectMake(20, 80, 280, 40) target:self sel:@selector(btnClicked:) tag:102 image:nil title:@"打印订单"];
     cancelBtn.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"订单详情_14"]];
@@ -100,6 +100,9 @@
     view.backgroundColor=GRAYCOLOR;
     return view;
 
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

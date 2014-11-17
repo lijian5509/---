@@ -86,4 +86,97 @@ UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:btn];\
 \
 self.navigationItem.leftBarButtonItem=item;\
 
+
+
+//接口文档
+#define CESHIZONG @"http://115.29.240.85/kuaidituInphone/%@"
+#define ZHENGSHIZONG @"http://115.29.206.228/kuaidituInphone%@"
+//登陆
+#define DENGLU @"applog/loginCheck"                           //mobile   电话号码   password  密码
+//点击获取验证码的时候发送
+#define SHIFOUZHUCE @"applog/isregister"                       //mobile   电话号码
+//发送验证码
+#define FASONGYANZHENG @"applog/sendsms"                       //mobile   电话号码
+//注册
+#define ZHUCE @"applog/regCourier"                             //mobile   电话号码 random 验证码   password  密码
+
+
+
+//获取订单
+#define HUOQUDINGDAN @"order/listOrders"                        //courierId 快递员Id  page  当前页  pageNum 一页多少条 orderStatus
+//获取订单总数
+#define HUOQUDINGDANZONGSHU @"order/getOrdersCount"             //courierId 快递员ID  orderStatus  1：等待取货的订单,2：取货成功的订单,3：等待取货和取货成功
+//订单详情
+#define DINGDANXIANGQING @"order/getOrder"                      //ordered
+//手动录入，或者扫描二维码
+#define WANSHANGDINGDAN @"order/updateOrder"                    ////orderId  订单Id   expressOrderNo   快递单号
+//未录入单号
+#define WEILURUDANHAO @"order/pickedOrder"                      //orderId  订单Id   expressOrderNo   快递单号
+//得到系统时间
+#define GETSYSTIME @"order/pickedOrder"
+
+//我的信息
+#define WODEXINXI @"courier/getCourier"                          //courierId,快递员ID
+//短信内容
+#define DUANXINNEIRONG @"problemExpress/getSMS"                  //courierId,快递员ID
+//发送短信
+#define FASONGDUANXIN @"problemExpress/sendProblemSMS"           //courierId,mobile,sms   快递员Id,手机号码,短信内容
+//查询快递员当天发短信总数
+#define CHAXUNDANGTIANDUANXINLIANG @"problemExpress/getproblemExpressCount"  //courierId  快递员Id
+//发送短信记录查询
+#define DUANXINJILU @"problemExpress/listProblems"               //courierId 快递员Id   page  当前页  pageNum  一页多少条
+//短信详情
+#define DUANXINDETAIL @"problemExpress/listProblems"  //只需要问题件id         problemExpressId
+//发送短信总数
+#define DUANXINZONGSHU @"problemExpress/getSmsCountEveryDay"     //courierId  快递员Id
+//意见反馈添加（发送）
+#define YIJIANFASONG @"FeedBack/addFeedBack"                     //Id:唯一标示,Courier：快递员,Opinion：意见
+//意见反馈记录
+#define YIJIANJILU @"FeedBack/listFeedBacks"                     //courierId ,快递员Id
+//分享发送短信（发送）
+#define FENXIANGSMS @"shareRecord/shareRecordSMS"                //   //sendTel:   receiverTel：	   smsCommnet：发送者电话,接受者电话,短信内容
+//添加完善信息
+#define WANSHANXINXI @"regInfo/addregInfo"                       //regMobile:expressCompanyName,netSiteName,netSiteAddress,netSiteMobile：注册者账号,快递公司名称,网点名称,网点地址,网点电话
+//得到完善信息详情
+#define GETWANSHANGXINXI @"regInfo/getRegInfo"                   //regMobile
+//得到默认网点的Id
+#define GETMORENWANGDIAN @"regInfo/getDefaultNetSiteId"
+// 添加银行卡
+#define TIANJIAYINHANGKA @"bankCard/addBankCard"                 //@param courierId 快递员Id,@param cardName持有者姓名,@param bankCard  卡号,@param bankName  银行名称,@param checkMobile  验证电话,@param random 验证码
+//修改银行卡
+#define XIUGAIYINHANGKA @"bankCard/updateBankCard"               //@param courierId 快递员Id,@param cardName持有者姓名,@param bankCard  卡号,@param bankName  银行名称,@param checkMobile  验证电话,@param random 验证码
+//得到银行卡信息
+#define GETYINHANGKAXINXI @"bankCard/getBankCardInfo"            //courierId
+//发送验证码 (银行）
+#define YINGHANGSMS @"bankCard/sendsms"                          //mobile
+//验证码是否正确 (银行）
+#define YINHANGYANZHENGYZM @"bankCard/israndomnum"               //mobile
+//取得快递员金额
+#define HUOQUYUE @"balanceDeal/getCourierCmoney"                 //courierId
+//快递员提现
+#define QUXIAN @"balanceDeal/turnOutCourierCmoney"               //courierId,turnOutMoney,random
+//发送验证码 (取现）
+#define QUXIANYANZHENG @"balanceDeal/sendsms"                    //mobile
+
+//获取流水表数据
+#define ZHANGDANCHAXUN @"balanceDeal/listProcessInfos"           //courierId,page,pageNum
+//流水表总数
+#define ZHANGDANZONGSHU @"balanceDeal/getProcessCount"           //courierId
+//流水表新数据总数
+#define XINZHANGDANZONGSHU @"balanceDeal/getProcessCount"        //courierId     motifyTime
+// 流水表数据详情
+#define ZHANGDANSHUJUDETAIL @"balanceDeal/getProcessInfoDetail"  //processInfoId
+
+#import "AFNetworking.h"
+
+
+#define HUODONGZHISHIQI   AMTumblrHud *tumblrHUD = [[AMTumblrHud alloc] initWithFrame:CGRectMake((CGFloat) ((self.view.frame.size.width - 55) * 0.5),\
+(CGFloat) ((self.view.frame.size.height - 20) * 0.5), 55, 20)];\
+tumblrHUD.hudColor =[UIColor clearColor];\
+\[self.view addSubview:tumblrHUD];\
+[tumblrHUD showAnimated:YES];
+#import "AMTumblrHud.h"// 活动指示器头文件
+
+
+
 #endif

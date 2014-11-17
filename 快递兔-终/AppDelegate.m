@@ -18,10 +18,28 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+////    开启一个runloop，使它始终处于运行状态
+//    UIApplication *app = [UIApplication sharedApplication];
+//    app.networkActivityIndicatorVisible = YES;
+//        BOOL finished = NO;
+//        while (!finished)
+//        {
+//            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+//        }
+    
+    //再Document的目录下创建一个plist文件用来存放用户的信息
+    NSString *path=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
+    NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
+    [dict setObject:@"0" forKey:@"register"];
+    [dict setObject:@"0" forKey:@"userMessage"];
+    [dict setObject:@"0" forKey:@"bankId"];
+    [dict writeToFile:path atomically:YES];
+    
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     BOOL success=[[NSUserDefaults standardUserDefaults]boolForKey:@"first"];
-    if (!success) {//第一次登陆进入注册界面
+    if (success) {//第一次登陆进入注册界面
         UINavigationController *nac=[[UINavigationController alloc]initWithRootViewController:[LogInViewController new]];
         self.window.rootViewController=nac;
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"first"];

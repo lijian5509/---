@@ -9,6 +9,10 @@
 #import "LogInViewController.h"
 #import "GetBackPasswordViewController.h"
 #import "RegisterViewController.h"
+#import "AFHTTPClient.h"
+#import "TabBarViewController.h"
+#import "AppDelegate.h"
+
 
 @interface LogInViewController ()
 
@@ -30,6 +34,8 @@
     [super viewDidLoad];
     [self showUI];
     [self getBackKeybord];
+    self.phoneTextField.delegate=self;
+    self.passwordText.delegate=self;
 }
 #pragma mark - 摆UI界面
 - (void)showUI{
@@ -43,6 +49,57 @@
 SHOUJIANPAN;
 INPUTACCESSVIEW
 
+#pragma mark - 实现输入框的协议
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    
+}
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if (textField.tag==201) {
+        if (textField.text.length+string.length>11) {
+            return NO;
+        }
+    }else{
+        if (textField.text.length+string.length>16) {
+            return NO;
+        }
+    }
+       return YES;
+}
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    if (textField.tag==201) {
+        if ([textField.text length] == 0) {
+            [self showAlertViewWithMaessage:@"号码不能为空"];
+            return NO;
+        }
+        
+        //1[0-9]{10}
+        
+        //^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$
+        
+        //    NSString *regex = @"[0-9]{11}";
+        
+        
+        BOOL isMatch = [Helper validateMobile: textField.text];
+        
+        if (!isMatch) {
+            
+            [self showAlertViewWithMaessage:@"请输入正确的手机号码"];
+            return NO;
+        }
+    }else{
+         BOOL isMatch = [Helper validatePassword: textField.text];
+        if (!isMatch) {
+            [self showAlertViewWithMaessage:@"密码输入有误"];
+
+        }
+    }
+    
+    return YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -75,7 +132,7 @@ INPUTACCESSVIEW
             break;
         case 104:
         {
-        
+            [self requestUrl];
         }
             break;
             
@@ -83,4 +140,63 @@ INPUTACCESSVIEW
             break;
     }
 }
+#pragma mark -用户请求
+-(void)requestUrl{
+    AFHTTPClient *aClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
+    NSDictionary *dic=@{@"mobile": self.phoneTextField.text};
+    NSString *urlPath=[NSString stringWithFormat:CESHIZONG,SHIFOUZHUCE];
+    //初始化为空 方便下面统一赋值
+    [aClient postPath:urlPath parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *dataDict=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+         BOOL n=[(NSNumber *)dataDict[@"success"] boolValue];
+        if (!n) {
+            [self showAlertViewWithMaessage:@"该账户未注册，请先注册"];
+            return ;
+        }else{
+            //post请求
+            NSDictionary *dict = @{@"mobile":self.phoneTextField.text,@"password":self.passwordText.text};
+            NSString *postPath = [NSString stringWithFormat:CESHIZONG,DENGLU];
+            [aClient postPath:postPath parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                [self downLoadSuccess:responseObject];
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"%@",error);
+            }];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+#pragma mark - 解析数据
+-(void)downLoadSuccess:(id)responseObject{
+       if (self.phoneTextField.text.length==0) {
+           [self showAlertViewWithMaessage:@"账号不能为空"];
+        return;
+    }
+    if (self.passwordText.text.length==0) {
+        [self showAlertViewWithMaessage:@"密码不能为空"];
+        return;
+
+    }
+    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+    BOOL n=[(NSNumber *)dict[@"success"] boolValue];
+    if (!n) {
+        [self showAlertViewWithMaessage:@"密码或者账号输入有误"];
+        return;
+    }else{
+        NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
+        NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+        [dictPlist setValue:@"1" forKey:@"register"];
+        [dictPlist writeToFile:filePatn atomically:YES];
+        UIApplication *app=[UIApplication sharedApplication];
+        AppDelegate *app2=app.delegate;
+        app2.window.rootViewController=[TabBarViewController shareTabBar];
+    }
+}
+//显示警告框
+- (void) showAlertViewWithMaessage:(NSString *)title{
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示" message:title delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+
 @end

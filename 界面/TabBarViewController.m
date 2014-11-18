@@ -23,7 +23,7 @@
     return self;
 }
 
-#pragma mark - 创建一个非标准的单例
+#pragma mark - 创建一个非标准的单例 
 +(TabBarViewController *)shareTabBar{
     static TabBarViewController *Tab = nil;
     @synchronized(self){

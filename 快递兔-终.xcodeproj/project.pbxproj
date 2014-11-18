@@ -17,6 +17,10 @@
 		C80764F51A174CDA00EF8F3C /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = C80764EB1A174CDA00EF8F3C /* zbar-samples.png */; };
 		C80764F61A174CDA00EF8F3C /* src-libzbar-armv7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C80764EC1A174CDA00EF8F3C /* src-libzbar-armv7.a */; };
 		C80764F71A174CDA00EF8F3C /* src-libzbar-i386-armv6-armv7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C80764ED1A174CDA00EF8F3C /* src-libzbar-i386-armv6-armv7.a */; };
+		C85EE4831A1B192800D7ED4F /* WaitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C85EE4811A1B192800D7ED4F /* WaitViewController.m */; };
+		C85EE4841A1B192800D7ED4F /* WaitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C85EE4821A1B192800D7ED4F /* WaitViewController.xib */; };
+		C85EE4881A1B2D1C00D7ED4F /* TGetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C85EE4861A1B2D1C00D7ED4F /* TGetPasswordViewController.m */; };
+		C85EE4891A1B2D1C00D7ED4F /* TGetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C85EE4871A1B2D1C00D7ED4F /* TGetPasswordViewController.xib */; };
 		C869AE421A132AD8009DF67E /* CheckPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C869AE401A132AD8009DF67E /* CheckPhoneViewController.m */; };
 		C869AE431A132AD8009DF67E /* CheckPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C869AE411A132AD8009DF67E /* CheckPhoneViewController.xib */; };
 		C869AE471A13358A009DF67E /* MessageCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C869AE451A13358A009DF67E /* MessageCheckViewController.m */; };
@@ -275,6 +279,12 @@
 		C80764EB1A174CDA00EF8F3C /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
 		C80764EC1A174CDA00EF8F3C /* src-libzbar-armv7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "src-libzbar-armv7.a"; sourceTree = "<group>"; };
 		C80764ED1A174CDA00EF8F3C /* src-libzbar-i386-armv6-armv7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "src-libzbar-i386-armv6-armv7.a"; sourceTree = "<group>"; };
+		C85EE4801A1B192800D7ED4F /* WaitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitViewController.h; sourceTree = "<group>"; };
+		C85EE4811A1B192800D7ED4F /* WaitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitViewController.m; sourceTree = "<group>"; };
+		C85EE4821A1B192800D7ED4F /* WaitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaitViewController.xib; sourceTree = "<group>"; };
+		C85EE4851A1B2D1C00D7ED4F /* TGetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGetPasswordViewController.h; sourceTree = "<group>"; };
+		C85EE4861A1B2D1C00D7ED4F /* TGetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGetPasswordViewController.m; sourceTree = "<group>"; };
+		C85EE4871A1B2D1C00D7ED4F /* TGetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TGetPasswordViewController.xib; sourceTree = "<group>"; };
 		C869AE3F1A132AD8009DF67E /* CheckPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckPhoneViewController.h; sourceTree = "<group>"; };
 		C869AE401A132AD8009DF67E /* CheckPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckPhoneViewController.m; sourceTree = "<group>"; };
 		C869AE411A132AD8009DF67E /* CheckPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckPhoneViewController.xib; sourceTree = "<group>"; };
@@ -663,6 +673,16 @@
 				C80764EB1A174CDA00EF8F3C /* zbar-samples.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C85EE47F1A1B18EB00D7ED4F /* 审核界面 */ = {
+			isa = PBXGroup;
+			children = (
+				C85EE4801A1B192800D7ED4F /* WaitViewController.h */,
+				C85EE4811A1B192800D7ED4F /* WaitViewController.m */,
+				C85EE4821A1B192800D7ED4F /* WaitViewController.xib */,
+			);
+			name = "审核界面";
 			sourceTree = "<group>";
 		};
 		C86362A41A143D13003377F6 /* 订单详情 */ = {
@@ -1126,6 +1146,7 @@
 				C8CDED221A16F6BE003CF1C3 /* 找回密码 */,
 				C8EFBDB91A16FD9200B9D12B /* 注册 */,
 				C8EFBDBF1A17046400B9D12B /* 完善信息 */,
+				C85EE47F1A1B18EB00D7ED4F /* 审核界面 */,
 			);
 			name = "登陆注册";
 			sourceTree = "<group>";
@@ -1136,6 +1157,9 @@
 				C8CDED231A16F83F003CF1C3 /* GetBackPasswordViewController.h */,
 				C8CDED241A16F83F003CF1C3 /* GetBackPasswordViewController.m */,
 				C8CDED251A16F83F003CF1C3 /* GetBackPasswordViewController.xib */,
+				C85EE4851A1B2D1C00D7ED4F /* TGetPasswordViewController.h */,
+				C85EE4861A1B2D1C00D7ED4F /* TGetPasswordViewController.m */,
+				C85EE4871A1B2D1C00D7ED4F /* TGetPasswordViewController.xib */,
 			);
 			name = "找回密码";
 			sourceTree = "<group>";
@@ -1521,6 +1545,7 @@
 				C8D479BC1A12136600F58B70 /* 导航－40-3-橙.png in Resources */,
 				C8D47A3E1A12250500F58B70 /* tabBar-1@2x.png in Resources */,
 				C8D479611A120D3800F58B70 /* 打开摄像头_04.png in Resources */,
+				C85EE4891A1B2D1C00D7ED4F /* TGetPasswordViewController.xib in Resources */,
 				C8D4794F1A120D3800F58B70 /* 个人中心-设置_08.png in Resources */,
 				C8D479731A120D3800F58B70 /* 完善单号_10.png in Resources */,
 				C8D4794A1A120D3800F58B70 /* 订单详情_07.png in Resources */,
@@ -1541,6 +1566,7 @@
 				C86B418A1A144A9300F88FCD /* KuaiDiViewCell.xib in Resources */,
 				C8D479531A120D3800F58B70 /* 个人中心_06.png in Resources */,
 				C8B34DBD1A15F32800BE1735 /* 登录_05-左.png in Resources */,
+				C85EE4841A1B192800D7ED4F /* WaitViewController.xib in Resources */,
 				C8D4797C1A120D3800F58B70 /* 我的余额2_03.png in Resources */,
 				C8D479C31A12136600F58B70 /* 导航－40-2-灰@2x.png in Resources */,
 				C8D479571A120D3800F58B70 /* 个人中心_32_06.png in Resources */,
@@ -1621,6 +1647,7 @@
 				C8B1C4831A19CBD000B37AAC /* AFURLConnectionOperation.m in Sources */,
 				C8B430D31A10E1A20080C884 /* MJRefreshFooterView.m in Sources */,
 				C8CDED161A16E412003CF1C3 /* LogInViewController.m in Sources */,
+				C85EE4881A1B2D1C00D7ED4F /* TGetPasswordViewController.m in Sources */,
 				C8B1C47D1A19CBD000B37AAC /* AFHTTPRequestOperation.m in Sources */,
 				C86B418F1A14640B00F88FCD /* ScanCodeViewController.m in Sources */,
 				C86B41831A143F1000F88FCD /* OrderDetailViewCell.m in Sources */,
@@ -1669,6 +1696,7 @@
 				C8D479851A120E3900F58B70 /* AboutViewController.m in Sources */,
 				C8B4311E1A10E2410080C884 /* TabBarViewController.m in Sources */,
 				C8B4300D1A10E1520080C884 /* main.m in Sources */,
+				C85EE4831A1B192800D7ED4F /* WaitViewController.m in Sources */,
 				C8B430CF1A10E1A20080C884 /* Helper.m in Sources */,
 				C8B430D21A10E1A20080C884 /* MJRefreshConst.m in Sources */,
 				C8AD8B3D1A1304AA00BBEEE5 /* TakeOutMoneyViewController.m in Sources */,

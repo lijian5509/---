@@ -15,7 +15,9 @@
 
 
 @interface LogInViewController ()
-
+{
+    AFHTTPClient *aClient;
+}
 @end
 
 @implementation LogInViewController
@@ -24,7 +26,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        aClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
     }
     return self;
 }
@@ -33,7 +35,7 @@
 {
     [super viewDidLoad];
     [self showUI];
-    [self getBackKeybord];
+    [self getBackKeybord];//设置二级键盘
     self.phoneTextField.delegate=self;
     self.passwordText.delegate=self;
 }
@@ -43,7 +45,6 @@
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
     UIButton *btn=(UIButton *)[self.view viewWithTag:101];
      btn.userInteractionEnabled=NO;
-    
 }
 #pragma mark -收键盘
 SHOUJIANPAN;
@@ -73,7 +74,7 @@ INPUTACCESSVIEW
     if (textField.tag==201) {
         if ([textField.text length] == 0) {
             [self showAlertViewWithMaessage:@"号码不能为空"];
-            return NO;
+            return YES;
         }
         
         //1[0-9]{10}
@@ -82,22 +83,20 @@ INPUTACCESSVIEW
         
         //    NSString *regex = @"[0-9]{11}";
         
-        
         BOOL isMatch = [Helper validateMobile: textField.text];
-        
         if (!isMatch) {
-            
             [self showAlertViewWithMaessage:@"请输入正确的手机号码"];
-            return NO;
         }
     }else{
-         BOOL isMatch = [Helper validatePassword: textField.text];
+        if ([textField.text length] == 0) {
+            [self showAlertViewWithMaessage:@"密码不能为空"];
+            return YES;
+        }
+        BOOL isMatch = [Helper validatePassword: textField.text];
         if (!isMatch) {
             [self showAlertViewWithMaessage:@"密码输入有误"];
-
         }
     }
-    
     return YES;
 }
 - (void)didReceiveMemoryWarning
@@ -113,24 +112,23 @@ INPUTACCESSVIEW
             
         }
             break;
-        case 102:
+        case 102://注册
         {
             RegisterViewController *reg=[[RegisterViewController alloc]init];
             UINavigationController *nac=[[UINavigationController alloc]initWithRootViewController:reg];
             reg.modalTransitionStyle=UIModalTransitionStyleFlipHorizontal;
             [self presentViewController:nac animated:YES completion:nil];
-
         }
             break;
-        case 103:
+        case 103://忘记密码
         {
             GetBackPasswordViewController *get=[[GetBackPasswordViewController alloc]init];
             UINavigationController *nac=[[UINavigationController alloc]initWithRootViewController:get];
-            get.modalTransitionStyle=UIModalTransitionStylePartialCurl;
+            get.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
             [self presentViewController:nac animated:YES completion:nil];
         }
             break;
-        case 104:
+        case 104://确定登录
         {
             [self requestUrl];
         }
@@ -142,7 +140,15 @@ INPUTACCESSVIEW
 }
 #pragma mark -用户请求
 -(void)requestUrl{
-    AFHTTPClient *aClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
+   
+    if (self.phoneTextField.text.length==0) {
+        [self showAlertViewWithMaessage:@"账号不能为空"];
+        return;
+    }
+    if (self.passwordText.text.length==0) {
+        [self showAlertViewWithMaessage:@"密码不能为空"];
+        return;
+    }
     NSDictionary *dic=@{@"mobile": self.phoneTextField.text};
     NSString *urlPath=[NSString stringWithFormat:CESHIZONG,SHIFOUZHUCE];
     //初始化为空 方便下面统一赋值
@@ -168,24 +174,23 @@ INPUTACCESSVIEW
 }
 #pragma mark - 解析数据
 -(void)downLoadSuccess:(id)responseObject{
-       if (self.phoneTextField.text.length==0) {
-           [self showAlertViewWithMaessage:@"账号不能为空"];
-        return;
-    }
-    if (self.passwordText.text.length==0) {
-        [self showAlertViewWithMaessage:@"密码不能为空"];
-        return;
-
-    }
     NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
     BOOL n=[(NSNumber *)dict[@"success"] boolValue];
+    
+    NSNumber *checkStatus=dict[@"checkStatus"];
+    NSNumber *userId=dict[@"id"];
+    NSNumber *verSion=dict[@"version"];
+    
     if (!n) {
         [self showAlertViewWithMaessage:@"密码或者账号输入有误"];
         return;
     }else{
         NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
         NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
-        [dictPlist setValue:@"1" forKey:@"register"];
+        [dictPlist setValue:@"1" forKey:@"isLog"];
+        [dict setValue:[checkStatus stringValue] forKey:@"checkStatus"];
+        [dict setValue:[userId stringValue] forKey:@"id"];
+        [dict setValue:[verSion stringValue] forKey:@"version"];
         [dictPlist writeToFile:filePatn atomically:YES];
         UIApplication *app=[UIApplication sharedApplication];
         AppDelegate *app2=app.delegate;

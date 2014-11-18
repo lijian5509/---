@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField2;
 @property (weak, nonatomic) IBOutlet UITextField *textField3;
 @property (weak, nonatomic) IBOutlet UITextField *textField4;
+@property (weak, nonatomic) IBOutlet UILabel *companyLabel;
 
 - (IBAction)btnClicked:(UIButton *)sender;
 

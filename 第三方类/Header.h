@@ -99,7 +99,10 @@ self.navigationItem.leftBarButtonItem=item;\
 #define FASONGYANZHENG @"applog/sendsms"                       //mobile   电话号码
 //注册
 #define ZHUCE @"applog/regCourier"                             //mobile   电话号码 random 验证码   password  密码
-
+//判断验证码是否正确
+#define YANZHENGMAISRIGHT @"applog/israndomnum"
+//修改密码
+#define XIUGAIMIMA @" "                                          //mobile   电话号码   password  密码
 
 
 //获取订单
@@ -177,6 +180,6 @@ tumblrHUD.hudColor =[UIColor clearColor];\
 [tumblrHUD showAnimated:YES];
 #import "AMTumblrHud.h"// 活动指示器头文件
 
-
+#define TEST(test) [UIImage imageNamed:%@];
 
 #endif

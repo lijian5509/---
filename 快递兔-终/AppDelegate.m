@@ -10,6 +10,9 @@
 #import "TabBarViewController.h"
 #import "LogInViewController.h"
 
+#import "FillMessageViewController.h"
+#import "WaitViewController.h"
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -19,27 +22,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-////    开启一个runloop，使它始终处于运行状态
-//    UIApplication *app = [UIApplication sharedApplication];
-//    app.networkActivityIndicatorVisible = YES;
-//        BOOL finished = NO;
-//        while (!finished)
-//        {
-//            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-//        }
-    
-    //再Document的目录下创建一个plist文件用来存放用户的信息
-    NSString *path=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
-    NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
-    [dict setObject:@"0" forKey:@"register"];
-    [dict setObject:@"0" forKey:@"userMessage"];
-    [dict setObject:@"0" forKey:@"bankId"];
-    [dict writeToFile:path atomically:YES];
-    
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     BOOL success=[[NSUserDefaults standardUserDefaults]boolForKey:@"first"];
-    if (success) {//第一次登陆进入注册界面
+    if (!success) {//第一次登陆进入登陆注册界面
         UINavigationController *nac=[[UINavigationController alloc]initWithRootViewController:[LogInViewController new]];
         self.window.rootViewController=nac;
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"first"];
@@ -53,7 +39,18 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
-
+- (void)creatPlistFile{
+    //在Document的目录下创建一个plist文件用来存放用户的信息
+    NSString *path=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
+    NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
+    [dict setObject:@"0" forKey:@"isLog"];//是否登录
+    [dict setObject:@"0" forKey:@"checkStatus"];//激活状态
+    [dict setObject:@"0" forKey:@"regMobile"];//用户手机号
+    [dict setObject:@"0" forKey:@"id"];//用户id
+    [dict setObject:@"0" forKey:@"version"];//版本
+    [dict setObject:@"0" forKey:@"fillMassage"];//记录是否完善信息
+    [dict writeToFile:path atomically:YES];
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

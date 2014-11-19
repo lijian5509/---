@@ -26,6 +26,20 @@
     return self;
 }
 
+-(void)getBack{
+    
+    TabBarViewController *tab=[TabBarViewController shareTabBar];
+    [tab.view reloadInputViews];
+    UIApplication *app=[UIApplication sharedApplication];
+    AppDelegate *app2=app.delegate;
+    app2.window.rootViewController=nil;
+    app2.window.rootViewController=tab;
+    [tab creatSystemBar];
+    tab.selectedIndex=0;
+    
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -42,18 +56,6 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
     BACKKEYITEM
-    
-}
--(void)getBack{
-    BOOL isFirst=[[NSUserDefaults standardUserDefaults]boolForKey:@"isFirstZhuCe"];
-    if (!isFirst) {
-        UIApplication *app=[UIApplication sharedApplication];
-        AppDelegate *app2=app.delegate;
-        app2.window.rootViewController=[TabBarViewController shareTabBar];
-        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"isFirstZhuCe"];
-    }else{
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -175,11 +175,12 @@ INPUTACCESSVIEW
 #pragma mark - 解析数据
 -(void)downLoadSuccess:(id)responseObject{
     NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+   
     BOOL n=[(NSNumber *)dict[@"success"] boolValue];
-    
-    NSNumber *checkStatus=dict[@"checkStatus"];
-    NSNumber *userId=dict[@"id"];
-    NSNumber *verSion=dict[@"version"];
+    NSNumber *netSiteId=dict[@"result"][@"netSiteId"];
+    NSNumber *checkStatus=dict[@"result"][@"checkStatus"];
+    NSNumber *userId=dict[@"result"][@"id"];
+    NSNumber *verSion=dict[@"result"][@"version"];
     
     if (!n) {
         [self showAlertViewWithMaessage:@"密码或者账号输入有误"];
@@ -187,14 +188,34 @@ INPUTACCESSVIEW
     }else{
         NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
         NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
-        [dictPlist setValue:@"1" forKey:@"isLog"];
-        [dict setValue:[checkStatus stringValue] forKey:@"checkStatus"];
-        [dict setValue:[userId stringValue] forKey:@"id"];
-        [dict setValue:[verSion stringValue] forKey:@"version"];
-        [dictPlist writeToFile:filePatn atomically:YES];
-        UIApplication *app=[UIApplication sharedApplication];
-        AppDelegate *app2=app.delegate;
-        app2.window.rootViewController=[TabBarViewController shareTabBar];
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"isLog"];
+//        [dictPlist setValue:@"1" forKey:@"isLog"];
+        
+        [dictPlist setValue:[checkStatus stringValue] forKey:@"checkStatus"];
+        [dictPlist setValue:[userId stringValue] forKey:@"id"];
+        [dictPlist setValue:[verSion stringValue] forKey:@"version"];
+        [dictPlist setValue:dict[@"result"][@"mobile"] forKey:@"regMobile"];
+        NSString *postPath = [NSString stringWithFormat:CESHIZONG,GETMORENWANGDIAN];
+        [aClient postPath:postPath parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *dict1=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+            NSString *resultId=dict1[@"result"];
+            if ([resultId isEqualToString:[netSiteId stringValue]]) {
+                [dictPlist setValue:@"1" forKey:@"isTureNetSite"];
+                [dictPlist setValue:[netSiteId stringValue] forKey:@"netSiteId"];
+                [dictPlist writeToFile:filePatn atomically:YES];
+            }else{
+                [dictPlist setValue:[netSiteId stringValue] forKey:@"netSiteId"];
+                [dictPlist writeToFile:filePatn atomically:YES];
+            }
+            [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"isLog"];//记录用户已登录 下次直接加载主页面
+            UIApplication *app=[UIApplication sharedApplication];
+            AppDelegate *app2=app.delegate;
+            app2.window.rootViewController=[TabBarViewController shareTabBar];
+
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self showAlertViewWithMaessage:@"网络异常"];
+        }];
+        
     }
 }
 //显示警告框

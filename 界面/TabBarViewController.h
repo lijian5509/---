@@ -12,6 +12,8 @@
 
 +(TabBarViewController *)shareTabBar;
 
+-(void)creatSystemBar;
+
 @property(nonatomic,strong) UIImageView *TabImageView;
 
 

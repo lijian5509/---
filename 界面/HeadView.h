@@ -13,8 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *quJianLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tongZhiLabel;
-@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+
 
 @end

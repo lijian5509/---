@@ -9,6 +9,8 @@
 #import "NoMoneyViewController.h"
 #import "GetBankCardViewController.h"
 
+
+
 @interface NoMoneyViewController ()
 
 @end
@@ -23,7 +25,6 @@
     }
     return self;
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

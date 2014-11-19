@@ -88,8 +88,8 @@ INPUTACCESSVIEW
     BOOL isValid = [self isValid];
     if (isValid) {
         AFHTTPClient *aclient=[[AFHTTPClient alloc]initWithBaseURL:[NSURL URLWithString:@""]];
-        NSString *strUrl=[NSString stringWithFormat:CESHIZONG,XIUGAIMIMA];
-        NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];//保存用户电话
+        NSString *strUrl=[NSString stringWithFormat:CESHIZONG,WANGGENGHUAN];
+        NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
         NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
         NSString *phone=[NSString stringWithFormat:@"手机号:%@",dictPlist[@"regMobile"]];
         NSDictionary *dict=@{@"mobile": phone,@"password":self.passwordText.text};
@@ -100,16 +100,13 @@ INPUTACCESSVIEW
                 UIApplication *app=[UIApplication sharedApplication];
                 AppDelegate *app2=app.delegate;
                 app2.window.rootViewController=[TabBarViewController shareTabBar];
-                [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"isFirstZhuCe"];
             }else{
                 [self showAlertViewWithMaessage:@" 信息错误 "];
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"%@",error);
         }];
-        
     }
-    
 }
 //显示警告框
 - (void) showAlertViewWithMaessage:(NSString *)title{

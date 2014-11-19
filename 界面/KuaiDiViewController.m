@@ -9,9 +9,13 @@
 #import "KuaiDiViewController.h"
 #import "KuaiDiViewCell.h"
 #import "OrderDetailViewController.h"
+#import "FillMessageViewController.h"
+#import "WaitViewController.h"
 
 @interface KuaiDiViewController ()
-
+{
+     AFHTTPClient *aClient;
+}
 @end
 
 @implementation KuaiDiViewController
@@ -20,9 +24,29 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+         aClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
     }
     return self;
+}
+#pragma mark - 页面将要显示的时候先判断是否完善信息和是否激活
+- (void)viewWillAppear:(BOOL)animated{
+    NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
+    NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+    //获取是否完善信息的状态
+    NSString *isWanShan=dictPlist[@"isTureNetSite"];
+    if ([isWanShan isEqualToString:@"1"]) {//进入完善信息界面
+        FillMessageViewController *fill=[[FillMessageViewController alloc]init];
+        self.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:fill animated:YES];
+        return;
+    }
+    //查看是否激活，如果未激活则要跳到等待激活界面
+    NSString *isJiHuo=dictPlist[@"checkStatus"];
+    if ([isJiHuo isEqualToString:@"1"]) {
+        WaitViewController *wait=[[WaitViewController alloc]init];
+        [self.navigationController pushViewController:wait animated:YES];
+        return;
+    }
 }
 
 - (void)viewDidLoad

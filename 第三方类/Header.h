@@ -91,6 +91,15 @@ self.navigationItem.leftBarButtonItem=item;\
 //接口文档
 #define CESHIZONG @"http://115.29.240.85/kuaidituInphone/%@"
 #define ZHENGSHIZONG @"http://115.29.206.228/kuaidituInphone%@"
+
+//忘记密码验证验证码是否正确
+#define WANGYANZHENG @"updatePassword/checkRandom"             //mobile   电话号码   random 验证码
+//忘记密码获取验证码
+#define WANGHUOQU @"updatePassword/sendsms"                    //mobile   电话号码
+//忘记密码之更换新密码
+#define WANGGENGHUAN @"updatePassword/updatePasswordByMobile"    //mobile   电话号码   password  密码
+
+
 //登陆
 #define DENGLU @"applog/loginCheck"                           //mobile   电话号码   password  密码
 //点击获取验证码的时候发送
@@ -101,9 +110,6 @@ self.navigationItem.leftBarButtonItem=item;\
 #define ZHUCE @"applog/regCourier"                             //mobile   电话号码 random 验证码   password  密码
 //判断验证码是否正确
 #define YANZHENGMAISRIGHT @"applog/israndomnum"
-//修改密码
-#define XIUGAIMIMA @" "                                          //mobile   电话号码   password  密码
-
 
 //获取订单
 #define HUOQUDINGDAN @"order/listOrders"                        //courierId 快递员Id  page  当前页  pageNum 一页多少条 orderStatus

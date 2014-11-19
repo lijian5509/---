@@ -7,6 +7,9 @@
 //
 
 #import "FillMessageViewController.h"
+#import "TabBarViewController.h"
+#import "AppDelegate.h"
+#import "WaitViewController.h"
 
 @interface FillMessageViewController ()
 {
@@ -40,8 +43,16 @@
     BACKKEYITEM;
 }
 -(void)getBack{
-    self.hidesBottomBarWhenPushed=NO;
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    TabBarViewController *tab=[TabBarViewController shareTabBar];
+    [tab.view reloadInputViews];
+    UIApplication *app=[UIApplication sharedApplication];
+    AppDelegate *app2=app.delegate;
+    app2.window.rootViewController=nil;
+    app2.window.rootViewController=tab;
+    [tab creatSystemBar];
+    tab.selectedIndex=0;
+  
 }
 
 #pragma mark - 快递公司列表
@@ -169,15 +180,14 @@ INPUTACCESSVIEW
                 NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];//保存用户电话
                 NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
                 NSString *phoneNumber=dictPlist[@"regMobile"];
-                NSDictionary *dict=@{@"regMobile": phoneNumber,@"expressCompanyName":self.companyLabel.text,@"netSiteName":self.textField2.text,@"netSiteAddress":self.textField3.text,@"netSiteAddress":self.textField4.text};
+                NSDictionary *dict=@{@"realName":self.textField1.text,@"regMobile": phoneNumber,@"expressCompanyName":self.companyLabel.text,@"netSiteName":self.textField2.text,@"netSiteAddress":self.textField3.text,@"netSiteMobile":self.textField4.text};
                 AFHTTPClient *client=[[AFHTTPClient alloc]initWithBaseURL:[NSURL URLWithString:@" "]];
-                client postPath:urlPath parameters:filePatn success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    
+                [client postPath:urlPath parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    [self downLoadSuccess:responseObject];
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                     
-                }
-                
-            }];
+                }];
+            }
         }
             break;
             
@@ -185,12 +195,28 @@ INPUTACCESSVIEW
             break;
     }
     
-    
 }
 //显示警告框
 - (void) showAlertViewWithMaessage:(NSString *)title{
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示" message:title delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
+}
+#pragma mark - 下载成功提取信息
+- (void)downLoadSuccess:(id)responseObject{
+    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+    BOOL n=[(NSNumber *)dict[@"success"] boolValue];
+    if (!n) {
+        [self showAlertViewWithMaessage:@"提交有误，请仔细核对信息"];
+        return;
+    }else{
+        NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
+        NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+        [dictPlist setValue:@"0" forKey:@"isTureNetSite"];
+        [dictPlist writeToFile:filePatn atomically:YES];
+        WaitViewController *wait=[[WaitViewController alloc]init];
+        [self.navigationController pushViewController:wait animated:YES];
+    }
+
 }
 
 

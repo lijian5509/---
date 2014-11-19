@@ -196,6 +196,8 @@ INPUTACCESSVIEW
                             NSLog(@"%@",error);
                         }];
                         [_timer setFireDate:[NSDate distantPast]];
+                    }else{
+                        [self showAlertViewWithMaessage:@"该号码已经注册"];
                     }
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                     NSLog(@"%@",error);
@@ -218,6 +220,7 @@ INPUTACCESSVIEW
                     NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
                     [dictPlist setValue:self.phoneTextField.text forKey:@"regMobile"];
                     [dictPlist writeToFile:filePatn atomically:YES];
+                    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"isLog"];//记录用户已登录 下次直接加载主页面
                     FillMessageViewController *fil=[[FillMessageViewController alloc]init];
                     [self.navigationController pushViewController:fil animated:YES];
                 }else{

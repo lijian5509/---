@@ -98,7 +98,7 @@ INPUTACCESSVIEW
         {
             BOOL phoneIsOK=[Helper validateMobile:self.phoneText.text];
             if (phoneIsOK) {
-                NSString *urlPath=[NSString stringWithFormat:CESHIZONG,FASONGYANZHENG];
+                NSString *urlPath=[NSString stringWithFormat:CESHIZONG,WANGHUOQU];
                 NSDictionary *dict=@{@"mobile": self.phoneText.text};
                 [_client postPath:urlPath parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
                     [self showAlertViewWithMaessage:@"验证码已发送，请注意查收,5分钟内有效"];
@@ -126,7 +126,7 @@ INPUTACCESSVIEW
             BOOL isValid = [self isValid];
             if (isValid) {
                 //确认验证码是否正确，正确则跳转到下一个界面
-                NSString *urlPath=[NSString stringWithFormat:CESHIZONG,YANZHENGMAISRIGHT];
+                NSString *urlPath=[NSString stringWithFormat:CESHIZONG,WANGYANZHENG];
                 NSDictionary *dict=@{@"random": self.testField.text,@"mobile": self.phoneText.text};
                 [_client postPath:urlPath parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {
                     NSDictionary *dataDict=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
@@ -168,9 +168,11 @@ INPUTACCESSVIEW
 #pragma mark -判断输入是否有效
 -(BOOL)isValid{
     if (self.phoneText.text.length==0||self.phoneText.text.length!=11) {
+        [self showAlertViewWithMaessage:@"请输入手机号码"];
         return NO;
     }
     if (self.testField.text.length==0||self.testField.text.length!=4) {
+        [self showAlertViewWithMaessage:@"请输入验证码"];
         return NO;
     }
     return [Helper validateMobile:self.phoneText.text];

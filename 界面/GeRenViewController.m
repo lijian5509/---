@@ -13,12 +13,17 @@
 #import "ShareViewController.h"
 #import "TabBarViewController.h"
 #import "NoMoneyViewController.h"
+#import "FillMessageViewController.h"
+#import "WaitViewController.h"
+
 
 @interface GeRenViewController ()
 {
     HeadView *_headView;
     NSArray *_cellImagesArray;
     NSArray *_cellTitleArray;
+    AFHTTPClient *_client;
+    
 }
 @end
 
@@ -30,6 +35,7 @@
     if (self) {
         _cellImagesArray=@[@"个人中心_06",@"个人中心_09",@"个人中心_11",@"个人中心_13"];
         _cellTitleArray = @[@"我的余额",@"分享有惊喜",@"意见反馈",@"设置"];
+        _client=[[AFHTTPClient alloc]initWithBaseURL:[NSURL URLWithString:@""]];
     }
     return self;
 }
@@ -42,7 +48,38 @@
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     TABLEVIEWBACKVIEW;
     self.tableView.scrollEnabled=NO;
+    [self getUserMassege];
 }
+#pragma mark - 获取用户数据
+- (void)getUserMassege{
+    NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
+    NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+    NSString *userId=dictPlist[@"id"];
+    //获取用户的名字及快递公司
+    NSString *userUrl=[NSString stringWithFormat:CESHIZONG,WODEXINXI];
+    NSDictionary *userDict = @{@"courierId":userId};
+    [_client postPath:userUrl parameters:userDict success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *dataDict=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+        _headView.nameLabel.text=dataDict[@"result"][@"realname"];
+        _headView.phoneLabel.text=dataDict[@"result"][@"mobile"];
+        _headView.addressLabel.text=dataDict[@"result"][@"netSite"][@"name"];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self showAlertViewWithMaessage:@"网络错误"];
+    }];
+    //获取收益总额
+    //获取取件总数
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 20;
+}
+
+//显示警告框
+- (void) showAlertViewWithMaessage:(NSString *)title{
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示" message:title delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+}
+
 #pragma mark - 创建一个头视图
 -(void)creatHeadView{
     _headView=[[[NSBundle mainBundle]loadNibNamed:@"HeadView" owner:self options:nil]lastObject] ;
@@ -109,6 +146,25 @@
     switch (indexPath.row) {
         case 0://我的余额
         {
+            NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
+            NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+            //获取是否完善信息的状态
+            NSString *isWanShan=dictPlist[@"isTureNetSite"];
+            if ([isWanShan isEqualToString:@"1"]) {//进入完善信息界面
+                FillMessageViewController *fill=[[FillMessageViewController alloc]init];
+                self.hidesBottomBarWhenPushed=YES;
+                [self.navigationController pushViewController:fill animated:YES];
+                return;
+            }
+            //查看是否激活，如果未激活则要跳到等待激活界面
+            NSString *isJiHuo=dictPlist[@"checkStatus"];
+            if ([isJiHuo isEqualToString:@"1"]) {
+                WaitViewController *wait=[[WaitViewController alloc]init];
+                self.hidesBottomBarWhenPushed=YES;
+                [self.navigationController pushViewController:wait animated:YES];
+                return;
+            }
+
             NoMoneyViewController *money=[[NoMoneyViewController alloc]init];
             [self.navigationController pushViewController:money animated:YES];
             
@@ -127,6 +183,7 @@
             break;
         case 3://设置
         {
+            
             SheZhiViewController *shezhi=[[SheZhiViewController alloc]init];
             [self.navigationController pushViewController:shezhi animated:YES];
         }
@@ -137,6 +194,25 @@
     }
     self.hidesBottomBarWhenPushed=NO;
     
+}
+#pragma mark - 页面将要显示的时候先判断是否完善信息和是否激活
+- (void)checkUserStatus{
+    NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
+    NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+    //获取是否完善信息的状态
+    NSString *isWanShan=dictPlist[@"isTureNetSite"];
+    if ([isWanShan isEqualToString:@"1"]) {//进入完善信息界面
+        FillMessageViewController *fill=[[FillMessageViewController alloc]init];
+        self.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:fill animated:YES];
+        return;
+    }
+    //查看是否激活，如果未激活则要跳到等待激活界面
+    NSString *isJiHuo=dictPlist[@"checkStatus"];
+    if ([isJiHuo isEqualToString:@"1"]) {
+        WaitViewController *wait=[[WaitViewController alloc]init];
+        [self.navigationController pushViewController:wait animated:YES];
+    }
 }
 
 /*

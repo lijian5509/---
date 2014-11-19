@@ -9,6 +9,8 @@
 #import "DuanXinViewController.h"
 #import "FootView.h"
 #import "HistoryViewController.h"
+#import "WaitViewController.h"
+#import "FillMessageViewController.h"
 
 @interface DuanXinViewController ()
 {
@@ -32,6 +34,29 @@
 }
 //单元格数目
 static NSInteger cellNumber=1;
+
+- (void)viewWillAppear:(BOOL)animated{
+    NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
+    NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+    //获取是否完善信息的状态
+    NSString *isWanShan=dictPlist[@"isTureNetSite"];
+    if ([isWanShan isEqualToString:@"1"]) {//进入完善信息界面
+        FillMessageViewController *fill=[[FillMessageViewController alloc]init];
+        self.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:fill animated:YES];
+        return;
+    }
+    //查看是否激活，如果未激活则要跳到等待激活界面
+    NSString *isJiHuo=dictPlist[@"checkStatus"];
+    if ([isJiHuo isEqualToString:@"1"]) {
+        WaitViewController *wait=[[WaitViewController alloc]init];
+        [self.navigationController pushViewController:wait animated:YES];
+        return;
+    }
+    
+    
+}
+
 
 - (void)viewDidLoad
 {

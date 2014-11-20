@@ -11,6 +11,10 @@
 #import "HistoryViewController.h"
 #import "WaitViewController.h"
 #import "FillMessageViewController.h"
+#import "LogInViewController.h"
+#import "AppDelegate.h"
+
+
 
 @interface DuanXinViewController ()
 {
@@ -36,11 +40,18 @@
 static NSInteger cellNumber=1;
 
 - (void)viewWillAppear:(BOOL)animated{
-    NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
-    NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+    self.hidesBottomBarWhenPushed=YES;
+    GET_PLISTdICT
+    //如果用户是否登录后退出
+    NSString *exit=dictPlist[@"exit"];
+    if ([exit isEqualToString:@"2"]) {
+        [self showAlertViewWithMaessage:@"您还没有登录,请登录！" title:@"登录提示" otherBtn:@"登录"];
+        return;
+    }
+    
     //获取是否完善信息的状态
     NSString *isWanShan=dictPlist[@"isTureNetSite"];
-    if ([isWanShan isEqualToString:@"1"]) {//进入完善信息界面
+    if ([isWanShan isEqualToString:@"0"]) {//进入完善信息界面
         FillMessageViewController *fill=[[FillMessageViewController alloc]init];
         self.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:fill animated:YES];
@@ -48,12 +59,12 @@ static NSInteger cellNumber=1;
     }
     //查看是否激活，如果未激活则要跳到等待激活界面
     NSString *isJiHuo=dictPlist[@"checkStatus"];
-    if ([isJiHuo isEqualToString:@"1"]) {
+    if ([isJiHuo isEqualToString:@"0"]) {
         WaitViewController *wait=[[WaitViewController alloc]init];
         [self.navigationController pushViewController:wait animated:YES];
         return;
     }
-    
+    self.hidesBottomBarWhenPushed=NO;
     
 }
 
@@ -224,6 +235,36 @@ static NSInteger cellNumber=1;
     cell.textDelegate=self;
     cell.deleteBtn.tag=indexPath.row;
     return cell;
+}
+#pragma mark - 警告框及实现警告协议
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:
+        {
+            return;  
+        }
+            break;
+        case 1:
+        {
+            LogInViewController *log=[[LogInViewController alloc]init];
+            UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:log];
+            UIApplication *app=[UIApplication sharedApplication];
+            AppDelegate *app2=app.delegate;
+            app2.window.rootViewController=nil;
+            app2.window.rootViewController=nav;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+//显示警告框
+- (void) showAlertViewWithMaessage:(NSString *)message title:(NSString *)title otherBtn:(NSString *)btnT {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:btnT, nil];
+    [alert show];
 }
 
 

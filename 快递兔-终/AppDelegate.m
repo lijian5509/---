@@ -51,6 +51,8 @@
     [dict setObject:@"0" forKey:@"version"];//版本
     [dict setObject:@"0" forKey:@"fillMassage"];//记录是否完善信息
     [dict setObject:@"0" forKey:@"isTureNetSite"];//网点id  登陆时保存，用于判断用户是否完善信息
+    [dict setObject:@"0" forKey:@"exit"];//记录是否退出  0,未登录过  1 登录 2 登录后退出
+    [dict setObject:@"null" forKey:@"username"];//用户信息
     [dict writeToFile:path atomically:YES];
 }
 - (void)applicationWillResignActive:(UIApplication *)application

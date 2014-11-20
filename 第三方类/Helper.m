@@ -17,6 +17,12 @@
     return [fm stringFromDate:date];
 }
 
++(NSString *)dateStringFromNumberDate:(NSDate *)date{
+    NSDateFormatter *fm=[[NSDateFormatter alloc]init];
+    fm.dateFormat=@"yyyy-MM-dd HH:mm:ss";
+    return [fm stringFromDate:date];
+}
+
 + (CGFloat) textHeightFromString:(NSString *)textStr width:(CGFloat)width fontsize:(CGFloat)Size{
     //最好判断一下SDK 的版本
     //下面的方法是ios7 的

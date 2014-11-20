@@ -15,7 +15,9 @@
 #import "NoMoneyViewController.h"
 #import "FillMessageViewController.h"
 #import "WaitViewController.h"
-
+#import "LogInViewController.h"
+#import "AppDelegate.h"
+#import "ChatViewController.h"
 
 @interface GeRenViewController ()
 {
@@ -48,13 +50,18 @@
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     TABLEVIEWBACKVIEW;
     self.tableView.scrollEnabled=NO;
-    [self getUserMassege];
+    GET_PLISTMEMBER(@"exit")
+    NSString *exit=member;
+    if ([exit isEqualToString:@"1"]) {
+        [self getUserMassege];
+    }
+    
 }
 #pragma mark - 获取用户数据
 - (void)getUserMassege{
-    NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
-    NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
-    NSString *userId=dictPlist[@"id"];
+    
+    GET_PLISTMEMBER(@"id")
+    NSString *userId=member;
     //获取用户的名字及快递公司
     NSString *userUrl=[NSString stringWithFormat:CESHIZONG,WODEXINXI];
     NSDictionary *userDict = @{@"courierId":userId};
@@ -64,7 +71,7 @@
         _headView.phoneLabel.text=dataDict[@"result"][@"mobile"];
         _headView.addressLabel.text=dataDict[@"result"][@"netSite"][@"name"];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self showAlertViewWithMaessage:@"网络错误"];
+        [self showAlertViewWithMaessage:@"网络错误" title:@"提示" otherBtn:nil];
     }];
     //获取收益总额
     //获取取件总数
@@ -74,16 +81,20 @@
     return 20;
 }
 
-//显示警告框
-- (void) showAlertViewWithMaessage:(NSString *)title{
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示" message:title delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
-}
-
 #pragma mark - 创建一个头视图
 -(void)creatHeadView{
-    _headView=[[[NSBundle mainBundle]loadNibNamed:@"HeadView" owner:self options:nil]lastObject] ;
-    self.tableView.tableHeaderView=_headView;
+    GET_PLISTMEMBER(@"exit")
+    NSString *exit=member;
+    if ([exit isEqualToString:@"2"]) {
+        UILabel *label=[MyControl creatLabelWithFrame:CGRectMake(0, 0, 320, 90) text:@"您还未登录"];
+        label.textAlignment=NSTextAlignmentCenter;
+        label.font=[UIFont boldSystemFontOfSize:25];
+        self.tableView.tableHeaderView=label;
+        
+    }else{
+        _headView=[[[NSBundle mainBundle]loadNibNamed:@"HeadView" owner:self options:nil]lastObject] ;
+        self.tableView.tableHeaderView=_headView;
+    }
 }
 #pragma mark - 摆UI界面
 - (void)showUI{
@@ -146,11 +157,17 @@
     switch (indexPath.row) {
         case 0://我的余额
         {
-            NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
-            NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+            
+            GET_PLISTdICT
+            NSString *exit=dictPlist[@"exit"];
+            if ([exit isEqualToString:@"2"]) {
+                [self showAlertViewWithMaessage:@"你还没有登录！" title:@"登录提醒" otherBtn:@"登录"];
+                return;
+                
+            }
             //获取是否完善信息的状态
             NSString *isWanShan=dictPlist[@"isTureNetSite"];
-            if ([isWanShan isEqualToString:@"1"]) {//进入完善信息界面
+            if ([isWanShan isEqualToString:@"0"]) {//进入完善信息界面
                 FillMessageViewController *fill=[[FillMessageViewController alloc]init];
                 self.hidesBottomBarWhenPushed=YES;
                 [self.navigationController pushViewController:fill animated:YES];
@@ -178,7 +195,8 @@
             break;
         case 2://意见反馈
         {
-            
+            ChatViewController *chat=[[ChatViewController alloc]init];
+            [self.navigationController pushViewController:chat animated:YES];
         }
             break;
         case 3://设置
@@ -197,8 +215,7 @@
 }
 #pragma mark - 页面将要显示的时候先判断是否完善信息和是否激活
 - (void)checkUserStatus{
-    NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
-    NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+   GET_PLISTdICT
     //获取是否完善信息的状态
     NSString *isWanShan=dictPlist[@"isTureNetSite"];
     if ([isWanShan isEqualToString:@"1"]) {//进入完善信息界面
@@ -213,6 +230,35 @@
         WaitViewController *wait=[[WaitViewController alloc]init];
         [self.navigationController pushViewController:wait animated:YES];
     }
+}
+//显示警告框
+- (void) showAlertViewWithMaessage:(NSString *)message title:(NSString *)title otherBtn:(NSString *)btnT {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:btnT, nil];
+    [alert show];
+}
+#pragma mark - 警告框及实现警告协议
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:
+        {
+            
+        }
+            break;
+        case 1:
+        {
+            LogInViewController *log=[[LogInViewController alloc]init];
+            UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:log];
+            UIApplication *app=[UIApplication sharedApplication];
+            AppDelegate *app2=app.delegate;
+            app2.window.rootViewController=nil;
+            app2.window.rootViewController=nav;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 /*

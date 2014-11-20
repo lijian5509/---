@@ -89,8 +89,7 @@ INPUTACCESSVIEW
     if (isValid) {
         AFHTTPClient *aclient=[[AFHTTPClient alloc]initWithBaseURL:[NSURL URLWithString:@""]];
         NSString *strUrl=[NSString stringWithFormat:CESHIZONG,WANGGENGHUAN];
-        NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
-        NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+       GET_PLISTdICT
         NSString *phone=[NSString stringWithFormat:@"手机号:%@",dictPlist[@"regMobile"]];
         NSDictionary *dict=@{@"mobile": phone,@"password":self.passwordText.text};
         [aclient postPath:strUrl parameters:dict success:^(AFHTTPRequestOperation *operation, id responseObject) {

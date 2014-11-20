@@ -11,6 +11,9 @@
 #import "OrderDetailViewController.h"
 #import "FillMessageViewController.h"
 #import "WaitViewController.h"
+#import "TabBarViewController.h"
+#import "AppDelegate.h"
+#import "LogInViewController.h"
 
 @interface KuaiDiViewController ()
 {
@@ -28,25 +31,41 @@
     }
     return self;
 }
+
 #pragma mark - 页面将要显示的时候先判断是否完善信息和是否激活
 - (void)viewWillAppear:(BOOL)animated{
+    self.hidesBottomBarWhenPushed=YES;
     NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
     NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+    //查看是否退出登录
+    NSString *exit=dictPlist[@"exit"];
+    if ([exit isEqualToString:@"2"]) {
+        LogInViewController *log=[[LogInViewController alloc]init];
+        UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:log];
+        UIApplication *app=[UIApplication sharedApplication];
+        AppDelegate *app2=app.delegate;
+        app2.window.rootViewController=nil;
+        app2.window.rootViewController=nav;
+        return ;
+    }
+
     //获取是否完善信息的状态
     NSString *isWanShan=dictPlist[@"isTureNetSite"];
-    if ([isWanShan isEqualToString:@"1"]) {//进入完善信息界面
+    if ([isWanShan isEqualToString:@"0"]) {//进入完善信息界面
         FillMessageViewController *fill=[[FillMessageViewController alloc]init];
-        self.hidesBottomBarWhenPushed=YES;
+       
         [self.navigationController pushViewController:fill animated:YES];
         return;
     }
     //查看是否激活，如果未激活则要跳到等待激活界面
     NSString *isJiHuo=dictPlist[@"checkStatus"];
-    if ([isJiHuo isEqualToString:@"1"]) {
+    if ([isJiHuo isEqualToString:@"0"]) {
         WaitViewController *wait=[[WaitViewController alloc]init];
         [self.navigationController pushViewController:wait animated:YES];
         return;
     }
+    
+     self.hidesBottomBarWhenPushed=NO;
 }
 
 - (void)viewDidLoad
@@ -55,7 +74,7 @@
     TABLEVIEWBACKVIEW;
     
     [super viewDidLoad];
-    [self showUI];
+//    [self showUI];
 }
 #pragma mark - 摆UI界面
 - (void)showUI{

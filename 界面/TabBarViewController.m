@@ -7,6 +7,9 @@
 //
 
 #import "TabBarViewController.h"
+#import "LJFScollerViewController.h"
+#import "DidDealTableViewController.h"
+#import "KuaiDiViewController.h"
 
 @interface TabBarViewController ()
 
@@ -54,13 +57,25 @@
     NSArray *images = @[@"tabBar1",@"tabBar2",@"tabBar3",@"tabBar4"];
     NSArray *selectImages= @[@"tabBar-1",@"tabBar-2",@"tabBar-3",@"tabBar-4"];
     NSMutableArray *array=[[NSMutableArray alloc]init];
-    NSArray *views=@[@"ShouYeViewController",@"KuaiDiViewController",@"DuanXinViewController",@"GeRenViewController"];
+    NSArray *views=@[@"ShouYeViewController",@"LJFScollerViewController",@"DuanXinViewController",@"GeRenViewController"];
     NSArray *titles=@[@"首页",@"快递订单",@"短信通知",@"我"];
     for (int i=0; i<4; i++) {
         Class cls=NSClassFromString(views[i]);
-        if (i!=0) {
+        if (i==2||i==3) {
             UITableViewController *control=[[cls alloc]init];
             UINavigationController *navC=[[UINavigationController alloc]initWithRootViewController:control];
+            navC.tabBarItem.image=[[UIImage imageNamed:images[i]]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            navC.tabBarItem.selectedImage=[[UIImage imageNamed:selectImages[i]]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            navC.title=titles[i];
+            [navC.tabBarItem setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor orangeColor]} forState:UIControlStateNormal];
+            [navC.tabBarItem setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor grayColor]} forState:UIControlStateSelected];
+            [array addObject:navC];
+        }else if (i==1) {
+            KuaiDiViewController *kuaiDi=[[KuaiDiViewController alloc]init];
+            DidDealTableViewController *didDeal=[[DidDealTableViewController alloc]init];
+            
+            LJFScollerViewController *ljf=[[LJFScollerViewController alloc]initWithViewControllers:@[kuaiDi,didDeal] withTitle:@[@"待处理",@"已处理"]];
+            UINavigationController *navC=[[UINavigationController alloc]initWithRootViewController:ljf];
             navC.tabBarItem.image=[[UIImage imageNamed:images[i]]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
             navC.tabBarItem.selectedImage=[[UIImage imageNamed:selectImages[i]]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
             navC.title=titles[i];

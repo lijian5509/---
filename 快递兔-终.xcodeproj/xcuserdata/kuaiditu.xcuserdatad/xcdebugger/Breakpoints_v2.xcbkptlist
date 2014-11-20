@@ -19,12 +19,28 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "&#x754c;&#x9762;/FillMessageViewController.m"
-            timestampString = "438079792.159967"
+            filePath = "&#x754c;&#x9762;/LogInViewController.m"
+            timestampString = "438172612.544871"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "-downLoadSuccess:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x754c;&#x9762;/FillMessageViewController.m"
+            timestampString = "438172739.719937"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "-downLoadSuccess:"
             landmarkType = "5">
          </BreakpointContent>

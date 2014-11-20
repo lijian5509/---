@@ -38,35 +38,38 @@
     TABLEVIEWBACKVIEW;
     self.tableView.scrollEnabled=NO;
 }
-#pragma mark - 隐藏tabbar
--(void)viewWillAppear:(BOOL)animated{
-    TabBarViewController *tab=[TabBarViewController shareTabBar];
-    tab.tabBar.hidden=YES;
-}
-//现实tabbar
--(void)viewWillDisappear:(BOOL)animated{
-    
-//    TabBarViewController *tab=[TabBarViewController shareTabBar];
-//    tab.tabBar.hidden=NO;
-}
-
 
 #pragma mark - 摆UI界面
 - (void)showUI{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
     self.title=@"设置";
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 60)];
-    UIButton *btn1=[MyControl creatButtonWithFrame:CGRectMake(20, 20, 280, 40) target:self sel:@selector(btnClicked:) tag:102 image:nil title:@"退出登录"];
-    btn1.backgroundColor=[UIColor whiteColor];
-    [btn1 setTitleColor:GRAYCOLOR forState:UIControlStateNormal];
-    [view addSubview:btn1];
-    self.tableView.tableFooterView=view;
-    BACKKEYITEM;
+   GET_PLISTdICT
+    NSString *exit=dictPlist[@"exit"];
+    if ([exit isEqualToString:@"1"]) {
+        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 60)];
+        
+        UIButton *btn1=[MyControl creatButtonWithFrame:CGRectMake(20, 20, 280, 40) target:self sel:@selector(btnClicked:) tag:102 image:nil title:@"退出登录"];
+        btn1.backgroundColor=[UIColor whiteColor];
+        [btn1 setTitleColor:GRAYCOLOR forState:UIControlStateNormal];
+        [view addSubview:btn1];
+        self.tableView.tableFooterView=view;
+    }
+        BACKKEYITEM;
     
 }
 -(void)btnClicked:(UIButton *)btn{
-    
+    btn.hidden=YES;
+    GET_PLISTdICT
+    [dictPlist setValue:@"2" forKey:@"exit"];
+    [dictPlist setObject:@"0" forKey:@"checkStatus"];//激活状态
+    [dictPlist setObject:@"0" forKey:@"regMobile"];//用户手机号
+    [dictPlist setObject:@"0" forKey:@"id"];//用户id
+    [dictPlist setObject:@"0" forKey:@"version"];//版本
+    [dictPlist setObject:@"0" forKey:@"fillMassage"];//记录是否完善信息
+    [dictPlist setObject:@"0" forKey:@"isTureNetSite"];//网点id  登陆时保存，用于判断用户是否完善信息
+    [dictPlist writeToFile:filePatn atomically:YES];
+
 }
 
 -(void)getBack{

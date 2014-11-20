@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface KuaiDiViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *leftImageView;
+
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *phoneView;
+
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *waitView;
-@property (weak, nonatomic) IBOutlet UILabel *waitLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *orderBtn;
+- (IBAction)btnClicked:(UIButton *)sender;
 
 @end

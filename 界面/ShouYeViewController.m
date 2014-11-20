@@ -11,7 +11,10 @@
 #import "ShareViewController.h"
 
 @interface ShouYeViewController ()
-
+{
+    AFHTTPClient *_client;
+    
+}
 @end
 
 @implementation ShouYeViewController
@@ -20,19 +23,52 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        _client=[[AFHTTPClient alloc]initWithBaseURL:[NSURL URLWithString:@""]];
     }
     return self;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    TabBarViewController *tab=[TabBarViewController shareTabBar];
+    tab.tabBar.hidden=NO;
     [self showUI];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self requestUrl];
     BACKVIEW;
 }
+-(void)requestUrl{
+    GET_PLISTdICT
+    NSString *mobile=dictPlist[@"regMobile"];
+    NSString *postUrl=[NSString stringWithFormat:CESHIZONG,SHIFOUZHUCE];
+    [_client postPath:postUrl parameters:@{@"mobile": mobile} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self downLoadSuccess:responseObject];
+    } failure:nil];
+    
+}
+#pragma mark - 解析数据
+-(void)downLoadSuccess:(id)responseObject{
+    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+    
+    BOOL n=[(NSNumber *)dict[@"success"] boolValue];
+   
+    
+    if (n) {
+        GET_PLISTdICT
+        //        [dictPlist setValue:@"1" forKey:@"isLog"];
+        NSNumber *checkStatus=dict[@"result"][@"checkStatus"];
+        NSNumber *userId=dict[@"result"][@"id"];
+        NSNumber *verSion=dict[@"result"][@"version"];
+        [dictPlist setValue:[checkStatus stringValue] forKey:@"checkStatus"];
+        [dictPlist setValue:[userId stringValue] forKey:@"id"];
+        [dictPlist setValue:[verSion stringValue] forKey:@"version"];
+        [dictPlist writeToFile:filePatn atomically:YES];
+    
+    }
+}
+
 #pragma mark - 摆UI界面
 - (void)showUI{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"登录_01"] forBarMetrics:UIBarMetricsDefault];

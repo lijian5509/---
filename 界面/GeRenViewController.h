@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GeRenViewController : UITableViewController
+@interface GeRenViewController : UITableViewController<UIAlertViewDelegate>
 
 @end

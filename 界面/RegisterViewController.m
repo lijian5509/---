@@ -216,8 +216,7 @@ INPUTACCESSVIEW
                 NSDictionary *dataDict=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
                 BOOL n = [(NSNumber *)dataDict[@"success"] boolValue];
                 if (n) {//注册成功，跳转到完善信息界面
-                    NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];//保存用户电话
-                    NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+                    GET_PLISTdICT //保存用户电话
                     [dictPlist setValue:self.phoneTextField.text forKey:@"regMobile"];
                     [dictPlist writeToFile:filePatn atomically:YES];
                     [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"isLog"];//记录用户已登录 下次直接加载主页面

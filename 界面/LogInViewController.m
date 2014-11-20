@@ -28,13 +28,42 @@
     if (self) {
         aClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@""]];
     }
+   
     return self;
+}
+#pragma mark - 将要显示界面的时候判断是否是退出登录
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+   GET_PLISTdICT
+    NSString *exit=dictPlist[@"exit"];
+    if ([exit isEqualToString:@"2"]) {
+        BACKKEYITEM;
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
+        self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
+        UIButton *btn1=(UIButton *)[self.view viewWithTag:101];
+        self.title=@"注册";
+        btn1.userInteractionEnabled=NO;
+        return;
+    }
+    [self showUI];
+}
+
+-(void)getBack{
+    
+    TabBarViewController *tab=[TabBarViewController shareTabBar];
+    [tab.view reloadInputViews];
+    UIApplication *app=[UIApplication sharedApplication];
+    AppDelegate *app2=app.delegate;
+    app2.window.rootViewController=nil;
+    app2.window.rootViewController=tab;
+    [tab creatSystemBar];
+    tab.selectedIndex=0;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self showUI];
+    
     [self getBackKeybord];//设置二级键盘
     self.phoneTextField.delegate=self;
     self.passwordText.delegate=self;
@@ -186,20 +215,19 @@ INPUTACCESSVIEW
         [self showAlertViewWithMaessage:@"密码或者账号输入有误"];
         return;
     }else{
-        NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
-        NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
-        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"isLog"];
+        GET_PLISTdICT
 //        [dictPlist setValue:@"1" forKey:@"isLog"];
-        
+        [dictPlist setValue:@"1" forKey:@"exit"];
         [dictPlist setValue:[checkStatus stringValue] forKey:@"checkStatus"];
         [dictPlist setValue:[userId stringValue] forKey:@"id"];
         [dictPlist setValue:[verSion stringValue] forKey:@"version"];
         [dictPlist setValue:dict[@"result"][@"mobile"] forKey:@"regMobile"];
+        [dictPlist setValue:dict[@"result"][@"username"] forKey:@"username"];
         NSString *postPath = [NSString stringWithFormat:CESHIZONG,GETMORENWANGDIAN];
         [aClient postPath:postPath parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *dict1=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
             NSString *resultId=dict1[@"result"];
-            if ([resultId isEqualToString:[netSiteId stringValue]]) {
+            if (![resultId isEqualToString:[netSiteId stringValue]]) {
                 [dictPlist setValue:@"1" forKey:@"isTureNetSite"];
                 [dictPlist setValue:[netSiteId stringValue] forKey:@"netSiteId"];
                 [dictPlist writeToFile:filePatn atomically:YES];

@@ -8,12 +8,14 @@
 
 #import "ShareViewController.h"
 #import "TabBarViewController.h"
+#import "ActiveExpress.h"
 
 @interface ShareViewController ()
 {
     NSMutableArray *_dataArray;
     UITextView *_textView;//文本框
-    UIView *_editView;//文本框底层视图
+    UIView *_headView;//文本框底层视图
+    ActiveExpress *_activeExpress;//活动说明
 }
 
 @end
@@ -68,19 +70,27 @@ static NSInteger cellNumber=1;
     //设置返回键
     BACKKEYITEM;
     //设置头视图
-    _editView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
-    _editView.userInteractionEnabled=YES;
+    _headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
+    _headView.userInteractionEnabled=YES;
+    UIView *grayView=[[UIView alloc]initWithFrame:CGRectMake(0, 95, 320, 5)];
+    [_headView addSubview: grayView];
+    grayView.backgroundColor=GRAYCOLOR;
+    
     _textView=[[UITextView alloc]initWithFrame:CGRectMake(10, 10, 300, 80)];
     _textView.delegate=self;
-    _textView.text=@"我给你发了5元红包，我业可以得到2元。";
+    
+    GET_PLISTdICT
+   
+    _textView.text=[NSString stringWithFormat:@"您的朋友%@邀请你和他一起使用快递神器，并给你发了5元红包，下载安装注册就可轻松获得.",dictPlist[@"username"]];
     _textView.font=[UIFont systemFontOfSize:15];
     _textView.layer.borderWidth=1;
-    [_editView addSubview:_textView];
-    self.tableView.tableHeaderView=_editView;
+    _textView.layer.borderColor=[UIColor darkGrayColor].CGColor;
+    [_headView addSubview:_textView];
+    self.tableView.tableHeaderView=_headView;
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor=[UIColor whiteColor];
     //设置脚视图
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 400)];
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 360)];
     view.userInteractionEnabled=YES;
     UIButton *peopleBtn=[MyControl creatButtonWithFrame:CGRectMake(220, 5, 90, 40) target:self sel:@selector(btnClicked:) tag:101 image:nil title:@"➕添加联系人"];
     UIButton *callBtn=[MyControl creatButtonWithFrame:CGRectMake(10, 5, 90, 40) target:self sel:@selector(btnClicked:) tag:101 image:nil title:@"☎通讯录添加"];
@@ -95,9 +105,13 @@ static NSInteger cellNumber=1;
     btn1.titleLabel.font=[UIFont boldSystemFontOfSize:17];
     [btn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn1 addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [btn1 setBackgroundColor:[UIColor orangeColor]];
+    [btn1 setBackgroundImage:[UIImage imageNamed:@"注册_10"] forState:UIControlStateNormal];
     [view addSubview:btn1];
+    _activeExpress =[[[NSBundle mainBundle]loadNibNamed:@"ActiveExpress" owner:self options:nil]lastObject];
+    _activeExpress.frame=CGRectMake(10, 100, 300, 250);
+    [view addSubview:_activeExpress];
     self.tableView.tableFooterView=view;
+    
 }
 -(void)getBack{
     [self setHidesBottomBarWhenPushed:NO];
@@ -135,7 +149,6 @@ SHOUJIANPAN;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 #pragma mark - Table view data source
 

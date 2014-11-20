@@ -43,8 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];//保存用户电话
-    NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+    GET_PLISTdICT
     self.phoneLabel.text=[NSString stringWithFormat:@"手机号:%@",dictPlist[@"regMobile"]];
     self.imageView.alpha=1;
     self.title=@"等待审核";

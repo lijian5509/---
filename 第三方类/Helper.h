@@ -10,6 +10,8 @@
 
 @interface Helper : NSObject
 
+//把一个时间转化为字符串
++ (NSString *)dateStringFromNumberDate:(NSDate *)date;
 
 //把一个时间字符串转化为date格式的字符串
 + (NSString *) dateStringFromNumberString:(NSString *)str;

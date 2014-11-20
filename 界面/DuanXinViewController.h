@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "DuanXinViewCell.h"
 
-@interface DuanXinViewController : UITableViewController<UITextViewDelegate,AddTextDelegate>
+@interface DuanXinViewController : UITableViewController<UITextViewDelegate,AddTextDelegate,UIAlertViewDelegate>
 
 @end

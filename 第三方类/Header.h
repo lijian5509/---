@@ -74,9 +74,15 @@ return YES;\
 #import "AFNetworking.h"
 
 
+#define UIColorFromRGB(rgbValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
 //CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 //CGColorRef borderColorRef = CGColorCreate(colorSpace,(CGFloat[]){ 1, 0, 0, 1 });
-#define BACKKEYITEM UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(0, 0,60, 40) target:self sel:@selector(getBack) tag:101 image:nil title:@"<返回"];\
+#define BACKKEYITEM UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(0, 0,60, 40) target:self sel:@selector(getBack) tag:101 image:nil title:@"< 返回"];\
 \
 btn.titleLabel.font=[UIFont boldSystemFontOfSize:17];\
 \
@@ -85,6 +91,16 @@ btn.titleLabel.font=[UIFont boldSystemFontOfSize:17];\
 UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:btn];\
 \
 self.navigationItem.leftBarButtonItem=item;\
+
+#define TEST(str)  UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(0, 0,60, 40) target:self sel:@selector(getBack) tag:101 image:nil title:str];
+//定义一个获取plist文件元素的宏
+#define GET_PLISTMEMBER(name)  NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];\
+NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];\
+NSString *member=dictPlist[name];
+//定义一个获取plist文件的宏
+#define GET_PLISTdICT NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];\
+NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];\
+
 
 
 
@@ -135,11 +151,11 @@ self.navigationItem.leftBarButtonItem=item;\
 //发送短信记录查询
 #define DUANXINJILU @"problemExpress/listProblems"               //courierId 快递员Id   page  当前页  pageNum  一页多少条
 //短信详情
-#define DUANXINDETAIL @"problemExpress/listProblems"  //只需要问题件id         problemExpressId
+#define DUANXINDETAIL @"problemExpress/listProblems"             //只需要问题件id         problemExpressId
 //发送短信总数
 #define DUANXINZONGSHU @"problemExpress/getSmsCountEveryDay"     //courierId  快递员Id
 //意见反馈添加（发送）
-#define YIJIANFASONG @"FeedBack/addFeedBack"                     //Id:唯一标示,Courier：快递员,Opinion：意见
+#define YIJIANFASONG @"FeedBack/addFeedBack"                     //Id:唯一标示,Courier：快a递员,Opinion：意见
 //意见反馈记录
 #define YIJIANJILU @"FeedBack/listFeedBacks"                     //courierId ,快递员Id
 //分享发送短信（发送）
@@ -186,6 +202,5 @@ tumblrHUD.hudColor =[UIColor clearColor];\
 [tumblrHUD showAnimated:YES];
 #import "AMTumblrHud.h"// 活动指示器头文件
 
-#define TEST(test) [UIImage imageNamed:%@];
 
 #endif

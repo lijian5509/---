@@ -10,6 +10,7 @@
 #import "TabBarViewController.h"
 #import "ActiveExpress.h"
 
+
 @interface ShareViewController ()
 {
     NSMutableArray *_dataArray;
@@ -44,10 +45,14 @@ static NSInteger cellNumber=1;
 }
 #pragma mark -实现单元格输入协议
 -(void)addTextField:(DuanXinViewCell *)message{
-    NSLog(@"%@",NSStringFromSelector(_cmd));
-    [_dataArray addObject:message];
-    cellNumber++;
-    [self.tableView reloadData];
+    if ([Helper validateMobile:message.textField.text]) {
+        [_dataArray addObject:message];
+        [self.tableView reloadData];
+    }else{
+        [self showAlertViewWithMaessage:@"请输入正确的号码" title:@"提示" otherBtn:@"确定"];
+        
+    }
+    
     
 }
 -(void)removeTextViewWith:(DuanXinViewCell *)message{
@@ -93,13 +98,13 @@ static NSInteger cellNumber=1;
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 360)];
     view.userInteractionEnabled=YES;
     UIButton *peopleBtn=[MyControl creatButtonWithFrame:CGRectMake(220, 5, 90, 40) target:self sel:@selector(btnClicked:) tag:101 image:nil title:@"➕添加联系人"];
-    UIButton *callBtn=[MyControl creatButtonWithFrame:CGRectMake(10, 5, 90, 40) target:self sel:@selector(btnClicked:) tag:101 image:nil title:@"☎通讯录添加"];
+    UIButton *callBtn=[MyControl creatButtonWithFrame:CGRectMake(10, 5, 90, 40) target:self sel:@selector(btnClicked:) tag:102 image:nil title:@"☎通讯录添加"];
     [peopleBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [callBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [view addSubview:peopleBtn];
     [view addSubview:callBtn];
     UIButton *btn1=[UIButton buttonWithType:UIButtonTypeSystem];
-    btn1.tag=102;
+    btn1.tag=103;
     btn1.frame=CGRectMake(10, 50, 300, 40);
     [btn1 setTitle:@"确定" forState:UIControlStateNormal];
     btn1.titleLabel.font=[UIFont boldSystemFontOfSize:17];
@@ -120,9 +125,25 @@ static NSInteger cellNumber=1;
 
 #pragma mark - btn被点击
 -(void)btnClicked:(UIButton *)btn{
-    if (btn.tag==101) {
-        cellNumber++;
-        [self.tableView reloadData];
+    if (btn.tag==101) {//添加联系人，如果上面的号码正确就允许添加
+        if (_dataArray.count==cellNumber) {
+            cellNumber++;
+            [self.tableView reloadData];
+        }else{
+            [self showAlertViewWithMaessage:@"手机号不能为空" title:@"提示" otherBtn:@"ok"];
+        }
+
+    }
+    if (btn.tag==102) {//调用手机通讯录，获取选中人物信息
+       
+        //调用系统控件，选中后获得指定人信息
+        ABPeoplePickerNavigationController *peoplePicker = [[ABPeoplePickerNavigationController alloc] init];
+        peoplePicker.peoplePickerDelegate = self;
+        
+        [self presentViewController:peoplePicker animated:YES completion:nil];
+    }
+    if (btn.tag==103) {
+        
     }
 }
 
@@ -189,6 +210,46 @@ SHOUJIANPAN;
     cell.deleteBtn.tag=indexPath.row;
     return cell;
 }
+
+//显示警告框
+- (void) showAlertViewWithMaessage:(NSString *)message title:(NSString *)title otherBtn:(NSString *)btnT {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:btnT, nil];
+    [alert show];
+}
+#pragma mark ----电话本
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person;
+{
+    ABMutableMultiValueRef phoneMulti = ABRecordCopyValue(person, kABPersonPhoneProperty);
+    //获得选中Vcard相应信息
+    
+    NSString* firstName=(NSString*)CFBridgingRelease( ABRecordCopyValue(person, kABPersonFirstNameProperty));
+    if (firstName==nil) {
+        firstName = @" ";
+    }
+    NSString* lastName=(NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNameProperty));
+    if (lastName==nil) {
+        lastName = @" ";
+    }
+    NSMutableArray *phones = [NSMutableArray arrayWithCapacity:0];
+    
+    for (int i = 0; i < ABMultiValueGetCount(phoneMulti); i++) {
+        
+        NSString *aPhone = (NSString*) CFBridgingRelease(ABMultiValueCopyValueAtIndex(phoneMulti, i));
+        
+        [phones addObject:aPhone];
+        
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+    return NO;
+}
+-(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
+    
+}
+-(BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
+    return YES;
+}
+
 /*
 #pragma mark - Navigation
 

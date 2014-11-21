@@ -8,12 +8,12 @@
 
 #import "DuanXinViewController.h"
 #import "FootView.h"
-#import "HistoryViewController.h"
-#import "WaitViewController.h"
-#import "FillMessageViewController.h"
-#import "LogInViewController.h"
-#import "AppDelegate.h"
-
+//#import "HistoryViewController.h"
+//#import "WaitViewController.h"
+//#import "FillMessageViewController.h"
+//#import "LogInViewController.h"
+//#import "AppDelegate.h"
+//#import "FialViewController.h"
 
 
 @interface DuanXinViewController ()
@@ -48,22 +48,7 @@ static NSInteger cellNumber=1;
         [self showAlertViewWithMaessage:@"您还没有登录,请登录！" title:@"登录提示" otherBtn:@"登录"];
         return;
     }
-    
-    //获取是否完善信息的状态
-    NSString *isWanShan=dictPlist[@"isTureNetSite"];
-    if ([isWanShan isEqualToString:@"0"]) {//进入完善信息界面
-        FillMessageViewController *fill=[[FillMessageViewController alloc]init];
-        self.hidesBottomBarWhenPushed=YES;
-        [self.navigationController pushViewController:fill animated:YES];
-        return;
-    }
-    //查看是否激活，如果未激活则要跳到等待激活界面
-    NSString *isJiHuo=dictPlist[@"checkStatus"];
-    if ([isJiHuo isEqualToString:@"0"]) {
-        WaitViewController *wait=[[WaitViewController alloc]init];
-        [self.navigationController pushViewController:wait animated:YES];
-        return;
-    }
+    CHECKSTATUS
     self.hidesBottomBarWhenPushed=NO;
     
 }
@@ -76,7 +61,6 @@ static NSInteger cellNumber=1;
     //给桌面增加一个手势
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap)];
     [self.tableView addGestureRecognizer:tap];
-    [self setFootView];
     
 }
 #pragma mark -实现单元格输入协议
@@ -103,38 +87,31 @@ static NSInteger cellNumber=1;
 - (void)showUI{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
-    self.title=@"短信通知";
-    UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(0, 0, 60, 44) target:self sel:@selector(historyBtn) tag:99 image:nil title:@"历史记录"];
-    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    btn.titleLabel.font=[UIFont boldSystemFontOfSize:15];
-    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:btn];
-    self.navigationItem.rightBarButtonItem=rightItem;
+    self.title=@"发送短信";
+    GET_PLISTdICT
+    //查看是否退出登录
+    NSString *exit=dictPlist[@"exit"];
+    if ([exit isEqualToString:@"1"]) {
+        UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(0, 0, 60, 44) target:self sel:@selector(historyBtn) tag:99 image:nil title:@"历史记录"];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        btn.titleLabel.font=[UIFont boldSystemFontOfSize:15];
+        UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:btn];
+        self.navigationItem.rightBarButtonItem=rightItem;
+        [self setFootView];
+    }
     //设置头视图
-    _editView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 120)];
+    _editView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 130)];
     _editView.userInteractionEnabled=YES;
     _textView=[[UITextView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
     _textView.delegate=self;
     _textView.text=@"请输入短信内容!";
     _textView.keyboardType=UIKeyboardTypeDefault;
-    _textView.font=[UIFont systemFontOfSize:18];
+    _textView.font=[UIFont systemFontOfSize:17];
     [_editView addSubview:_textView];
     self.tableView.tableHeaderView=_editView;
     self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     TABLEVIEWBACKVIEW;
-    //设置脚视图
-//    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
-//    view.userInteractionEnabled=YES;
-//    UIButton *btn=[MyControl creatButtonWithFrame:CGRectMake(220, 5, 90, 40) target:self sel:@selector(btnClicked:) tag:101 image:nil title:@"➕添加联系人"];
-//    [btn setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-//    [view addSubview:btn];
-//    UIButton *btn1=[MyControl creatButtonWithFrame:CGRectMake(10, 50, 300, 40) target:self sel:@selector(btnClicked:) tag:102 image:nil title:@"确定"];
-//    btn1.backgroundColor=[UIColor orangeColor];
-//    [view addSubview:btn1];
-//    self.tableView.tableFooterView=view;
-    
-//    _footView=[[FootView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
-   }
-
+}
 -(void)setFootView{
     _footView=[[[NSBundle mainBundle]loadNibNamed:@"FootView" owner:self options:nil]lastObject];
     [_footView.oneBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -153,15 +130,23 @@ static NSInteger cellNumber=1;
 }
 //切换到历史记录的界面
 -(void)historyBtn{
+    self.hidesBottomBarWhenPushed=YES;
     HistoryViewController *history=[[HistoryViewController alloc]init];
     [self.navigationController pushViewController:history animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
 }
 
 #pragma mark - btn被点击
 -(void)btnClicked:(UIButton *)btn{
+
     if (btn.tag==101) {
-        cellNumber++;
-        [self.tableView reloadData];
+        if (_dataArray.count==cellNumber) {
+            cellNumber++;
+            [self.tableView reloadData];
+        }else{
+            [self showAlertViewWithMaessage:@"手机号不能为空" title:@"提示" otherBtn:@"ok"];
+        }
+       
     }
 }
 

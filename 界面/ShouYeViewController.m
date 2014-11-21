@@ -7,8 +7,8 @@
 //
 
 #import "ShouYeViewController.h"
-#import "TabBarViewController.h"
-#import "ShareViewController.h"
+//#import "TabBarViewController.h"
+//#import "ShareViewController.h"
 
 @interface ShouYeViewController ()
 {
@@ -58,14 +58,23 @@
     if (n) {
         GET_PLISTdICT
         //        [dictPlist setValue:@"1" forKey:@"isLog"];
-        NSNumber *checkStatus=dict[@"result"][@"checkStatus"];
-        NSNumber *userId=dict[@"result"][@"id"];
-        NSNumber *verSion=dict[@"result"][@"version"];
-        [dictPlist setValue:[checkStatus stringValue] forKey:@"checkStatus"];
-        [dictPlist setValue:[userId stringValue] forKey:@"id"];
-        [dictPlist setValue:[verSion stringValue] forKey:@"version"];
-        [dictPlist writeToFile:filePatn atomically:YES];
-    
+        NSString *urlPath=[NSString stringWithFormat:CESHIZONG,GETWANSHANGXINXI];
+        [_client postPath:urlPath parameters:@{@"regMobile": dict[@"result"][@"mobile"]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *wDict=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+            BOOL isFillMessage=[(NSNumber *)wDict[@"success"] boolValue];
+            NSNumber *checkStatus=wDict[@"result"][@"checkStatus"];
+            if (isFillMessage) {
+                [dictPlist setValue:[checkStatus stringValue] forKey:@"checkStatus"];
+                [dictPlist setValue:@"1" forKey:@"isTureNetSite"];
+                NSNumber *userId=dict[@"result"][@"id"];
+                NSNumber *verSion=dict[@"result"][@"version"];
+                [dictPlist setValue:[userId stringValue] forKey:@"id"];
+                [dictPlist setValue:[verSion stringValue] forKey:@"version"];
+                [dictPlist writeToFile:filePatn atomically:YES];
+            }
+        } failure:nil];
+
+        
     }
 }
 

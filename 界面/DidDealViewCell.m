@@ -23,5 +23,7 @@
 }
 
 - (IBAction)btnClicked:(UIButton *)sender {
+    [sender setTitle:@"取件" forState:UIControlStateNormal];
+    [sender setBackgroundImage:[UIImage imageNamed:@"2_10"] forState:UIControlStateNormal];
 }
 @end

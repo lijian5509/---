@@ -8,8 +8,8 @@
 
 #import "TGetPasswordViewController.h"
 
-#import "AppDelegate.h"
-#import "TabBarViewController.h"
+//#import "AppDelegate.h"
+//#import "TabBarViewController.h"
 
 
 @interface TGetPasswordViewController ()

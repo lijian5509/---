@@ -163,10 +163,11 @@ static id<JSMessageInputViewDelegate> __delegate;
 - (void)adjustTextViewHeightBy:(CGFloat)changeInHeight
 {
     CGRect prevFrame = self.textView.frame;
-    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     int numLines = MAX([self.textView numberOfLinesOfText],
                        [self.textView.text numberOfLines]);
-
+#pragma clang diagnostic pop
     NSLog(@"number line == %d",numLines);
     
     self.textView.frame = CGRectMake(prevFrame.origin.x,

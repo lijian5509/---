@@ -1,21 +1,21 @@
 //
-//  WaitViewController.m
+//  FialViewController.m
 //  快递兔-终
 //
-//  Created by kuaiditu on 14-11-18.
+//  Created by kuaiditu on 14-11-21.
 //  Copyright (c) 2014年 kuaiditu. All rights reserved.
 //
 
-#import "WaitViewController.h"
-
+#import "FialViewController.h"
 //#import "AppDelegate.h"
 //#import "TabBarViewController.h"
 
-@interface WaitViewController ()
+
+@interface FialViewController ()
 
 @end
 
-@implementation WaitViewController
+@implementation FialViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +26,18 @@
     return self;
 }
 
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    GET_PLISTdICT
+    self.phoneLabel.text=dictPlist[@"regMobile"];
+    BACKKEYITEM
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
+    self.title=@"审核失败";
+
+}
 -(void)getBack{
     
     TabBarViewController *tab=[TabBarViewController shareTabBar];
@@ -36,31 +48,15 @@
     app2.window.rootViewController=tab;
     [tab creatSystemBar];
     tab.selectedIndex=0;
-    
 }
 
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    GET_PLISTdICT
-    self.phoneLabel.text=[NSString stringWithFormat:@"手机号:%@",dictPlist[@"regMobile"]];
-    self.imageView.alpha=1;
-    self.title=@"等待审核";
-    self.imageView.layer.cornerRadius=5;
-    [self showUI];
-}
-#pragma mark - 摆UI界面
-- (void)showUI{
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
-    BACKKEYITEM
-}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

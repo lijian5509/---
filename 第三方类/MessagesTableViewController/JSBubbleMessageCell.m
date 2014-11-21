@@ -216,9 +216,12 @@
 
 - (void)setTimestamp:(NSDate *)date
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     self.timestampLabel.text = [NSDateFormatter localizedStringFromDate:date
-                                                              dateStyle:kCFDateFormatterMediumStyle
+                                                            dateStyle:NSDateFormatterMediumStyle
                                                               timeStyle:NSDateFormatterShortStyle];
+    #pragma clang diagnostic pop
 }
 
 - (void)setAvatarImage:(UIImage *)image

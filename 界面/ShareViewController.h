@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "DuanXinViewCell.h"
+#import <AddressBookUI/AddressBookUI.h>
 
-@interface ShareViewController : UITableViewController<UITextViewDelegate,AddTextDelegate>
+
+@interface ShareViewController : UITableViewController<UITextViewDelegate,AddTextDelegate,ABPeoplePickerNavigationControllerDelegate>
 
 @end

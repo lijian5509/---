@@ -408,7 +408,12 @@ CGFloat const kJSAvatarSize = 50.0f;
 
 + (int)numberOfLinesForMessage:(NSString *)txt
 {
-    return (txt.length / [JSBubbleView maxCharactersPerLine]) + 1;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
+    return (int)(txt.length / [JSBubbleView maxCharactersPerLine]) + 1;
+    #pragma clang diagnostic pop
+    
 }
 
 @end

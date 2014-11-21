@@ -53,6 +53,11 @@
 		C8AD8B381A12FB0F00BBEEE5 /* GetBankCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8AD8B361A12FB0F00BBEEE5 /* GetBankCardViewController.xib */; };
 		C8AD8B3D1A1304AA00BBEEE5 /* TakeOutMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8AD8B3B1A1304AA00BBEEE5 /* TakeOutMoneyViewController.m */; };
 		C8AD8B3E1A1304AA00BBEEE5 /* TakeOutMoneyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8AD8B3C1A1304AA00BBEEE5 /* TakeOutMoneyViewController.xib */; };
+		C8B15A361A1F07EC00CFC058 /* FialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B15A341A1F07EC00CFC058 /* FialViewController.m */; };
+		C8B15A371A1F07EC00CFC058 /* FialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8B15A351A1F07EC00CFC058 /* FialViewController.xib */; };
+		C8B15A401A1F27A600CFC058 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B15A3F1A1F27A600CFC058 /* AddressBook.framework */; };
+		C8B15A421A1F27AB00CFC058 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B15A411A1F27AB00CFC058 /* AddressBookUI.framework */; };
+		C8B15A441A1F29EA00CFC058 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B15A431A1F29EA00CFC058 /* MessageUI.framework */; };
 		C8B1C4651A19C61600B37AAC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B1C4641A19C61600B37AAC /* CFNetwork.framework */; };
 		C8B1C47C1A19CBD000B37AAC /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B1C4681A19CBD000B37AAC /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C8B1C47D1A19CBD000B37AAC /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B1C46A1A19CBD000B37AAC /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -417,6 +422,12 @@
 		C8AD8B3A1A1304AA00BBEEE5 /* TakeOutMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakeOutMoneyViewController.h; sourceTree = "<group>"; };
 		C8AD8B3B1A1304AA00BBEEE5 /* TakeOutMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakeOutMoneyViewController.m; sourceTree = "<group>"; };
 		C8AD8B3C1A1304AA00BBEEE5 /* TakeOutMoneyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TakeOutMoneyViewController.xib; sourceTree = "<group>"; };
+		C8B15A331A1F07EC00CFC058 /* FialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FialViewController.h; sourceTree = "<group>"; };
+		C8B15A341A1F07EC00CFC058 /* FialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FialViewController.m; sourceTree = "<group>"; };
+		C8B15A351A1F07EC00CFC058 /* FialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FialViewController.xib; sourceTree = "<group>"; };
+		C8B15A3F1A1F27A600CFC058 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		C8B15A411A1F27AB00CFC058 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		C8B15A431A1F29EA00CFC058 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C8B1C4641A19C61600B37AAC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C8B1C4671A19CBD000B37AAC /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		C8B1C4681A19CBD000B37AAC /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
@@ -759,6 +770,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8B15A441A1F29EA00CFC058 /* MessageUI.framework in Frameworks */,
+				C8B15A421A1F27AB00CFC058 /* AddressBookUI.framework in Frameworks */,
+				C8B15A401A1F27A600CFC058 /* AddressBook.framework in Frameworks */,
 				C8B1C4651A19C61600B37AAC /* CFNetwork.framework in Frameworks */,
 				C86B41BD1A14788D00F88FCD /* libiconv.dylib in Frameworks */,
 				C86B41BB1A14787700F88FCD /* QuartzCore.framework in Frameworks */,
@@ -875,6 +889,9 @@
 				C85EE4801A1B192800D7ED4F /* WaitViewController.h */,
 				C85EE4811A1B192800D7ED4F /* WaitViewController.m */,
 				C85EE4821A1B192800D7ED4F /* WaitViewController.xib */,
+				C8B15A331A1F07EC00CFC058 /* FialViewController.h */,
+				C8B15A341A1F07EC00CFC058 /* FialViewController.m */,
+				C8B15A351A1F07EC00CFC058 /* FialViewController.xib */,
 			);
 			name = "审核界面";
 			sourceTree = "<group>";
@@ -1114,6 +1131,9 @@
 		C8B42FFD1A10E1520080C884 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C8B15A431A1F29EA00CFC058 /* MessageUI.framework */,
+				C8B15A411A1F27AB00CFC058 /* AddressBookUI.framework */,
+				C8B15A3F1A1F27A600CFC058 /* AddressBook.framework */,
 				C8B1C4641A19C61600B37AAC /* CFNetwork.framework */,
 				C86B41BC1A14788D00F88FCD /* libiconv.dylib */,
 				C86B41BA1A14787700F88FCD /* QuartzCore.framework */,
@@ -2029,6 +2049,7 @@
 				C8DB1D4C1A1DE43C00CA4E59 /* 3_21.png in Resources */,
 				C8D479771A120D3800F58B70 /* 我的订单_10.png in Resources */,
 				C8DB1D4E1A1DE43C00CA4E59 /* 3_30.png in Resources */,
+				C8B15A371A1F07EC00CFC058 /* FialViewController.xib in Resources */,
 				C8DB1D081A1DB32000CA4E59 /* input-bar-flat@2x.png in Resources */,
 				C8DB1D0C1A1DB32000CA4E59 /* input-field@2x.png in Resources */,
 				C8DB1D0F1A1DB32000CA4E59 /* send-highlighted.png in Resources */,
@@ -2158,6 +2179,7 @@
 				C8B430CF1A10E1A20080C884 /* Helper.m in Sources */,
 				C8B430D21A10E1A20080C884 /* MJRefreshConst.m in Sources */,
 				C8AD8B3D1A1304AA00BBEEE5 /* TakeOutMoneyViewController.m in Sources */,
+				C8B15A361A1F07EC00CFC058 /* FialViewController.m in Sources */,
 				C8AD8B371A12FB0F00BBEEE5 /* GetBankCardViewController.m in Sources */,
 				C8DB1D341A1DE29600CA4E59 /* LJFScollerViewController.m in Sources */,
 				C8DB1D161A1DB32000CA4E59 /* UIColor+JSMessagesView.m in Sources */,
@@ -2234,7 +2256,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -2266,7 +2288,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2280,13 +2302,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "快递兔-终/快递兔-终-Prefix.pch";
 				INFOPLIST_FILE = "快递兔-终/快递兔-终-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/第三方类/ZBarSDK",
 					"$(PROJECT_DIR)/第三方类/支持64位的ZBar/libzbar",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2299,13 +2322,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "快递兔-终/快递兔-终-Prefix.pch";
 				INFOPLIST_FILE = "快递兔-终/快递兔-终-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/第三方类/ZBarSDK",
 					"$(PROJECT_DIR)/第三方类/支持64位的ZBar/libzbar",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

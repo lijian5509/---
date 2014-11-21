@@ -61,9 +61,10 @@
 #pragma mark - 限定输入内容
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     
+    
 }
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    if (textField.text.length >=12) {
+    if (textField.text.length +string.length>=11) {
         if ([self.textDelegate respondsToSelector:@selector(addTextField:)]) {
             [self.textDelegate performSelector:@selector(addTextField:) withObject:self];
         return NO;

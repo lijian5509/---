@@ -7,11 +7,11 @@
 //
 
 #import "LogInViewController.h"
-#import "GetBackPasswordViewController.h"
-#import "RegisterViewController.h"
-#import "AFHTTPClient.h"
-#import "TabBarViewController.h"
-#import "AppDelegate.h"
+//#import "GetBackPasswordViewController.h"
+//#import "RegisterViewController.h"
+//#import "AFHTTPClient.h"
+//#import "TabBarViewController.h"
+//#import "AppDelegate.h"
 
 
 @interface LogInViewController ()
@@ -202,12 +202,11 @@ INPUTACCESSVIEW
     }];
 }
 #pragma mark - 解析数据
--(void)downLoadSuccess:(id)responseObject{
-    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+-(void)downLoadSuccess:(id)response{
+    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
    
     BOOL n=[(NSNumber *)dict[@"success"] boolValue];
     NSNumber *netSiteId=dict[@"result"][@"netSiteId"];
-    NSNumber *checkStatus=dict[@"result"][@"checkStatus"];
     NSNumber *userId=dict[@"result"][@"id"];
     NSNumber *verSion=dict[@"result"][@"version"];
     
@@ -218,7 +217,6 @@ INPUTACCESSVIEW
         GET_PLISTdICT
 //        [dictPlist setValue:@"1" forKey:@"isLog"];
         [dictPlist setValue:@"1" forKey:@"exit"];
-        [dictPlist setValue:[checkStatus stringValue] forKey:@"checkStatus"];
         [dictPlist setValue:[userId stringValue] forKey:@"id"];
         [dictPlist setValue:[verSion stringValue] forKey:@"version"];
         [dictPlist setValue:dict[@"result"][@"mobile"] forKey:@"regMobile"];
@@ -232,6 +230,19 @@ INPUTACCESSVIEW
                 [dictPlist setValue:[netSiteId stringValue] forKey:@"netSiteId"];
                 [dictPlist writeToFile:filePatn atomically:YES];
             }else{
+                //每次登陆都要获取完善信息判断是否完善信息，是否激活
+                
+                NSString *urlPath=[NSString stringWithFormat:CESHIZONG,GETWANSHANGXINXI];
+                [aClient postPath:urlPath parameters:@{@"regMobile": dict[@"result"][@"mobile"]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    NSDictionary *wDict=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+                    BOOL isFillMessage=[(NSNumber *)wDict[@"success"] boolValue];
+                    NSNumber *checkStatus=wDict[@"result"][@"checkStatus"];
+                    if (isFillMessage) {
+                        [dictPlist setValue:[checkStatus stringValue] forKey:@"checkStatus"];
+                        [dictPlist setValue:@"1" forKey:@"isTureNetSite"];
+                        [dictPlist writeToFile:filePatn atomically:YES];
+                    }
+                } failure:nil];
                 [dictPlist setValue:[netSiteId stringValue] forKey:@"netSiteId"];
                 [dictPlist writeToFile:filePatn atomically:YES];
             }

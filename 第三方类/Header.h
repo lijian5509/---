@@ -9,6 +9,37 @@
 #ifndef _______Header_h
 #define _______Header_h
 
+#import "TabBarViewController.h"
+#import "LogInViewController.h"
+#import "GetBackPasswordViewController.h"
+#import "RegisterViewController.h"
+#import "AFHTTPClient.h"
+#import "TabBarViewController.h"
+#import "AppDelegate.h"
+//#import "LogInViewController.h"
+#import "TGetPasswordViewController.h"
+#import "FillMessageViewController.h"
+#import "WaitViewController.h"
+#import "ShareViewController.h"
+#import "OrderDetailViewController.h"
+#import "DidDealViewCell.h"
+#import "HistoryViewController.h"
+#import "WaitViewController.h"
+#import "FillMessageViewController.h"
+#import "LogInViewController.h"
+#import "KuaiDiViewCell.h"
+#import "HeadView.h"
+#import "GeRenTableViewCell.h"
+#import "SheZhiViewController.h"
+#import "NoMoneyViewController.h"
+#import "ChatViewController.h"
+#import "FialViewController.h"
+#import "GeRenTableViewCell.h"
+#import "AboutViewController.h"
+#import "LJFScollerViewController.h"
+#import "DidDealTableViewController.h"
+#import "KuaiDiViewController.h"
+
 //获取屏幕高度
 #define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
 //获取当前系统版本
@@ -42,6 +73,30 @@ for (UIView *text in self.view.subviews) {\
         }\
     }\
  \
+}\
+
+
+
+//获取完善信息状态 记录是否完善信息，是否激活
+
+#define CHECKSTATUS  \
+NSString *isWanShan=dictPlist[@"isTureNetSite"];\
+if ([isWanShan isEqualToString:@"1"]) {\
+    FillMessageViewController *fill=[[FillMessageViewController alloc]init];\
+    self.hidesBottomBarWhenPushed=YES;\
+    [self.navigationController pushViewController:fill animated:YES];\
+    return;\
+}\
+\
+NSString *isJiHuo=dictPlist[@"checkStatus"];\
+if ([isJiHuo isEqualToString:@"0"]) {\
+    FialViewController *wait=[[FialViewController alloc]init];\
+    [self.navigationController pushViewController:wait animated:YES];\
+    return;\
+}else if ([isJiHuo isEqualToString:@"2"]){\
+    WaitViewController *wait=[[WaitViewController alloc]init];\
+    [self.navigationController pushViewController:wait animated:YES];\
+    return;\
 }\
 
 

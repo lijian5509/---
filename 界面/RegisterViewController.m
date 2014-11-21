@@ -7,8 +7,8 @@
 //
 
 #import "RegisterViewController.h"
-#import "FillMessageViewController.h"
-#import "LogInViewController.h"
+//#import "FillMessageViewController.h"
+//#import "LogInViewController.h"
 
 @interface RegisterViewController ()
 {
@@ -241,12 +241,12 @@ INPUTACCESSVIEW
     UIButton *btn = (UIButton *)[self.view viewWithTag:103];
     btn.enabled = NO;
     _seconds--;
-    btn.titleLabel.text=[NSString stringWithFormat:@"%ld秒",_seconds];
+    btn.titleLabel.text=[NSString stringWithFormat:@"%d秒",_seconds];
     btn.titleLabel.textAlignment=NSTextAlignmentCenter;
     if (_seconds == 1) {
         [_timer setFireDate:[NSDate distantFuture]];
         _seconds = 60;
-        btn.titleLabel.text=[NSString stringWithFormat:@"%ld",_seconds];
+        btn.titleLabel.text=[NSString stringWithFormat:@"%d",_seconds];
         btn.enabled=YES;
     }
 }

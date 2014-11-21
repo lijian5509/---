@@ -7,8 +7,8 @@
 //
 
 #import "DidDealTableViewController.h"
-#import "OrderDetailViewController.h"
-#import "DidDealViewCell.h"
+//#import "OrderDetailViewController.h"
+//#import "DidDealViewCell.h"
 
 @interface DidDealTableViewController ()
 {
@@ -21,7 +21,7 @@
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithStyle:style];
+    self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         // Custom initialization
     }
@@ -31,7 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -46,6 +45,7 @@
 }
 
 #pragma mark - 单元格选中后跳转
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     OrderDetailViewController *detail=[[OrderDetailViewController alloc]init];
@@ -69,7 +69,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 70;
+    return 90;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

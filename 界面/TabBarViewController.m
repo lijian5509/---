@@ -7,9 +7,9 @@
 //
 
 #import "TabBarViewController.h"
-#import "LJFScollerViewController.h"
-#import "DidDealTableViewController.h"
-#import "KuaiDiViewController.h"
+//#import "LJFScollerViewController.h"
+//#import "DidDealTableViewController.h"
+//#import "KuaiDiViewController.h"
 
 @interface TabBarViewController ()
 
@@ -43,11 +43,6 @@
     [super viewDidLoad];
     self.tabBar.barTintColor=[UIColor whiteColor];
     self.tabBar.translucent=NO;
-//    self.tabBar.hidden=YES;
-//    self.TabImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT-49, 320, 49)];
-//    self.TabImageView.userInteractionEnabled=YES;
-//    [self.view addSubview:self.TabImageView];
-//    [self creatTabItems];
     [self creatSystemBar];
     
 }

@@ -7,11 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "TabBarViewController.h"
-#import "LogInViewController.h"
 
-#import "FillMessageViewController.h"
-#import "WaitViewController.h"
 
 @implementation AppDelegate
 
@@ -45,12 +41,12 @@
     NSString *path=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
     NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
 //     [dict setObject:@"0" forKey:@"isLog"];//是否登录
-    [dict setObject:@"0" forKey:@"checkStatus"];//激活状态
+    [dict setObject:@"2" forKey:@"checkStatus"];//激活状态 0审核失败 ，1审核成功    ，2审核中
     [dict setObject:@"0" forKey:@"regMobile"];//用户手机号
     [dict setObject:@"0" forKey:@"id"];//用户id
     [dict setObject:@"0" forKey:@"version"];//版本
     [dict setObject:@"0" forKey:@"fillMassage"];//记录是否完善信息
-    [dict setObject:@"0" forKey:@"isTureNetSite"];//网点id  登陆时保存，用于判断用户是否完善信息
+    [dict setObject:@"0" forKey:@"isTureNetSite"];//网点id  登陆时保存，用于判断用户是否完善信息  
     [dict setObject:@"0" forKey:@"exit"];//记录是否退出  0,未登录过  1 登录 2 登录后退出
     [dict setObject:@"null" forKey:@"username"];//用户信息
     [dict writeToFile:path atomically:YES];

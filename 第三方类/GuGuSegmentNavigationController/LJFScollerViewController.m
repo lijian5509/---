@@ -14,10 +14,11 @@
 #import "AppDelegate.h"
 #import "WaitViewController.h"
 
+#import "FialViewController.h"
 
 @interface LJFScollerViewController ()<UIScrollViewDelegate>
 {
-    int _currentIndex;
+    NSInteger _currentIndex;
     UIScrollView *_scrollView;
     NSArray *_titleArray;
     UIImageView *_titleView;
@@ -31,8 +32,7 @@
 #pragma mark - 页面将要显示的时候先判断是否完善信息和是否激活
 - (void)viewWillAppear:(BOOL)animated{
     self.hidesBottomBarWhenPushed=YES;
-    NSString *filePatn=[NSHomeDirectory() stringByAppendingPathComponent:@"userInfo.plist"];
-    NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile:filePatn];
+   GET_PLISTdICT
     //查看是否退出登录
     NSString *exit=dictPlist[@"exit"];
     if ([exit isEqualToString:@"2"]) {
@@ -45,20 +45,7 @@
         return ;
     }
     
-    //获取是否完善信息的状态
-    NSString *isWanShan=dictPlist[@"isTureNetSite"];
-    if ([isWanShan isEqualToString:@"0"]) {//进入完善信息界面
-        FillMessageViewController *fill=[[FillMessageViewController alloc]init];
-        [self.navigationController pushViewController:fill animated:YES];
-        return;
-    }
-    //查看是否激活，如果未激活则要跳到等待激活界面
-    NSString *isJiHuo=dictPlist[@"checkStatus"];
-    if ([isJiHuo isEqualToString:@"0"]) {
-        WaitViewController *wait=[[WaitViewController alloc]init];
-        [self.navigationController pushViewController:wait animated:YES];
-        return;
-    }
+    CHECKSTATUS
     self.hidesBottomBarWhenPushed=NO;
 }
 
@@ -69,11 +56,18 @@
     _currentIndex=0;
     [self creatScollers];
     [self creatTitleView];
-    // Do any additional setup after loading the view.
+    [self showUI];
+}
+#pragma mark - 摆UI界面
+- (void)showUI{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
+    self.title=@"订单管理";
+    self.navigationController.navigationBar.barStyle=UIBarStyleBlackOpaque;
 }
 
+
 -(void)creatScollers{
-    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 64+42, 320, self.view.frame.size.height-64-42)];
+    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 42, 320, self.view.frame.size.height-64-42)];
     _scrollView.backgroundColor=[UIColor grayColor];
     _scrollView.delegate=self;
     [self.view addSubview:_scrollView];
@@ -86,7 +80,7 @@
     for (int i=0;i<_viewControllers.count ;i++) {
         UIViewController *view=_viewControllers[i];
         [self addChildViewController:view];
-        view.view.frame=CGRectMake(320*i, 0,320,_scrollView.frame.size.height);
+        view.view.frame=CGRectMake(320*i, 0,320,_scrollView.frame.size.height-44);
         [_scrollView addSubview:view.view];
     }
 }
@@ -99,8 +93,8 @@
     return self;
 }
 -(void)creatTitleView{
-    int viewWidth=320;
-    int width=0;
+    NSInteger viewWidth=320;
+    NSInteger width=0;
     if (_titleArray.count>=6) {
         width=50;
         viewWidth=width*_titleArray.count;
@@ -108,25 +102,28 @@
         width=320/_titleArray.count;
     }
     
-    _titleView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 64,viewWidth,40)];
+    _titleView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0,320,40)];
+    
     _titleView.userInteractionEnabled=YES;
+    
     for (int i=0 ;i<_titleArray.count;i++) {
-        UIButton *btn=[UIButton buttonWithType:UIButtonTypeSystem];
+        
+        UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
         [btn setTitle:_titleArray[i] forState:UIControlStateNormal];
-        btn.backgroundColor=[UIColor yellowColor];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"灰色背景 3"] forState:UIControlStateNormal];
+        btn.tag=101+i;
 //        [btn setTitleColor:[UIColor cyanColor] forState:UIControlStateSelected];
-        btn.tag =101+i;
-        if (btn.tag==101) {
-            btn.selected=YES;
-        }
-//        btn.backgroundColor=[UIColor whiteColor];
         btn.frame=CGRectMake(width *i, 0, width, 40);
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         [_titleView addSubview:btn];
     }
+    UIButton *btn=(UIButton *)[self.view viewWithTag:101];
+    btn.selected=YES;
+    
     [self.view addSubview:_titleView];
-    _rockView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 104, width, 2)];
-    _rockView.backgroundColor=[UIColor cyanColor];
+    _rockView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 40, width, 2)];
+    _rockView.image=[UIImage imageNamed:@"订单详情_11"];
     [self.view addSubview:_rockView];
 }
 -(void)btnClick:(UIButton *)btn{

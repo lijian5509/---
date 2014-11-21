@@ -8,16 +8,18 @@
 
 #import "GeRenViewController.h"
 #import "HeadView.h"
-#import "GeRenTableViewCell.h"
-#import "SheZhiViewController.h"
-#import "ShareViewController.h"
-#import "TabBarViewController.h"
-#import "NoMoneyViewController.h"
-#import "FillMessageViewController.h"
-#import "WaitViewController.h"
-#import "LogInViewController.h"
-#import "AppDelegate.h"
-#import "ChatViewController.h"
+//#import "GeRenTableViewCell.h"
+//#import "SheZhiViewController.h"
+//#import "ShareViewController.h"
+//#import "TabBarViewController.h"
+//#import "NoMoneyViewController.h"
+//#import "FillMessageViewController.h"
+//#import "WaitViewController.h"
+//#import "LogInViewController.h"
+//#import "AppDelegate.h"
+//#import "ChatViewController.h"
+//#import "FialViewController.h"
+
 
 @interface GeRenViewController ()
 {
@@ -42,21 +44,28 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self showUI];
-    [self creatHeadView];
-    self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-    TABLEVIEWBACKVIEW;
-    self.tableView.scrollEnabled=NO;
+-(void)viewWillAppear:(BOOL)animated{
     GET_PLISTMEMBER(@"exit")
     NSString *exit=member;
     if ([exit isEqualToString:@"1"]) {
         [self getUserMassege];
+        _headView=[[[NSBundle mainBundle]loadNibNamed:@"HeadView" owner:self options:nil]lastObject] ;
+        self.tableView.tableHeaderView=_headView;
+    }else{
+        UILabel *label=[MyControl creatLabelWithFrame:CGRectMake(0, 0, 320, 90) text:@"您还未登录"];
+        label.textAlignment=NSTextAlignmentCenter;
+        label.font=[UIFont boldSystemFontOfSize:25];
+        self.tableView.tableHeaderView=label;
     }
-    
 }
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self showUI];
+    self.tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    TABLEVIEWBACKVIEW;
+    self.tableView.scrollEnabled=NO;
+   }
 #pragma mark - 获取用户数据
 - (void)getUserMassege{
     
@@ -81,21 +90,6 @@
     return 20;
 }
 
-#pragma mark - 创建一个头视图
--(void)creatHeadView{
-    GET_PLISTMEMBER(@"exit")
-    NSString *exit=member;
-    if ([exit isEqualToString:@"2"]) {
-        UILabel *label=[MyControl creatLabelWithFrame:CGRectMake(0, 0, 320, 90) text:@"您还未登录"];
-        label.textAlignment=NSTextAlignmentCenter;
-        label.font=[UIFont boldSystemFontOfSize:25];
-        self.tableView.tableHeaderView=label;
-        
-    }else{
-        _headView=[[[NSBundle mainBundle]loadNibNamed:@"HeadView" owner:self options:nil]lastObject] ;
-        self.tableView.tableHeaderView=_headView;
-    }
-}
 #pragma mark - 摆UI界面
 - (void)showUI{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"订单详情_11"] forBarMetrics:UIBarMetricsDefault];
@@ -165,23 +159,7 @@
                 return;
                 
             }
-            //获取是否完善信息的状态
-            NSString *isWanShan=dictPlist[@"isTureNetSite"];
-            if ([isWanShan isEqualToString:@"0"]) {//进入完善信息界面
-                FillMessageViewController *fill=[[FillMessageViewController alloc]init];
-                self.hidesBottomBarWhenPushed=YES;
-                [self.navigationController pushViewController:fill animated:YES];
-                return;
-            }
-            //查看是否激活，如果未激活则要跳到等待激活界面
-            NSString *isJiHuo=dictPlist[@"checkStatus"];
-            if ([isJiHuo isEqualToString:@"1"]) {
-                WaitViewController *wait=[[WaitViewController alloc]init];
-                self.hidesBottomBarWhenPushed=YES;
-                [self.navigationController pushViewController:wait animated:YES];
-                return;
-            }
-
+            [self checkUserStatus];
             NoMoneyViewController *money=[[NoMoneyViewController alloc]init];
             [self.navigationController pushViewController:money animated:YES];
             
@@ -226,9 +204,15 @@
     }
     //查看是否激活，如果未激活则要跳到等待激活界面
     NSString *isJiHuo=dictPlist[@"checkStatus"];
-    if ([isJiHuo isEqualToString:@"1"]) {
+    if ([isJiHuo isEqualToString:@"0"]) {
+        WaitViewController *wait=[[WaitViewController alloc]init];
+        wait.phoneLabel.text=@"审核失败";
+        [self.navigationController pushViewController:wait animated:YES];
+        return;
+    }else if ([isJiHuo isEqualToString:@"2"]){
         WaitViewController *wait=[[WaitViewController alloc]init];
         [self.navigationController pushViewController:wait animated:YES];
+        return;
     }
 }
 //显示警告框

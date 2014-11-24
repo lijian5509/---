@@ -142,6 +142,8 @@
 		C8B4312E1A10E2F80080C884 /* GeRenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B4312D1A10E2F80080C884 /* GeRenViewController.m */; };
 		C8B431301A10E7BB0080C884 /* HeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8B4312F1A10E7BB0080C884 /* HeadView.xib */; };
 		C8B431341A10E9DC0080C884 /* HeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B431331A10E9DC0080C884 /* HeadView.m */; };
+		C8C57EFA1A207A7F00AAC328 /* FatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C57EF91A207A7F00AAC328 /* FatherModel.m */; };
+		C8C57EFD1A207AE200AAC328 /* HistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C57EFC1A207AE200AAC328 /* HistoryModel.m */; };
 		C8CDED161A16E412003CF1C3 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8CDED141A16E412003CF1C3 /* LogInViewController.m */; };
 		C8CDED171A16E412003CF1C3 /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8CDED151A16E412003CF1C3 /* LogInViewController.xib */; };
 		C8CDED211A16F09A003CF1C3 /* 注册_边框.png in Resources */ = {isa = PBXBuildFile; fileRef = C8CDED201A16F09A003CF1C3 /* 注册_边框.png */; };
@@ -546,6 +548,10 @@
 		C8B4312F1A10E7BB0080C884 /* HeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeadView.xib; sourceTree = "<group>"; };
 		C8B431321A10E9DC0080C884 /* HeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadView.h; sourceTree = "<group>"; };
 		C8B431331A10E9DC0080C884 /* HeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadView.m; sourceTree = "<group>"; };
+		C8C57EF81A207A7F00AAC328 /* FatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatherModel.h; sourceTree = "<group>"; };
+		C8C57EF91A207A7F00AAC328 /* FatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FatherModel.m; sourceTree = "<group>"; };
+		C8C57EFB1A207AE200AAC328 /* HistoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryModel.h; sourceTree = "<group>"; };
+		C8C57EFC1A207AE200AAC328 /* HistoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryModel.m; sourceTree = "<group>"; };
 		C8CDED131A16E412003CF1C3 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		C8CDED141A16E412003CF1C3 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		C8CDED151A16E412003CF1C3 /* LogInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogInViewController.xib; sourceTree = "<group>"; };
@@ -1252,6 +1258,10 @@
 		C8B4307E1A10E1A20080C884 /* 数据模型 */ = {
 			isa = PBXGroup;
 			children = (
+				C8C57EF81A207A7F00AAC328 /* FatherModel.h */,
+				C8C57EF91A207A7F00AAC328 /* FatherModel.m */,
+				C8C57EFB1A207AE200AAC328 /* HistoryModel.h */,
+				C8C57EFC1A207AE200AAC328 /* HistoryModel.m */,
 			);
 			path = "数据模型";
 			sourceTree = "<group>";
@@ -1321,8 +1331,8 @@
 			children = (
 				C8D478F11A11AFD700F58B70 /* DuanXinViewController.h */,
 				C8D478F21A11AFD700F58B70 /* DuanXinViewController.m */,
-				C8B34D6B1A15A96B00BE1735 /* 定制脚视图 */,
 				C8D478F01A11AF5E00F58B70 /* 定制cell */,
+				C8B34D6B1A15A96B00BE1735 /* 定制脚视图 */,
 				C8B34D711A15CDD000BE1735 /* 历史记录 */,
 			);
 			name = "短信通知";
@@ -2176,10 +2186,12 @@
 				C8B4311E1A10E2410080C884 /* TabBarViewController.m in Sources */,
 				C8B4300D1A10E1520080C884 /* main.m in Sources */,
 				C85EE4831A1B192800D7ED4F /* WaitViewController.m in Sources */,
+				C8C57EFA1A207A7F00AAC328 /* FatherModel.m in Sources */,
 				C8B430CF1A10E1A20080C884 /* Helper.m in Sources */,
 				C8B430D21A10E1A20080C884 /* MJRefreshConst.m in Sources */,
 				C8AD8B3D1A1304AA00BBEEE5 /* TakeOutMoneyViewController.m in Sources */,
 				C8B15A361A1F07EC00CFC058 /* FialViewController.m in Sources */,
+				C8C57EFD1A207AE200AAC328 /* HistoryModel.m in Sources */,
 				C8AD8B371A12FB0F00BBEEE5 /* GetBankCardViewController.m in Sources */,
 				C8DB1D341A1DE29600CA4E59 /* LJFScollerViewController.m in Sources */,
 				C8DB1D161A1DB32000CA4E59 /* UIColor+JSMessagesView.m in Sources */,

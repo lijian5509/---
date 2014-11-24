@@ -11,6 +11,6 @@
 #import <AddressBookUI/AddressBookUI.h>
 
 
-@interface ShareViewController : UITableViewController<UITextViewDelegate,AddTextDelegate,ABPeoplePickerNavigationControllerDelegate>
+@interface ShareViewController : UITableViewController<UITextViewDelegate,AddTextDelegate,ABPeoplePickerNavigationControllerDelegate,UITextFieldDelegate>
 
 @end

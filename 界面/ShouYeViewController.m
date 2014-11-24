@@ -28,6 +28,7 @@
     return self;
 }
 
+
 -(void)viewWillAppear:(BOOL)animated{
     TabBarViewController *tab=[TabBarViewController shareTabBar];
     tab.tabBar.hidden=NO;

@@ -19,13 +19,22 @@
 @end
 
 
+
 @interface DuanXinViewCell : UITableViewCell<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+
 @property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
+
 @property (weak, nonatomic) id<AddTextDelegate>textDelegate;
+
 - (IBAction)btnClicked:(UIButton *)sender;
+
 @property (strong, nonatomic)  UIView *inputView;
+
+@property(nonatomic ,strong) NSString *phoneText;
+
+@property (nonatomic) BOOL isValid;
 
 
 @end

@@ -9,5 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface HistoryViewController : UITableViewController
+{
+    NSMutableArray *_dataArray;
+    NSInteger _currentPage;
+    BOOL _isRefreshinging;
+}
+//结束刷新
+- (void)endRefreshing;
+//创建刷新
+- (void)refreshTableview;
 
 @end

@@ -9,8 +9,9 @@
 #import "HistoryViewController.h"
 #import "HistoryViewCell.h"
 
-@interface HistoryViewController ()
+#import "MJRefresh.h"
 
+@interface HistoryViewController ()
 @end
 
 @implementation HistoryViewController
@@ -38,12 +39,52 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - 刷新
+-(void)refreshTableview{
+    AFHTTPClient *client=[[AFHTTPClient alloc]initWithBaseURL:[NSURL URLWithString:@""]];
+    GET_PLISTdICT
+    NSString *urlPath=[NSString stringWithFormat:CESHIZONG,DUANXINJILU];
+    __block HistoryViewController *bSelf=self;
+    [bSelf.tableView addHeaderWithCallback:^{
+        if (_isRefreshinging) {
+            return ;
+        }
+        _isRefreshinging=YES;
+        _currentPage=0;
+        [client postPath:urlPath parameters:@{@"courierId": dictPlist[@"id"],@"page":@"0",@"pageNum":@"10"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self downloadSuccessWithData:responseObject];
+            
+        } failure:nil];
+    }];
+    [bSelf.tableView addFooterWithCallback:^{
 
+        if (_isRefreshinging) {
+            return ;
+        }
+       
+        _isRefreshinging=YES;
+        _currentPage++;
+       [client postPath:urlPath parameters:@{@"courierId": dictPlist[@"id"],@"page":[NSString stringWithFormat:@"%ld",_currentPage],@"pageNum":@"10"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+           [self downloadSuccessWithData:responseObject];
+       } failure:nil];
+        
+    }];
+    
+}
+-(void)endRefreshing{
+    [self.tableView headerEndRefreshing];
+    [self.tableView footerEndRefreshing];
+    
+}
+#pragma mark - 解析数据
+-(void)downloadSuccessWithData:(id)response{
+    [self endRefreshing];
+    if (response) {
+        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableContainers error:nil];
+        
+    }
+    
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

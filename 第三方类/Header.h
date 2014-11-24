@@ -246,6 +246,9 @@ NSMutableDictionary *dictPlist=[NSMutableDictionary dictionaryWithContentsOfFile
 #define XINZHANGDANZONGSHU @"balanceDeal/getProcessCount"        //courierId     motifyTime
 // 流水表数据详情
 #define ZHANGDANSHUJUDETAIL @"balanceDeal/getProcessInfoDetail"  //processInfoId
+//得到银行卡信息
+#define GETBANKCARKMESSASGE @"bankCard/getBankCardInfo"         //courierId  快递员id
+
 
 #import "AFNetworking.h"
 

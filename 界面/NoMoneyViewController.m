@@ -12,7 +12,9 @@
 
 
 @interface NoMoneyViewController ()
-
+{
+    AFHTTPClient *_client;
+}
 @end
 
 @implementation NoMoneyViewController
@@ -21,7 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        _client=[[AFHTTPClient alloc]initWithBaseURL:[NSURL URLWithString:@""]];
     }
     return self;
 }
@@ -29,6 +31,20 @@
 {
     [super viewDidLoad];
     [self showUI];
+}
+//得到银行卡信息
+-(void)viewWillAppear:(BOOL)animated{
+    GET_PLISTdICT
+    NSString *urlPath=[NSString stringWithFormat:CESHIZONG,GETBANKCARKMESSASGE];
+    [_client postPath:urlPath parameters:@{@"courierId": dictPlist[@"id"]} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+        NSString *bankCard=dict[@"result"][@"bankCard"];
+        if (bankCard) {
+            
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self showAlertViewWithMaessage:@"网络错误" title:@"提示" otherBtn:nil];
+    }];
 }
 #pragma mark - 摆UI界面
 - (void)showUI{
@@ -56,4 +72,11 @@ SHOUJIANPAN;
     [self.navigationController pushViewController:get animated:YES];
     
 }
+//显示警告框
+- (void) showAlertViewWithMaessage:(NSString *)message title:(NSString *)title otherBtn:(NSString *)btnT {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:btnT, nil];
+    [alert show];
+}
+
+
 @end

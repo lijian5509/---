@@ -68,6 +68,8 @@
     [dictPlist setObject:@"0" forKey:@"version"];//版本
     [dictPlist setObject:@"0" forKey:@"fillMassage"];//记录是否完善信息
     [dictPlist setObject:@"0" forKey:@"isTureNetSite"];//网点id  登陆时保存，用于判断用户是否完善信息
+    [dictPlist setObject:@"0" forKey:@"bankCard"];
+    [dictPlist setObject:@"null" forKey:@"username"];//用户信息
     [dictPlist writeToFile:filePatn atomically:YES];
 
 }

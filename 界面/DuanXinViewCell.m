@@ -64,13 +64,18 @@
     
 }
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    if (textField.text.length +string.length>=11) {
+   
+    if (textField.text.length+string.length>11) {
+        return NO;
+    }
+    if (textField.text.length ==10&& string.length==1) {
+        self.phoneText=[NSString stringWithFormat:@"%@%@",textField.text,string];
         if ([self.textDelegate respondsToSelector:@selector(addTextField:)]) {
             [self.textDelegate performSelector:@selector(addTextField:) withObject:self];
-        return NO;
+            
         }
     }
-    return YES;
+        return YES;
 }
 -(void)textBtnClicked:(UIButton *)btn{
     
@@ -106,10 +111,16 @@
 }
 
 - (IBAction)btnClicked:(UIButton *)sender {
-    
+    if ([Helper validateMobile:self.textField.text]) {
+        self.isValid=YES;
+           }else{
+        self.isValid=NO;
+    }
     if ([self.textDelegate respondsToSelector:@selector(removeTextViewWith:)]) {
         [self.textDelegate performSelector:@selector(removeTextViewWith:) withObject:self];
     }
+
+   
 }
 @end
     

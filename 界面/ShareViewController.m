@@ -45,26 +45,35 @@ static NSInteger cellNumber=1;
 }
 #pragma mark -实现单元格输入协议
 -(void)addTextField:(DuanXinViewCell *)message{
-    if ([Helper validateMobile:message.textField.text]) {
-        [_dataArray addObject:message];
-        [self.tableView reloadData];
-    }else{
-        [self showAlertViewWithMaessage:@"请输入正确的号码" title:@"提示" otherBtn:@"确定"];
-        
-    }
-    
-    
-}
--(void)removeTextViewWith:(DuanXinViewCell *)message{
-    if (_dataArray.count!=0) {
-        for (DuanXinViewCell *dcell in _dataArray) {
-            if (dcell.deleteBtn.tag==message.deleteBtn.tag) {
-                [_dataArray removeObject:dcell];
+    if ([Helper validateMobile:message.phoneText]) {
+        for (int i=0; i<_dataArray.count; i++) {
+            NSString *str=_dataArray[i];
+            if (message.deleteBtn.tag==i){
+                [_dataArray replaceObjectAtIndex:i withObject:message.phoneText];
+                [self.tableView reloadData];
+                return;
+            }else  if ([str isEqualToString:message.phoneText]) {
+                [self showAlertViewWithMaessage:@"该号码已存在,请核对后再输" title:@"警告" otherBtn:nil];
+                message.textField.text=@"";
+                return;
             }
         }
+        [_dataArray addObject:message.phoneText];
+        cellNumber++;
+        [self.tableView reloadData];
+    }else{
+        [self showAlertViewWithMaessage:@"输入的号码不正确!请认真核对" title:@"警告" otherBtn:nil];
     }
-    cellNumber--;
-    [self.tableView reloadData];
+}
+-(void)removeTextViewWith:(DuanXinViewCell *)message{
+    if (message.isValid) {
+        [_dataArray removeObjectAtIndex:message.deleteBtn.tag];
+        cellNumber--;
+        [self.tableView reloadData];
+    }else{
+        cellNumber--;
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - 摆UI界面
@@ -85,7 +94,6 @@ static NSInteger cellNumber=1;
     _textView.delegate=self;
     
     GET_PLISTdICT
-   
     _textView.text=[NSString stringWithFormat:@"您的朋友%@邀请你和他一起使用快递神器，并给你发了5元红包，下载安装注册就可轻松获得.",dictPlist[@"username"]];
     _textView.font=[UIFont systemFontOfSize:15];
     _textView.layer.borderWidth=1;
@@ -130,7 +138,7 @@ static NSInteger cellNumber=1;
             cellNumber++;
             [self.tableView reloadData];
         }else{
-            [self showAlertViewWithMaessage:@"手机号不能为空" title:@"提示" otherBtn:@"ok"];
+            [self showAlertViewWithMaessage:@"请先输入正确的号码" title:@"提示" otherBtn:@"ok"];
         }
 
     }
@@ -142,8 +150,8 @@ static NSInteger cellNumber=1;
         
         [self presentViewController:peoplePicker animated:YES completion:nil];
     }
-    if (btn.tag==103) {
-        
+    if (btn.tag==103) {//确定，把联系电话发给服务器
+        NSString *urlPath=[NSString stringWithFormat:CESHIZONG,FENXIANGSMS];
     }
 }
 
@@ -194,20 +202,15 @@ SHOUJIANPAN;
     if (!cell) {
         cell=[[[NSBundle mainBundle]loadNibNamed:@"DuanXinViewCell" owner:self options:nil]lastObject];
     }
-    if (_dataArray.count==0&&indexPath.row==0) {
+    if (indexPath.row==0) {
         cell.deleteBtn.hidden=YES;
     }
     if (indexPath.row <_dataArray.count) {
-        DuanXinViewCell *Dcell=_dataArray[indexPath.row];
-        if (Dcell.deleteBtn.tag==indexPath.row) {
-            cell.textField.text=Dcell.textField.text;
-        }
+            cell.textField.text=_dataArray[indexPath.row];
     }
-    //    if (_dataArray.count!=0&&indexPath.row==cellNumber&&((DuanXinViewCell *)_dataArray.lastObject).deleteBtn.tag==indexPath.row-1 ) {
-    //        [cell.textField becomeFirstResponder];
-    //    }
     cell.textDelegate=self;
     cell.deleteBtn.tag=indexPath.row;
+    
     return cell;
 }
 
@@ -238,11 +241,41 @@ SHOUJIANPAN;
         NSString *aPhone = (NSString*) CFBridgingRelease(ABMultiValueCopyValueAtIndex(phoneMulti, i));
         
         [phones addObject:aPhone];
+        [self addPhoneNumberFromAddressBook:aPhone];
         
     }
+
     [self dismissViewControllerAnimated:YES completion:nil];
     return NO;
 }
+
+#pragma mark -从通讯录添加
+-(void)addPhoneNumberFromAddressBook:(NSString *)phoneBook{
+    //1.看联系人得电话是否有效
+    if ([Helper validateMobile:phoneBook]) {
+        //2.查看该联系人是否添加过
+        if (_dataArray.count==0) {//第一次没有联系人和最后一个单元格的联系方式不完善
+            [_dataArray addObject:phoneBook];
+            cellNumber++;
+            [self.tableView reloadData];
+            return;
+        }//
+        for (int i=0; i<_dataArray.count; i++) {
+            NSString *str=_dataArray[i];
+            if ([str isEqualToString:phoneBook]) {
+                [self showAlertViewWithMaessage:@"该联系人已添加" title:@"提示" otherBtn:nil];
+                return;
+            }
+        }
+        if (_dataArray.count==cellNumber||_dataArray.count<cellNumber) {
+            [_dataArray addObject:phoneBook];
+            cellNumber++;
+        }
+    }else{
+        [self showAlertViewWithMaessage:@"号码有误，请核实后添加" title:@"警告" otherBtn:nil];
+    }
+}
+
 -(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
     
 }

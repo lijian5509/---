@@ -11,4 +11,8 @@
 
 @interface DuanXinViewController : UITableViewController<UITextViewDelegate,AddTextDelegate,UIAlertViewDelegate>
 
+@property (nonatomic,strong)UILabel *wordLabel;
+@property (nonatomic,strong)UILabel *messageLabel;
+
+
 @end
